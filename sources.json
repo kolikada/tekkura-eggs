@@ -230,6 +230,16 @@
     "file": "eggs/terraria-tshock/egg-tshock.json"
   },
   {
+    "slug": "arma-3",
+    "store_category": "Arma 3 Reforger",
+    "role": "primary",
+    "upstream": "https://github.com/pelican-eggs/games-steamcmd/blob/68aa3847dda477c9e5cb0522295b212042f746af/arma/arma3/egg-arma3.json",
+    "repo": "games-steamcmd",
+    "path": "arma/arma3/egg-arma3.json",
+    "commit": "68aa3847dda477c9e5cb0522295b212042f746af",
+    "file": "eggs/arma-3/egg-arma3.json"
+  },
+  {
     "slug": "arma-reforger",
     "store_category": "Arma 3 Reforger",
     "role": "primary",

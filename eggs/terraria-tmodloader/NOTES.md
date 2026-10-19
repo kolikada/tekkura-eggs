@@ -3,11 +3,11 @@
 Store category: **Terraria** (variant)
 Upstream: [games-standalone/terraria/tmodloader/egg-t-modloader.json](https://github.com/pelican-eggs/games-standalone/blob/e1b52607397c0de9d6918d0659f1ff95721d3b49/terraria/tmodloader/egg-t-modloader.json)
 Format: `PTDL_v2`
-Status: **todo**
+Status: **imported**
 
 ## To configure
 
-- [ ] Ports tab on the panel: how many ports, and which one players connect on
+- [x] Ports tab on the panel: how many ports, and which one players connect on (needs 1, connect on port 1)
 - [ ] Test deploy from a store order with no admin input, and a player can join
 
 ## Images

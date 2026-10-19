@@ -1,23 +1,23 @@
 # ARK: Survival Ascended
 
-Store category: **Ark: Survival** (decide)
+Store category: **Ark: Survival** (primary)
 Upstream: [games-steamcmd/ark_survival_ascended/egg-a-r-k--survival-ascended.json](https://github.com/pelican-eggs/games-steamcmd/blob/68aa3847dda477c9e5cb0522295b212042f746af/ark_survival_ascended/egg-a-r-k--survival-ascended.json)
 Format: `PLCN_v1`
-Status: **todo**
+Status: **imported**
 
-Sold as its own game: a subcategory "ARK: Survival Ascended" under "Ark: Survival", with its own products.
+Peer port is always game +1, hence 2. RCON is used inside the container for clean shutdown. Sold as its own subcategory under "Ark: Survival".
 
 ## To configure
 
 Port variables that keep a fixed default on every server (collide on a shared node):
 
-- [ ] `RCON_PORT` default `37015`: required for console commands and proper server shutdown (saveworld/exit), doesn
+- [x] `RCON_PORT` default `37015` (internal: only used inside the container): required for console commands and proper server shutdown (saveworld/exit), doesn
 
 Required with no default (provisioning would build a server that cannot start):
 
-- [ ] `ARK_ADMIN_PASSWORD`: Used for RCON (remote and in-browser console) as well as in-game EnableCheats
+- [x] `ARK_ADMIN_PASSWORD` (generated per server): Used for RCON (remote and in-browser console) as well as in-game EnableCheats
 
-- [ ] Ports tab on the panel: how many ports, and which one players connect on
+- [x] Ports tab on the panel: how many ports, and which one players connect on (needs 2, connect on port 1)
 - [ ] Test deploy from a store order with no admin input, and a player can join
 
 ## Images

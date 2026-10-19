@@ -3,16 +3,18 @@
 Store category: **Conan Exiles** (primary)
 Upstream: [games-steamcmd/conan_exiles/egg-conan-exiles-enhanced.yaml](https://github.com/pelican-eggs/games-steamcmd/blob/68aa3847dda477c9e5cb0522295b212042f746af/conan_exiles/egg-conan-exiles-enhanced.yaml)
 Format: `PLCN_v3`
-Status: **todo**
+Status: **imported**
+
+Game +1 is fixed, query is the 3rd port. Players connect on the game port (1st).
 
 ## To configure
 
 Port variables that keep a fixed default on every server (collide on a shared node):
 
-- [ ] `QUERY_PORT` default `27015`: Server Query Port
-- [ ] `RCON_PORT` default `25575`: Remote administrative access
+- [x] `QUERY_PORT` default `27015` (gets port 3): Server Query Port
+- [x] `RCON_PORT` default `25575` (internal: only used inside the container): Remote administrative access
 
-- [ ] Ports tab on the panel: how many ports, and which one players connect on
+- [x] Ports tab on the panel: how many ports, and which one players connect on (needs 3, connect on port 1)
 - [ ] Test deploy from a store order with no admin input, and a player can join
 
 ## Images

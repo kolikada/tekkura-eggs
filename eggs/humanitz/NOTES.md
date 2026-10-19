@@ -3,15 +3,15 @@
 Store category: **HumanitZ** (primary)
 Upstream: [games-steamcmd/humanitz/egg-humanit-z.json](https://github.com/pelican-eggs/games-steamcmd/blob/68aa3847dda477c9e5cb0522295b212042f746af/humanitz/egg-humanit-z.json)
 Format: `PTDL_v2`
-Status: **todo**
+Status: **imported**
 
 ## To configure
 
 Port variables that keep a fixed default on every server (collide on a shared node):
 
-- [ ] `QUERY_PORT` default `27015`: Steam Query Port
+- [x] `QUERY_PORT` default `27015` (gets port 2): Steam Query Port
 
-- [ ] Ports tab on the panel: how many ports, and which one players connect on
+- [x] Ports tab on the panel: how many ports, and which one players connect on (needs 2, connect on port 1)
 - [ ] Test deploy from a store order with no admin input, and a player can join
 
 ## Images
@@ -31,7 +31,7 @@ Port variables that keep a fixed default on every server (collide on a shared no
 | `SRCDS_APPID` | 2728330 | no | required\|string\|in:2728330 |
 | `AUTO_UPDATE` | 1 | yes | boolean |
 | `SRCDS_BETAID` | linuxbranch | no | required\|string\|in:linuxbranch |
-| `QUERY_PORT` | 27015 | yes | required\|numeric |
+| `QUERY_PORT` | 27015 | no | required\|numeric |
 | `SERVER_NAME` | HumanitZ [Dedicated] | yes | required\|string |
 | `PASSWORD` |   | yes | nullable\|string |
 | `SAVE_NAME` | DedicatedSaveMP | yes | required\|string |

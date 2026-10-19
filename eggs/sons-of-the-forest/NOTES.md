@@ -3,16 +3,16 @@
 Store category: **Sons Of The Forest** (primary)
 Upstream: [games-steamcmd/sonsoftheforest/egg-sons-of-the-forest.json](https://github.com/pelican-eggs/games-steamcmd/blob/68aa3847dda477c9e5cb0522295b212042f746af/sonsoftheforest/egg-sons-of-the-forest.json)
 Format: `PTDL_v2`
-Status: **todo**
+Status: **imported**
 
 ## To configure
 
 Port variables that keep a fixed default on every server (collide on a shared node):
 
-- [ ] `QUERY_PORT` default `27016`: UDP port used by Steam to list the server and enable the discovery services.
-- [ ] `BLOBSYNC_PORT` default `9700`: BlobSyncPort UDP port used by the BlobSync system to initialize game systems and
+- [x] `QUERY_PORT` default `27016` (gets port 2): UDP port used by Steam to list the server and enable the discovery services.
+- [x] `BLOBSYNC_PORT` default `9700` (gets port 3): BlobSyncPort UDP port used by the BlobSync system to initialize game systems and
 
-- [ ] Ports tab on the panel: how many ports, and which one players connect on
+- [x] Ports tab on the panel: how many ports, and which one players connect on (needs 3, connect on port 1)
 - [ ] Test deploy from a store order with no admin input, and a player can join
 
 ## Images

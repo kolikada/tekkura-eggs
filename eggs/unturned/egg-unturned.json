@@ -7,7 +7,7 @@
     "exported_at": "2026-04-06T02:01:23+00:00",
     "name": "Unturned",
     "author": "parker@parkervcp.com",
-    "uuid": "4000c33b-91a2-4d50-8a1f-f998b334ad6e",
+    "uuid": "a3ba2502-7684-43d6-b409-6c180eb409bd",
     "description": "Vanilla Unturned with the included RockerMod.",
     "tags": [
         "steamcmd"
@@ -19,7 +19,7 @@
         "ghcr.io\/parkervcp\/steamcmd:debian": "ghcr.io\/parkervcp\/steamcmd:debian"
     },
     "file_denylist": [],
-    "startup": ".\/Unturned_Headless.x86_64 -batchmode -nographics -bind 0.0.0.0 -port {{SERVER_PORT}} -GSLT {{GSLT}} -Name \"{{SRV_NAME}}\" -Password {{SRV_PW}} +InternetServer\/{{SRV_ID}}",
+    "startup": ".\/Unturned_Headless.x86_64 -batchmode -nographics -bind 0.0.0.0 -port {{SERVER_PORT}} ${GSLT:+-GSLT ${GSLT}} -Name \"{{SRV_NAME}}\" -Password {{SRV_PW}} +InternetServer\/{{SRV_ID}}",
     "config": {
         "files": "{}",
         "startup": "{\r\n    \"done\": \"Loading level: 100%\"\r\n}",
@@ -58,12 +58,12 @@
         },
         {
             "name": "GSLT",
-            "description": "",
+            "description": "Your own Steam Game Server Login Token. Without one the server only accepts players on its local network. Create one for free at https://steamcommunity.com/dev/managegameservers",
             "env_variable": "GSLT",
             "default_value": "",
             "user_viewable": true,
             "user_editable": true,
-            "rules": "required|string",
+            "rules": "nullable|string",
             "sort": null,
             "field_type": "text"
         },

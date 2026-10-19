@@ -3,11 +3,11 @@
 Store category: **Left 4 Dead 2** (primary)
 Upstream: [games-steamcmd/left4dead_2/egg-left4-dead2.json](https://github.com/pelican-eggs/games-steamcmd/blob/68aa3847dda477c9e5cb0522295b212042f746af/left4dead_2/egg-left4-dead2.json)
 Format: `PLCN_v1`
-Status: **todo**
+Status: **imported**
 
 ## To configure
 
-- [ ] Ports tab on the panel: how many ports, and which one players connect on
+- [x] Ports tab on the panel: how many ports, and which one players connect on (needs 1, connect on port 1)
 - [ ] Test deploy from a store order with no admin input, and a player can join
 
 ## Images

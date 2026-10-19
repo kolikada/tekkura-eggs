@@ -92,7 +92,7 @@
   {
     "slug": "ark-survival-ascended",
     "store_category": "Ark: Survival",
-    "role": "decide",
+    "role": "primary",
     "upstream": "https://github.com/pelican-eggs/games-steamcmd/blob/68aa3847dda477c9e5cb0522295b212042f746af/ark_survival_ascended/egg-a-r-k--survival-ascended.json",
     "repo": "games-steamcmd",
     "path": "ark_survival_ascended/egg-a-r-k--survival-ascended.json",
@@ -102,7 +102,7 @@
   {
     "slug": "ark-survival-evolved",
     "store_category": "Ark: Survival",
-    "role": "decide",
+    "role": "primary",
     "upstream": "https://github.com/pelican-eggs/games-steamcmd/blob/68aa3847dda477c9e5cb0522295b212042f746af/ark_survival_evolved/egg-ark--survival-evolved.json",
     "repo": "games-steamcmd",
     "path": "ark_survival_evolved/egg-ark--survival-evolved.json",

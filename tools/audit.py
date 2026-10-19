@@ -86,8 +86,9 @@ def notes(entry: dict, egg: dict, found: dict, status: dict) -> str:
         lines.append("")
         for v in found["port_vars"]:
             env = v["env_variable"]
-            how = f" (gets port {mapped[env]})" if env in mapped else ""
-            lines.append(f"- [{tick(env in mapped)}] `{env}` default `{v.get('default_value')}`{how}: {cell(v.get('description'))}")
+            internal = set(status.get("internal") or [])
+            how = f" (gets port {mapped[env]})" if env in mapped else " (internal: only used inside the container)" if env in internal else ""
+            lines.append(f"- [{tick(env in mapped or env in internal)}] `{env}` default `{v.get('default_value')}`{how}: {cell(v.get('description'))}")
         lines.append("")
     if found["needs_input"]:
         lines.append("Required with no default (provisioning would build a server that cannot start):")
@@ -126,8 +127,10 @@ for entry in MANIFEST:
     (path.parent / "NOTES.md").write_text(notes(entry, egg, found, status), encoding="utf-8")
     mapped = (status.get("ports") or {}).get("port_variables", {})
     secrets = set(status.get("secrets") or [])
+    internal = set(status.get("internal") or [])
     ports = ", ".join(
-        f"`{v['env_variable']}`" + (" ✓" if v["env_variable"] in mapped else "") for v in found["port_vars"]
+        f"`{v['env_variable']}`" + (" ✓" if v["env_variable"] in mapped else " (internal)" if v["env_variable"] in internal else "")
+        for v in found["port_vars"]
     ) or "none"
     inputs = ", ".join(
         f"`{v['env_variable']}`" + (" ✓" if v["env_variable"] in secrets else "") for v in found["needs_input"]

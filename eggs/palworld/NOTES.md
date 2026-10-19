@@ -3,19 +3,21 @@
 Store category: **Palworld** (primary)
 Upstream: [games-steamcmd/palworld/egg-palworld.yaml](https://github.com/pelican-eggs/games-steamcmd/blob/68aa3847dda477c9e5cb0522295b212042f746af/palworld/egg-palworld.yaml)
 Format: `PLCN_v3`
-Status: **todo**
+Status: **imported**
+
+RCON stays inside the container (the console uses it), so it needs no allocation.
 
 ## To configure
 
 Port variables that keep a fixed default on every server (collide on a shared node):
 
-- [ ] `RCON_PORT` default `25575`: Does not need to be allocated!
+- [x] `RCON_PORT` default `25575` (internal: only used inside the container): Does not need to be allocated!
 
 Required with no default (provisioning would build a server that cannot start):
 
-- [ ] `ADMIN_PASSWORD`: If specified, players must provide this password (via the in-game chat or RCON) 
+- [x] `ADMIN_PASSWORD` (generated per server): If specified, players must provide this password (via the in-game chat or RCON) 
 
-- [ ] Ports tab on the panel: how many ports, and which one players connect on
+- [x] Ports tab on the panel: how many ports, and which one players connect on (needs 1, connect on port 1)
 - [ ] Test deploy from a store order with no admin input, and a player can join
 
 ## Images

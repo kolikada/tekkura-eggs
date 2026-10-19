@@ -14,12 +14,36 @@
     ]
   },
   "ark-survival-ascended": {
-    "state": "todo",
-    "note": "Sold as its own game: a subcategory \"ARK: Survival Ascended\" under \"Ark: Survival\", with its own products."
+    "state": "imported",
+    "ports": {
+      "required_ports": 2,
+      "connect_port_index": 1,
+      "port_variables": {}
+    },
+    "secrets": [
+      "ARK_ADMIN_PASSWORD"
+    ],
+    "note": "Peer port is always game +1, hence 2. RCON is used inside the container for clean shutdown. Sold as its own subcategory under \"Ark: Survival\".",
+    "internal": [
+      "RCON_PORT"
+    ]
   },
   "ark-survival-evolved": {
-    "state": "todo",
-    "note": "Sold as its own game: a subcategory \"ARK: Survival Evolved\" under \"Ark: Survival\", with its own products."
+    "state": "imported",
+    "ports": {
+      "required_ports": 3,
+      "connect_port_index": 1,
+      "port_variables": {
+        "QUERY_PORT": 3
+      }
+    },
+    "secrets": [
+      "ARK_ADMIN_PASSWORD"
+    ],
+    "note": "Raw UDP is always game +1, query is the 3rd port. The egg default admin password was PleaseChangeMe. Sold as its own subcategory under \"Ark: Survival\".",
+    "internal": [
+      "RCON_PORT"
+    ]
   },
   "minecraft-paper": {
     "state": "last",
@@ -42,5 +66,173 @@
   },
   "minecraft-modrinth": {
     "state": "last"
+  },
+  "palworld": {
+    "state": "imported",
+    "ports": {
+      "required_ports": 1,
+      "connect_port_index": 1,
+      "port_variables": {}
+    },
+    "secrets": [
+      "ADMIN_PASSWORD"
+    ],
+    "note": "RCON stays inside the container (the console uses it), so it needs no allocation.",
+    "internal": [
+      "RCON_PORT"
+    ]
+  },
+  "cs2": {
+    "state": "imported",
+    "ports": {
+      "required_ports": 1,
+      "connect_port_index": 1,
+      "port_variables": {}
+    },
+    "secrets": [
+      "RCON_PASSWORD"
+    ],
+    "note": "Steam token made optional: it is the customer's own credential. Without one the server is LAN only.",
+    "internal": [
+      "TV_PORT"
+    ]
+  },
+  "hytale": {
+    "state": "imported",
+    "ports": {
+      "required_ports": 1,
+      "connect_port_index": 1,
+      "port_variables": {}
+    }
+  },
+  "necesse": {
+    "state": "imported",
+    "ports": {
+      "required_ports": 1,
+      "connect_port_index": 1,
+      "port_variables": {}
+    },
+    "note": "The port reaches the game through cfg/server.cfg."
+  },
+  "left-4-dead-2": {
+    "state": "imported",
+    "ports": {
+      "required_ports": 1,
+      "connect_port_index": 1,
+      "port_variables": {}
+    }
+  },
+  "unturned": {
+    "state": "imported",
+    "ports": {
+      "required_ports": 2,
+      "connect_port_index": 1,
+      "port_variables": {}
+    },
+    "note": "Game +1 is required. Steam token made optional and passed only when set."
+  },
+  "conan-exiles": {
+    "state": "imported",
+    "ports": {
+      "required_ports": 3,
+      "connect_port_index": 1,
+      "port_variables": {
+        "QUERY_PORT": 3
+      }
+    },
+    "note": "Game +1 is fixed, query is the 3rd port. Players connect on the game port (1st).",
+    "internal": [
+      "RCON_PORT"
+    ]
+  },
+  "sons-of-the-forest": {
+    "state": "imported",
+    "ports": {
+      "required_ports": 3,
+      "connect_port_index": 1,
+      "port_variables": {
+        "QUERY_PORT": 2,
+        "BLOBSYNC_PORT": 3
+      }
+    }
+  },
+  "valheim": {
+    "state": "imported",
+    "ports": {
+      "required_ports": 2,
+      "connect_port_index": 1,
+      "port_variables": {}
+    },
+    "secrets": [
+      "PASSWORD"
+    ],
+    "note": "Query is always game +1. The join password defaulted to \"secret\" on every server; now generated."
+  },
+  "valheim-bepinex": {
+    "state": "imported",
+    "ports": {
+      "required_ports": 2,
+      "connect_port_index": 1,
+      "port_variables": {}
+    },
+    "secrets": [
+      "PASSWORD"
+    ],
+    "note": "Query is always game +1. The join password defaulted to \"secret\" on every server; now generated."
+  },
+  "terraria": {
+    "state": "imported",
+    "ports": {
+      "required_ports": 1,
+      "connect_port_index": 1,
+      "port_variables": {}
+    },
+    "note": "The port reaches the game through serverconfig.txt."
+  },
+  "terraria-tmodloader": {
+    "state": "imported",
+    "ports": {
+      "required_ports": 1,
+      "connect_port_index": 1,
+      "port_variables": {}
+    }
+  },
+  "terraria-tshock": {
+    "state": "imported",
+    "ports": {
+      "required_ports": 1,
+      "connect_port_index": 1,
+      "port_variables": {}
+    }
+  },
+  "arma-reforger": {
+    "state": "imported",
+    "ports": {
+      "required_ports": 1,
+      "connect_port_index": 1,
+      "port_variables": {}
+    },
+    "note": "The port reaches the game through config.json. A2S and RCON are optional and off."
+  },
+  "humanitz": {
+    "state": "imported",
+    "ports": {
+      "required_ports": 2,
+      "connect_port_index": 1,
+      "port_variables": {
+        "QUERY_PORT": 2
+      }
+    }
+  },
+  "windrose": {
+    "state": "imported",
+    "ports": {
+      "required_ports": 1,
+      "connect_port_index": 1,
+      "port_variables": {
+        "DIRECT_CONNECTION_PORT": 1
+      }
+    },
+    "note": "Invite codes work without it; DirectIP must match the game port, so it follows port 1."
   }
 }

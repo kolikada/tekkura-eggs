@@ -41,6 +41,14 @@ That setting lives in the panel database, not in the egg file, so record it in
 the egg's `status.json` entry (`ports`) when you set it. Then the repo says how
 every egg is configured even though the file does not.
 
+**Only ports reachable from outside need an allocation.** Every server runs in
+its own container with its own network, so a port the game only uses inside
+it (Palworld's console talks to its own RCON on localhost, ARK shuts down
+through RCON) cannot clash with the same number on another server. Those are
+marked `internal` in `status.json` and keep their default. A port players or
+the Steam server browser must reach (query ports, Sons of the Forest's blob
+sync) gets an allocation and a port variable.
+
 Also make each mapped variable non-editable in the egg file
 (`user_editable: false`), so a customer cannot change it and drift off their
 own port.
@@ -75,7 +83,7 @@ own port.
 | Store game | Egg | Role | Fixed port variables | Required, no default | Status |
 | --- | --- | --- | --- | --- | --- |
 | Project Zomboid | [Project Zomboid](eggs/project-zomboid/NOTES.md) | primary | `STEAM_PORT` ✓ | `ADMIN_PASSWORD` ✓ | in progress |
-| Palworld | [Palworld](eggs/palworld/NOTES.md) | primary | `RCON_PORT` | `ADMIN_PASSWORD` | todo |
+| Palworld | [Palworld](eggs/palworld/NOTES.md) | primary | `RCON_PORT` (internal) | `ADMIN_PASSWORD` ✓ | imported |
 | Minecraft | [Paper](eggs/minecraft-paper/NOTES.md) | primary | none | `USER_AGENT` | last |
 | Minecraft | [Vanilla Minecraft](eggs/minecraft-vanilla/NOTES.md) | variant | none | none | last |
 | Minecraft | [Fabric](eggs/minecraft-fabric/NOTES.md) | variant | none | none | last |
@@ -83,23 +91,23 @@ own port.
 | Minecraft | [NeoForge](eggs/minecraft-neoforge/NOTES.md) | variant | none | none | last |
 | Minecraft | [CurseForge Generic](eggs/minecraft-curseforge/NOTES.md) | variant | none | `API_KEY`, `PROJECT_ID` | last |
 | Minecraft | [Modrinth Generic](eggs/minecraft-modrinth/NOTES.md) | variant | none | `PROJECT_ID` | last |
-| Ark: Survival | [ARK: Survival Ascended](eggs/ark-survival-ascended/NOTES.md) | decide | `RCON_PORT` | `ARK_ADMIN_PASSWORD` | todo |
-| Ark: Survival | [Ark: Survival Evolved](eggs/ark-survival-evolved/NOTES.md) | decide | `RCON_PORT`, `QUERY_PORT` | none | todo |
-| CS:2 | [Counter-Strike 2](eggs/cs2/NOTES.md) | primary | `TV_PORT` | `RCON_PASSWORD`, `STEAM_GSLT` | todo |
-| Hytale | [Hytale](eggs/hytale/NOTES.md) | primary | none | none | todo |
-| Necesse | [Necesse](eggs/necesse/NOTES.md) | primary | none | none | todo |
-| Left 4 Dead 2 | [Left 4 Dead 2](eggs/left-4-dead-2/NOTES.md) | primary | none | none | todo |
-| Unturned | [Unturned](eggs/unturned/NOTES.md) | primary | none | `GSLT` | todo |
-| Conan Exiles | [Conan Exiles Enhanced](eggs/conan-exiles/NOTES.md) | primary | `QUERY_PORT`, `RCON_PORT` | none | todo |
-| Sons Of The Forest | [Sons Of The Forest](eggs/sons-of-the-forest/NOTES.md) | primary | `QUERY_PORT`, `BLOBSYNC_PORT` | none | todo |
-| Valheim | [Valheim](eggs/valheim/NOTES.md) | primary | none | none | todo |
-| Valheim | [Valheim BepINex](eggs/valheim-bepinex/NOTES.md) | variant | none | none | todo |
-| Terraria | [Terraria Vanilla](eggs/terraria/NOTES.md) | primary | none | none | todo |
-| Terraria | [tModloader](eggs/terraria-tmodloader/NOTES.md) | variant | none | none | todo |
-| Terraria | [tshock](eggs/terraria-tshock/NOTES.md) | variant | none | none | todo |
-| Arma 3 Reforger | [Arma Reforger](eggs/arma-reforger/NOTES.md) | primary | none | none | todo |
-| HumanitZ | [HumanitZ](eggs/humanitz/NOTES.md) | primary | `QUERY_PORT` | none | todo |
-| Windrose | [Windrose](eggs/windrose/NOTES.md) | primary | `DIRECT_CONNECTION_PORT` | none | todo |
+| Ark: Survival | [ARK: Survival Ascended](eggs/ark-survival-ascended/NOTES.md) | primary | `RCON_PORT` (internal) | `ARK_ADMIN_PASSWORD` ✓ | imported |
+| Ark: Survival | [Ark: Survival Evolved](eggs/ark-survival-evolved/NOTES.md) | primary | `RCON_PORT` (internal), `QUERY_PORT` ✓ | none | imported |
+| CS:2 | [Counter-Strike 2](eggs/cs2/NOTES.md) | primary | `TV_PORT` (internal) | `RCON_PASSWORD` ✓ | imported |
+| Hytale | [Hytale](eggs/hytale/NOTES.md) | primary | none | none | imported |
+| Necesse | [Necesse](eggs/necesse/NOTES.md) | primary | none | none | imported |
+| Left 4 Dead 2 | [Left 4 Dead 2](eggs/left-4-dead-2/NOTES.md) | primary | none | none | imported |
+| Unturned | [Unturned](eggs/unturned/NOTES.md) | primary | none | none | imported |
+| Conan Exiles | [Conan Exiles Enhanced](eggs/conan-exiles/NOTES.md) | primary | `QUERY_PORT` ✓, `RCON_PORT` (internal) | none | imported |
+| Sons Of The Forest | [Sons Of The Forest](eggs/sons-of-the-forest/NOTES.md) | primary | `QUERY_PORT` ✓, `BLOBSYNC_PORT` ✓ | none | imported |
+| Valheim | [Valheim](eggs/valheim/NOTES.md) | primary | none | none | imported |
+| Valheim | [Valheim BepINex](eggs/valheim-bepinex/NOTES.md) | variant | none | none | imported |
+| Terraria | [Terraria Vanilla](eggs/terraria/NOTES.md) | primary | none | none | imported |
+| Terraria | [tModloader](eggs/terraria-tmodloader/NOTES.md) | variant | none | none | imported |
+| Terraria | [tshock](eggs/terraria-tshock/NOTES.md) | variant | none | none | imported |
+| Arma 3 Reforger | [Arma Reforger](eggs/arma-reforger/NOTES.md) | primary | none | none | imported |
+| HumanitZ | [HumanitZ](eggs/humanitz/NOTES.md) | primary | `QUERY_PORT` ✓ | none | imported |
+| Windrose | [Windrose](eggs/windrose/NOTES.md) | primary | `DIRECT_CONNECTION_PORT` ✓ | none | imported |
 <!-- status:end -->
 
 ## Upstream and licence

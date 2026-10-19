@@ -3,11 +3,13 @@
 Store category: **Arma 3 Reforger** (primary)
 Upstream: [games-steamcmd/arma/arma_reforger/egg-arma-reforger.json](https://github.com/pelican-eggs/games-steamcmd/blob/68aa3847dda477c9e5cb0522295b212042f746af/arma/arma_reforger/egg-arma-reforger.json)
 Format: `PLCN_v2`
-Status: **todo**
+Status: **imported**
+
+The port reaches the game through config.json. A2S and RCON are optional and off.
 
 ## To configure
 
-- [ ] Ports tab on the panel: how many ports, and which one players connect on
+- [x] Ports tab on the panel: how many ports, and which one players connect on (needs 1, connect on port 1)
 - [ ] Test deploy from a store order with no admin input, and a player can join
 
 ## Images

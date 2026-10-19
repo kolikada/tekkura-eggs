@@ -3,20 +3,21 @@
 Store category: **CS:2** (primary)
 Upstream: [games-steamcmd/counter_strike/counter_strike_2/egg-counter--strike2.yaml](https://github.com/pelican-eggs/games-steamcmd/blob/68aa3847dda477c9e5cb0522295b212042f746af/counter_strike/counter_strike_2/egg-counter--strike2.yaml)
 Format: `PLCN_v3`
-Status: **todo**
+Status: **imported**
+
+Steam token made optional: it is the customer's own credential. Without one the server is LAN only.
 
 ## To configure
 
 Port variables that keep a fixed default on every server (collide on a shared node):
 
-- [ ] `TV_PORT` default `27020`: SourceTV port used for connections to spectates games on your server.
+- [x] `TV_PORT` default `27020` (internal: only used inside the container): SourceTV port used for connections to spectates games on your server.
 
 Required with no default (provisioning would build a server that cannot start):
 
-- [ ] `RCON_PASSWORD`: To gain access to administrator commands on the server.
-- [ ] `STEAM_GSLT`: The Steam Account Token required for the server to be displayed public. The toke
+- [x] `RCON_PASSWORD` (generated per server): To gain access to administrator commands on the server.
 
-- [ ] Ports tab on the panel: how many ports, and which one players connect on
+- [x] Ports tab on the panel: how many ports, and which one players connect on (needs 1, connect on port 1)
 - [ ] Test deploy from a store order with no admin input, and a player can join
 
 ## Images
@@ -26,7 +27,7 @@ Required with no default (provisioning would build a server that cannot start):
 ## Startup
 
 ```sh
-[Default] LD_LIBRARY_PATH=$HOME/game/bin/linuxsteamrt64:$LD_LIBRARY_PATH ./game/bin/linuxsteamrt64/cs2 -dedicated $( [ "$VAC_ENABLED" == "1" ] || printf %s ' -insecure' ) -ip 0.0.0.0 -port {{SERVER_PORT}} -tv_port {{TV_PORT}} -maxplayers {{MAX_PLAYERS}} $( [ "$RCON_ENABLED" == "0" ] || printf %s ' -usercon' ) +game_mode {{GAME_MODE}} +game_type {{GAME_TYPE}} +map {{SRCDS_MAP}} +hostname "{{SERVER_NAME}}" +sv_password "{{SERVER_PASSWORD}}" +rcon_password "{{RCON_PASSWORD}}" +sv_setsteamaccount {{STEAM_GSLT}}
+[Default] LD_LIBRARY_PATH=$HOME/game/bin/linuxsteamrt64:$LD_LIBRARY_PATH ./game/bin/linuxsteamrt64/cs2 -dedicated $( [ "$VAC_ENABLED" == "1" ] || printf %s ' -insecure' ) -ip 0.0.0.0 -port {{SERVER_PORT}} -tv_port {{TV_PORT}} -maxplayers {{MAX_PLAYERS}} $( [ "$RCON_ENABLED" == "0" ] || printf %s ' -usercon' ) +game_mode {{GAME_MODE}} +game_type {{GAME_TYPE}} +map {{SRCDS_MAP}} +hostname "{{SERVER_NAME}}" +sv_password "{{SERVER_PASSWORD}}" +rcon_password "{{RCON_PASSWORD}}" ${STEAM_GSLT:++sv_setsteamaccount ${STEAM_GSLT}}
 ```
 
 ## Variables
@@ -45,4 +46,4 @@ Required with no default (provisioning would build a server that cannot start):
 | `SERVER_PASSWORD` |   | yes | nullable\|alpha_dash\|between:1,30 |
 | `SRCDS_APPID` | 730 | no | required\|string\|in:730 |
 | `TV_PORT` | 27020 | no | required\|integer\|between:1025,65535 |
-| `STEAM_GSLT` |   | yes | required\|string\|alpha_num\|size:32 |
+| `STEAM_GSLT` |   | yes | nullable\|string\|alpha_num\|size:32 |

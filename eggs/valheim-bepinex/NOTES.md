@@ -3,11 +3,13 @@
 Store category: **Valheim** (variant)
 Upstream: [games-steamcmd/valheim/valheim_bepinex/egg-valheim-bep-i-nex.yaml](https://github.com/pelican-eggs/games-steamcmd/blob/68aa3847dda477c9e5cb0522295b212042f746af/valheim/valheim_bepinex/egg-valheim-bep-i-nex.yaml)
 Format: `PLCN_v3`
-Status: **todo**
+Status: **imported**
+
+Query is always game +1. The join password defaulted to "secret" on every server; now generated.
 
 ## To configure
 
-- [ ] Ports tab on the panel: how many ports, and which one players connect on
+- [x] Ports tab on the panel: how many ports, and which one players connect on (needs 2, connect on port 1)
 - [ ] Test deploy from a store order with no admin input, and a player can join
 
 ## Images

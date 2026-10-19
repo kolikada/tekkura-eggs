@@ -268,5 +268,105 @@
     "path": "windrose/egg-windrose.json",
     "commit": "68aa3847dda477c9e5cb0522295b212042f746af",
     "file": "eggs/windrose/egg-windrose.json"
+  },
+  {
+    "slug": "minecraft-purpur",
+    "store_category": "Minecraft",
+    "role": "variant",
+    "upstream": "https://github.com/pelican-eggs/minecraft/blob/c6f2262eb351054d1be44d3f6a3a605ae163d682/java/purpur/egg-purpur.yaml",
+    "repo": "minecraft",
+    "path": "java/purpur/egg-purpur.yaml",
+    "commit": "c6f2262eb351054d1be44d3f6a3a605ae163d682",
+    "file": "eggs/minecraft-purpur/egg-purpur.yaml"
+  },
+  {
+    "slug": "minecraft-quilt",
+    "store_category": "Minecraft",
+    "role": "variant",
+    "upstream": "https://github.com/pelican-eggs/minecraft/blob/c6f2262eb351054d1be44d3f6a3a605ae163d682/java/quilt/egg-quilt.yaml",
+    "repo": "minecraft",
+    "path": "java/quilt/egg-quilt.yaml",
+    "commit": "c6f2262eb351054d1be44d3f6a3a605ae163d682",
+    "file": "eggs/minecraft-quilt/egg-quilt.yaml"
+  },
+  {
+    "slug": "minecraft-spigot",
+    "store_category": "Minecraft",
+    "role": "variant",
+    "upstream": "https://github.com/pelican-eggs/minecraft/blob/c6f2262eb351054d1be44d3f6a3a605ae163d682/java/spigot/egg-spigot.yaml",
+    "repo": "minecraft",
+    "path": "java/spigot/egg-spigot.yaml",
+    "commit": "c6f2262eb351054d1be44d3f6a3a605ae163d682",
+    "file": "eggs/minecraft-spigot/egg-spigot.yaml"
+  },
+  {
+    "slug": "minecraft-spongeforge",
+    "store_category": "Minecraft",
+    "role": "variant",
+    "upstream": "https://github.com/pelican-eggs/minecraft/blob/c6f2262eb351054d1be44d3f6a3a605ae163d682/java/spongeforge/egg-sponge-forge.json",
+    "repo": "minecraft",
+    "path": "java/spongeforge/egg-sponge-forge.json",
+    "commit": "c6f2262eb351054d1be44d3f6a3a605ae163d682",
+    "file": "eggs/minecraft-spongeforge/egg-sponge-forge.json"
+  },
+  {
+    "slug": "minecraft-spongevanilla",
+    "store_category": "Minecraft",
+    "role": "variant",
+    "upstream": "https://github.com/pelican-eggs/minecraft/blob/c6f2262eb351054d1be44d3f6a3a605ae163d682/java/spongevanilla/egg-sponge.yaml",
+    "repo": "minecraft",
+    "path": "java/spongevanilla/egg-sponge.yaml",
+    "commit": "c6f2262eb351054d1be44d3f6a3a605ae163d682",
+    "file": "eggs/minecraft-spongevanilla/egg-sponge.yaml"
+  },
+  {
+    "slug": "minecraft-purpur-geyser",
+    "store_category": "Minecraft",
+    "role": "variant",
+    "upstream": "https://github.com/pelican-eggs/minecraft/blob/c6f2262eb351054d1be44d3f6a3a605ae163d682/crossplay/purpur-geysermc-floodgate/egg-purpur--geyser--floodgate.json",
+    "repo": "minecraft",
+    "path": "crossplay/purpur-geysermc-floodgate/egg-purpur--geyser--floodgate.json",
+    "commit": "c6f2262eb351054d1be44d3f6a3a605ae163d682",
+    "file": "eggs/minecraft-purpur-geyser/egg-purpur--geyser--floodgate.json"
+  },
+  {
+    "slug": "minecraft-velocity",
+    "store_category": "Minecraft",
+    "role": "variant",
+    "upstream": "https://github.com/pelican-eggs/minecraft/blob/c6f2262eb351054d1be44d3f6a3a605ae163d682/proxy/java/velocity/egg-velocity.json",
+    "repo": "minecraft",
+    "path": "proxy/java/velocity/egg-velocity.json",
+    "commit": "c6f2262eb351054d1be44d3f6a3a605ae163d682",
+    "file": "eggs/minecraft-velocity/egg-velocity.json"
+  },
+  {
+    "slug": "minecraft-bungeecord",
+    "store_category": "Minecraft",
+    "role": "variant",
+    "upstream": "https://github.com/pelican-eggs/minecraft/blob/c6f2262eb351054d1be44d3f6a3a605ae163d682/proxy/java/bungeecord/egg-bungeecord.yaml",
+    "repo": "minecraft",
+    "path": "proxy/java/bungeecord/egg-bungeecord.yaml",
+    "commit": "c6f2262eb351054d1be44d3f6a3a605ae163d682",
+    "file": "eggs/minecraft-bungeecord/egg-bungeecord.yaml"
+  },
+  {
+    "slug": "minecraft-bedrock",
+    "store_category": "Minecraft",
+    "role": "variant",
+    "upstream": "https://github.com/pelican-eggs/minecraft/blob/c6f2262eb351054d1be44d3f6a3a605ae163d682/bedrock/bedrock/egg-vanilla-bedrock.json",
+    "repo": "minecraft",
+    "path": "bedrock/bedrock/egg-vanilla-bedrock.json",
+    "commit": "c6f2262eb351054d1be44d3f6a3a605ae163d682",
+    "file": "eggs/minecraft-bedrock/egg-vanilla-bedrock.json"
+  },
+  {
+    "slug": "minecraft-pocketmine",
+    "store_category": "Minecraft",
+    "role": "variant",
+    "upstream": "https://github.com/pelican-eggs/minecraft/blob/c6f2262eb351054d1be44d3f6a3a605ae163d682/bedrock/pocketmine_mp/egg-pocketmine-m-p.json",
+    "repo": "minecraft",
+    "path": "bedrock/pocketmine_mp/egg-pocketmine-m-p.json",
+    "commit": "c6f2262eb351054d1be44d3f6a3a605ae163d682",
+    "file": "eggs/minecraft-pocketmine/egg-pocketmine-m-p.json"
   }
 ]

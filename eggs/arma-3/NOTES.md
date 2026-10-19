@@ -5,7 +5,7 @@ Upstream: [games-steamcmd/arma/arma3/egg-arma3.json](https://github.com/pelican-
 Format: `PLCN_v1`
 Status: **configured**
 
-Game, +1 query, +2 Steam, +3 VON and +4 BattlEye are fixed offsets, hence a run of 5; RCON (required, no default upstream) gets the 6th. The customer supplies the Steam login (STEAM_USER/STEAM_PASS viewable, editable, optional; on the panel since 2026-10-19). The server builds, the first install stops with the installer's own message until they enter it, then they reinstall. Their own account is the only way Workshop mods download, since that needs Arma 3 ownership.
+Game, +1 query, +2 Steam, +3 VON and +4 BattlEye are fixed offsets, hence a run of 5; RCON (required, no default upstream) gets the 6th. The customer supplies the Steam login (STEAM_USER/STEAM_PASS viewable, editable, optional; on the panel since 2026-10-19). The server builds, the first install stops with the installer's own message until they enter it; once both are filled the panel reinstalls it by itself (eggs.reinstall_variables). Their own account is the only way Workshop mods download, since that needs Arma 3 ownership.
 
 ## To configure
 

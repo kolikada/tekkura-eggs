@@ -65,7 +65,8 @@
       "connect_port_index": 1,
       "port_variables": {}
     },
-    "panel_egg_id": 24
+    "panel_egg_id": 24,
+    "note": "The standard start: Minecraft products point at this egg, and the customer picks their type on the Server type page afterwards."
   },
   "minecraft-fabric": {
     "state": "configured",
@@ -310,8 +311,12 @@
     "secrets": [
       "RCON_PASSWORD"
     ],
-    "note": "Game, +1 query, +2 Steam, +3 VON and +4 BattlEye are fixed offsets, hence a run of 5; RCON (required, no default upstream) gets the 6th. The customer supplies the Steam login (STEAM_USER/STEAM_PASS viewable, editable, optional; on the panel since 2026-10-19). The server builds, the first install stops with the installer's own message until they enter it, then they reinstall. Their own account is the only way Workshop mods download, since that needs Arma 3 ownership.",
-    "panel_egg_id": 22
+    "note": "Game, +1 query, +2 Steam, +3 VON and +4 BattlEye are fixed offsets, hence a run of 5; RCON (required, no default upstream) gets the 6th. The customer supplies the Steam login (STEAM_USER/STEAM_PASS viewable, editable, optional; on the panel since 2026-10-19). The server builds, the first install stops with the installer's own message until they enter it; once both are filled the panel reinstalls it by itself (eggs.reinstall_variables). Their own account is the only way Workshop mods download, since that needs Arma 3 ownership.",
+    "panel_egg_id": 22,
+    "reinstall": [
+      "STEAM_USER",
+      "STEAM_PASS"
+    ]
   },
   "minecraft-purpur": {
     "state": "configured",

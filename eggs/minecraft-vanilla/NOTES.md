@@ -5,6 +5,8 @@ Upstream: [minecraft/java/vanilla/egg-vanilla-minecraft.yaml](https://github.com
 Format: `PLCN_v3`
 Status: **configured**
 
+The standard start: Minecraft products point at this egg, and the customer picks their type on the Server type page afterwards.
+
 ## To configure
 
 - [x] Ports tab on the panel: how many ports, and which one players connect on (needs 1, connect on port 1)

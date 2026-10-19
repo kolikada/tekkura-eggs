@@ -3,7 +3,9 @@
 Store category: **Minecraft** (variant)
 Upstream: [minecraft/java/curseforge/egg-curse-forge-generic.yaml](https://github.com/pelican-eggs/minecraft/blob/c6f2262eb351054d1be44d3f6a3a605ae163d682/java/curseforge/egg-curse-forge-generic.yaml)
 Format: `PLCN_v3`
-Status: **last**
+Status: **configured**
+
+Needs Tekkura's CurseForge API key as the egg default for API_KEY. Hidden from customers until it is set.
 
 ## To configure
 
@@ -12,7 +14,7 @@ Required with no default (provisioning would build a server that cannot start):
 - [ ] `API_KEY`: A CurseForge API key is required to use this egg. This key is not visible to the
 - [ ] `PROJECT_ID`: The modpack project ID from the CurseForge site on the pack page, or 'zip' if in
 
-- [ ] Ports tab on the panel: how many ports, and which one players connect on
+- [x] Ports tab on the panel: how many ports, and which one players connect on (needs 1, connect on port 1)
 - [ ] Test deploy from a store order with no admin input, and a player can join
 
 ## Images

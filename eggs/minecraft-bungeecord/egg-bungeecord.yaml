@@ -5,7 +5,7 @@ meta:
 exported_at: '2025-12-28T12:14:41+00:00'
 name: Bungeecord
 author: panel@example.com
-uuid: 9e6b409e-4028-4947-aea8-50a2c404c271
+uuid: 76be25c7-dc12-4d2f-b51e-013e6ba2001f
 description: |-
   For a long time, Minecraft server owners have had a dream that encompasses a free, easy, and
   reliable way to connect multiple Minecraft servers together. BungeeCord is the answer to said dream.
@@ -16,10 +16,12 @@ icon: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAawAAADeCAYAAABhVTTSAAAACXB
 tags:
   - minecraft
   - proxy
+  - bungeecord
 features:
   - eula
   - java_version
   - pid_limit
+  - plugins
 docker_images:
   'Java 25': 'ghcr.io/pelican-eggs/yolks:java_25'
   'Java 21': 'ghcr.io/pelican-eggs/yolks:java_21'

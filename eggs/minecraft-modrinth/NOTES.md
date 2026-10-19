@@ -3,7 +3,9 @@
 Store category: **Minecraft** (variant)
 Upstream: [minecraft/java/modrinth/egg-modrinth-generic.json](https://github.com/pelican-eggs/minecraft/blob/c6f2262eb351054d1be44d3f6a3a605ae163d682/java/modrinth/egg-modrinth-generic.json)
 Format: `PLCN_v3`
-Status: **last**
+Status: **configured**
+
+Used by the modpack installer, not shown as a software choice.
 
 ## To configure
 
@@ -11,7 +13,7 @@ Required with no default (provisioning would build a server that cannot start):
 
 - [ ] `PROJECT_ID`: This is the modpack project ID from the Modrinth site.  For example, the proje
 
-- [ ] Ports tab on the panel: how many ports, and which one players connect on
+- [x] Ports tab on the panel: how many ports, and which one players connect on (needs 1, connect on port 1)
 - [ ] Test deploy from a store order with no admin input, and a player can join
 
 ## Images

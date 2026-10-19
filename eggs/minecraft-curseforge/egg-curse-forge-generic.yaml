@@ -5,11 +5,12 @@ meta:
 exported_at: '2026-09-29T04:41:17+00:00'
 name: 'CurseForge Generic'
 author: contact@chromozone.dev
-uuid: 019bbf16-a3f3-470a-9c0b-f3995b5e032a
+uuid: 29fefe81-2ed4-4b4b-a3a1-d3eeedf01aaf
 description: 'A generic egg for a CurseForge modpack.'
 icon: null
 tags:
   - minecraft
+  - modpack
 features:
   - eula
   - java_version

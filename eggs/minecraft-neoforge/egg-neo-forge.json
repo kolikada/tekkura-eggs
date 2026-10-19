@@ -7,16 +7,18 @@
     "exported_at": "2026-04-21T19:02:00+00:00",
     "name": "NeoForge",
     "author": "glorantv@icloud.com",
-    "uuid": "e23e092f-b803-4f34-82cf-2d6518c6351a",
+    "uuid": "91299188-d4f5-429d-9855-4c4ac9ea4a74",
     "description": "NeoForge Server. NeoForge is a modding API (Application Programming Interface), which makes it easier to create mods, and also make sure mods are compatible with each other. NeoForge is a fork of Minecraft Forge.",
     "image": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIAAAACACAMAAAD04JH5AAAACXBIWXMAAAsSAAALEgHS3X78AAAAPFBMVEWLjpQAAAD59PTm8vHV4N/n2dPH0dG9x8fHo7mqsLOgpanmjDfXdC+NcWi/YTR1dYCkTjdmU00mKjMTFRpppmRQAAAAAnRSTlP/AOW3MEoAAAE3SURBVHja7dvLboMwAERRcHjEqWtM+P9/7WLIYiyKoFXTVrlniZDnbmDnpv1lTfupFwtono4AAgiohjtzOaD7pkYIIICAh4tEGWVwsxlklNmMm/xwAgggoHE+ObpZ3sUDVv7KbgcBBBCwHdCJd8x+bC+zFDNLL9ZRh0QhgAAC/lrAuKU6/SpFsilylapx3EIAAQScCcgmyZtJks12QBQCCCDgSIBPujrAeQ4BBBBwPqAaDtKLByTTS5AqhAACCNgOmGT3PxDkLmnHXYLk1WCiTEIAAQRUAVGKVF/3IkmySbJIL2lVJAoBBBCwH2CKhZxXfJkAAgj4ekA2QRYTJBsCCCDg/wc8FBOkN0GKiSsCCCDgSIA/jXuKOT9JAAEE7AbcJP6ImxBAAAFVQCvT07VCAAEEcPWbgA9tTDwHvNgQFgAAAABJRU5ErkJggg==",
     "tags": [
-        "minecraft"
+        "minecraft",
+        "neoforge"
     ],
     "features": [
         "eula",
         "java_version",
-        "pid_limit"
+        "pid_limit",
+        "mods"
     ],
     "docker_images": {
         "Java 8": "ghcr.io/pelican-eggs/yolks:java_8",

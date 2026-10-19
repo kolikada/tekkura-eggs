@@ -7,15 +7,19 @@
     "exported_at": "2026-04-21T19:02:00+00:00",
     "name": "Purpur-Geyser-Floodgate",
     "author": "purpur@birdflop.com",
-    "uuid": "92364e41-07ba-43fd-b33e-2f655cd7ef61",
+    "uuid": "fb457005-65a0-4ecb-a970-3c06f618b0f2",
     "description": "A drop-in replacement for Paper servers designed for configurability, and new fun and exciting gameplay features, with the addition of GeyserMC and Floodgate",
     "tags": [
-        "minecraft"
+        "minecraft",
+        "purpur",
+        "paper",
+        "crossplay"
     ],
     "features": [
         "eula",
         "java_version",
-        "pid_limit"
+        "pid_limit",
+        "plugins"
     ],
     "docker_images": {
         "Java 8": "ghcr.io\/pelican-eggs\/yolks:java_8",
@@ -28,7 +32,7 @@
     "file_denylist": [],
     "startup": "java -Xms128M -Xmx{{SERVER_MEMORY}}M -Dterminal.jline=false -Dterminal.ansi=true --add-modules=jdk.incubator.vector -jar {{SERVER_JARFILE}}",
     "config": {
-        "files": "{\r\n    \"server.properties\": {\r\n        \"parser\": \"properties\",\r\n        \"find\": {\r\n            \"server-ip\": \"0.0.0.0\",\r\n            \"server-port\": \"{{server.allocations.default.port}}\"\r\n        }\r\n    }\r\n}",
+        "files": "{\r\n    \"server.properties\": {\r\n        \"parser\": \"properties\",\r\n        \"find\": {\r\n            \"server-ip\": \"0.0.0.0\",\r\n            \"server-port\": \"{{server.allocations.default.port}}\"\r\n        }\r\n    },\r\n    \"plugins/Geyser-Spigot/config.yml\": {\r\n        \"parser\": \"yaml\",\r\n        \"find\": {\r\n            \"bedrock.port\": \"{{server.allocations.default.port}}\"\r\n        }\r\n    }\r\n}",
         "startup": "{\r\n    \"done\": \")! For help, type \"\r\n}",
         "logs": "{}",
         "stop": "stop"

@@ -3,17 +3,13 @@
 Store category: **Minecraft** (primary)
 Upstream: [minecraft/java/paper/egg-paper.yaml](https://github.com/pelican-eggs/minecraft/blob/c6f2262eb351054d1be44d3f6a3a605ae163d682/java/paper/egg-paper.yaml)
 Format: `PLCN_v3`
-Status: **last**
+Status: **configured**
 
-Minecraft goes last. It has the most eggs and needs a plan for how the store presents the choice.
+USER_AGENT defaults to Tekkura's; PaperMC's API refuses downloads without one.
 
 ## To configure
 
-Required with no default (provisioning would build a server that cannot start):
-
-- [ ] `USER_AGENT`: Required to use the paper fill API. See https://docs.papermc.io/misc/downloads-s
-
-- [ ] Ports tab on the panel: how many ports, and which one players connect on
+- [x] Ports tab on the panel: how many ports, and which one players connect on (needs 1, connect on port 1)
 - [ ] Test deploy from a store order with no admin input, and a player can join
 
 ## Images
@@ -39,5 +35,5 @@ Required with no default (provisioning would build a server that cannot start):
 | `SERVER_JARFILE` | server.jar | yes | required\|regex:/^([\w\d._-]+)(\.jar)$/ |
 | `DL_PATH` |   | no | nullable\|string |
 | `BUILD_NUMBER` | latest | yes | required\|string\|max:20 |
-| `USER_AGENT` |   | no | required |
+| `USER_AGENT` | Tekkura (https://www.tekkura.cloud) | no | required |
 | `PROJECT` | paper | no | {} |

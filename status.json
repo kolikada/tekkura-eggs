@@ -49,26 +49,63 @@
     "panel_egg_id": 6
   },
   "minecraft-paper": {
-    "state": "last",
-    "note": "Minecraft goes last. It has the most eggs and needs a plan for how the store presents the choice."
+    "state": "configured",
+    "ports": {
+      "required_ports": 1,
+      "connect_port_index": 1,
+      "port_variables": {}
+    },
+    "note": "USER_AGENT defaults to Tekkura's; PaperMC's API refuses downloads without one."
   },
   "minecraft-vanilla": {
-    "state": "last"
+    "state": "configured",
+    "ports": {
+      "required_ports": 1,
+      "connect_port_index": 1,
+      "port_variables": {}
+    }
   },
   "minecraft-fabric": {
-    "state": "last"
+    "state": "configured",
+    "ports": {
+      "required_ports": 1,
+      "connect_port_index": 1,
+      "port_variables": {}
+    }
   },
   "minecraft-forge": {
-    "state": "last"
+    "state": "configured",
+    "ports": {
+      "required_ports": 1,
+      "connect_port_index": 1,
+      "port_variables": {}
+    }
   },
   "minecraft-neoforge": {
-    "state": "last"
+    "state": "configured",
+    "ports": {
+      "required_ports": 1,
+      "connect_port_index": 1,
+      "port_variables": {}
+    }
   },
   "minecraft-curseforge": {
-    "state": "last"
+    "state": "configured",
+    "ports": {
+      "required_ports": 1,
+      "connect_port_index": 1,
+      "port_variables": {}
+    },
+    "note": "Needs Tekkura's CurseForge API key as the egg default for API_KEY. Hidden from customers until it is set."
   },
   "minecraft-modrinth": {
-    "state": "last"
+    "state": "configured",
+    "ports": {
+      "required_ports": 1,
+      "connect_port_index": 1,
+      "port_variables": {}
+    },
+    "note": "Used by the modpack installer, not shown as a software choice."
   },
   "palworld": {
     "state": "configured",
@@ -268,5 +305,84 @@
     ],
     "note": "Game, +1 query, +2 Steam, +3 VON and +4 BattlEye are fixed offsets, hence a run of 5; RCON (required, no default upstream) gets the 6th. Install needs a real Steam account (not anonymous) set as the egg's default STEAM_USER and STEAM_PASS on the panel; Kenneth sets those, they are credentials.",
     "panel_egg_id": 22
+  },
+  "minecraft-purpur": {
+    "state": "configured",
+    "ports": {
+      "required_ports": 1,
+      "connect_port_index": 1,
+      "port_variables": {}
+    }
+  },
+  "minecraft-quilt": {
+    "state": "configured",
+    "ports": {
+      "required_ports": 1,
+      "connect_port_index": 1,
+      "port_variables": {}
+    },
+    "note": "Upstream shipped no features; given eula, java_version and pid_limit like the other Java eggs."
+  },
+  "minecraft-spigot": {
+    "state": "configured",
+    "ports": {
+      "required_ports": 1,
+      "connect_port_index": 1,
+      "port_variables": {}
+    }
+  },
+  "minecraft-spongeforge": {
+    "state": "skipped",
+    "note": "Superseded: the Sponge egg (minecraft-spongevanilla) installs SpongeVanilla, SpongeForge and SpongeNeo through SPONGE_TYPE, and supports current Java. This one stops at Java 18."
+  },
+  "minecraft-spongevanilla": {
+    "state": "configured",
+    "ports": {
+      "required_ports": 1,
+      "connect_port_index": 1,
+      "port_variables": {}
+    }
+  },
+  "minecraft-purpur-geyser": {
+    "state": "configured",
+    "ports": {
+      "required_ports": 1,
+      "connect_port_index": 1,
+      "port_variables": {}
+    },
+    "note": "Geyser's Bedrock listener is pointed at the server's own port (UDP side) through plugins/Geyser-Spigot/config.yml; Bedrock players use the same address."
+  },
+  "minecraft-velocity": {
+    "state": "configured",
+    "ports": {
+      "required_ports": 1,
+      "connect_port_index": 1,
+      "port_variables": {}
+    },
+    "note": "USER_AGENT defaults to Tekkura's; PaperMC's API refuses downloads without one."
+  },
+  "minecraft-bungeecord": {
+    "state": "configured",
+    "ports": {
+      "required_ports": 1,
+      "connect_port_index": 1,
+      "port_variables": {}
+    }
+  },
+  "minecraft-bedrock": {
+    "state": "configured",
+    "ports": {
+      "required_ports": 1,
+      "connect_port_index": 1,
+      "port_variables": {}
+    }
+  },
+  "minecraft-pocketmine": {
+    "state": "configured",
+    "ports": {
+      "required_ports": 1,
+      "connect_port_index": 1,
+      "port_variables": {}
+    }
   }
 }

@@ -7,11 +7,12 @@
     "exported_at": "2026-04-21T19:02:00+00:00",
     "name": "Modrinth Generic",
     "author": "contact@chromozone.dev",
-    "uuid": "04befa18-37cf-41e9-b04d-89b3578bba6d",
+    "uuid": "f2a8ad87-7647-4a51-bd95-d3752dc1efbc",
     "description": "A generic egg for a Modrinth modpack.",
     "image": null,
     "tags": [
-        "minecraft"
+        "minecraft",
+        "modpack"
     ],
     "features": [
         "eula",

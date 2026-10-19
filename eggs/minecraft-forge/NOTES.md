@@ -3,11 +3,11 @@
 Store category: **Minecraft** (variant)
 Upstream: [minecraft/java/forge/egg-forge-minecraft.yaml](https://github.com/pelican-eggs/minecraft/blob/c6f2262eb351054d1be44d3f6a3a605ae163d682/java/forge/egg-forge-minecraft.yaml)
 Format: `PLCN_v3`
-Status: **last**
+Status: **configured**
 
 ## To configure
 
-- [ ] Ports tab on the panel: how many ports, and which one players connect on
+- [x] Ports tab on the panel: how many ports, and which one players connect on (needs 1, connect on port 1)
 - [ ] Test deploy from a store order with no admin input, and a player can join
 
 ## Images

@@ -89,13 +89,13 @@ joined. No egg is `done` yet.
 | --- | --- | --- | --- | --- | --- |
 | Project Zomboid | [Project Zomboid](eggs/project-zomboid/NOTES.md) | primary | `STEAM_PORT` ✓ | `ADMIN_PASSWORD` ✓ | configured |
 | Palworld | [Palworld](eggs/palworld/NOTES.md) | primary | `RCON_PORT` (internal) | `ADMIN_PASSWORD` ✓ | configured |
-| Minecraft | [Paper](eggs/minecraft-paper/NOTES.md) | primary | none | `USER_AGENT` | last |
-| Minecraft | [Vanilla Minecraft](eggs/minecraft-vanilla/NOTES.md) | variant | none | none | last |
-| Minecraft | [Fabric](eggs/minecraft-fabric/NOTES.md) | variant | none | none | last |
-| Minecraft | [Forge Minecraft](eggs/minecraft-forge/NOTES.md) | variant | none | none | last |
-| Minecraft | [NeoForge](eggs/minecraft-neoforge/NOTES.md) | variant | none | none | last |
-| Minecraft | [CurseForge Generic](eggs/minecraft-curseforge/NOTES.md) | variant | none | `API_KEY`, `PROJECT_ID` | last |
-| Minecraft | [Modrinth Generic](eggs/minecraft-modrinth/NOTES.md) | variant | none | `PROJECT_ID` | last |
+| Minecraft | [Paper](eggs/minecraft-paper/NOTES.md) | primary | none | none | configured |
+| Minecraft | [Vanilla Minecraft](eggs/minecraft-vanilla/NOTES.md) | variant | none | none | configured |
+| Minecraft | [Fabric](eggs/minecraft-fabric/NOTES.md) | variant | none | none | configured |
+| Minecraft | [Forge Minecraft](eggs/minecraft-forge/NOTES.md) | variant | none | none | configured |
+| Minecraft | [NeoForge](eggs/minecraft-neoforge/NOTES.md) | variant | none | none | configured |
+| Minecraft | [CurseForge Generic](eggs/minecraft-curseforge/NOTES.md) | variant | none | `API_KEY`, `PROJECT_ID` | configured |
+| Minecraft | [Modrinth Generic](eggs/minecraft-modrinth/NOTES.md) | variant | none | `PROJECT_ID` | configured |
 | Ark: Survival | [ARK: Survival Ascended](eggs/ark-survival-ascended/NOTES.md) | primary | `RCON_PORT` (internal) | `ARK_ADMIN_PASSWORD` ✓ | configured |
 | Ark: Survival | [Ark: Survival Evolved](eggs/ark-survival-evolved/NOTES.md) | primary | `RCON_PORT` (internal), `QUERY_PORT` ✓ | none | configured |
 | CS:2 | [Counter-Strike 2](eggs/cs2/NOTES.md) | primary | `TV_PORT` (internal) | `RCON_PASSWORD` ✓ | configured |
@@ -114,6 +114,16 @@ joined. No egg is `done` yet.
 | Arma 3 Reforger | [Arma Reforger](eggs/arma-reforger/NOTES.md) | primary | none | none | configured |
 | HumanitZ | [HumanitZ](eggs/humanitz/NOTES.md) | primary | `QUERY_PORT` ✓ | none | configured |
 | Windrose | [Windrose](eggs/windrose/NOTES.md) | primary | `DIRECT_CONNECTION_PORT` ✓ | none | configured |
+| Minecraft | [Purpur](eggs/minecraft-purpur/NOTES.md) | variant | none | none | configured |
+| Minecraft | [Quilt](eggs/minecraft-quilt/NOTES.md) | variant | none | none | configured |
+| Minecraft | [Spigot](eggs/minecraft-spigot/NOTES.md) | variant | none | none | configured |
+| Minecraft | [SpongeForge](eggs/minecraft-spongeforge/NOTES.md) | variant | none | none | skipped |
+| Minecraft | [Sponge](eggs/minecraft-spongevanilla/NOTES.md) | variant | none | none | configured |
+| Minecraft | [Purpur-Geyser-Floodgate](eggs/minecraft-purpur-geyser/NOTES.md) | variant | none | none | configured |
+| Minecraft | [Velocity](eggs/minecraft-velocity/NOTES.md) | variant | none | none | configured |
+| Minecraft | [Bungeecord](eggs/minecraft-bungeecord/NOTES.md) | variant | none | none | configured |
+| Minecraft | [Vanilla Bedrock](eggs/minecraft-bedrock/NOTES.md) | variant | none | none | configured |
+| Minecraft | [PocketmineMP](eggs/minecraft-pocketmine/NOTES.md) | variant | none | none | configured |
 <!-- status:end -->
 
 ## Upstream and licence

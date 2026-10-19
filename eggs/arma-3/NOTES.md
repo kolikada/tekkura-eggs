@@ -5,7 +5,7 @@ Upstream: [games-steamcmd/arma/arma3/egg-arma3.json](https://github.com/pelican-
 Format: `PLCN_v1`
 Status: **configured**
 
-Game, +1 query, +2 Steam, +3 VON and +4 BattlEye are fixed offsets, hence a run of 5; RCON (required, no default upstream) gets the 6th. Proposed 2026-10-19, not yet on the panel: the customer supplies the Steam login (STEAM_USER/STEAM_PASS made viewable, editable, optional). The server builds, the first install stops with the installer's own message until they enter it, then they reinstall. Their own account is the only way Workshop mods download, since that needs Arma 3 ownership.
+Game, +1 query, +2 Steam, +3 VON and +4 BattlEye are fixed offsets, hence a run of 5; RCON (required, no default upstream) gets the 6th. The customer supplies the Steam login (STEAM_USER/STEAM_PASS viewable, editable, optional; on the panel since 2026-10-19). The server builds, the first install stops with the installer's own message until they enter it, then they reinstall. Their own account is the only way Workshop mods download, since that needs Arma 3 ownership.
 
 ## To configure
 
@@ -15,8 +15,6 @@ Port variables that keep a fixed default on every server (collide on a shared no
 
 Required with no default (provisioning would build a server that cannot start):
 
-- [ ] `STEAM_USER`: Used for installation and updates. Account does not need to own Arma 3, but MUST
-- [ ] `STEAM_PASS`: Used for installation and updates. Steam Guard MUST be completely TURNED OFF for
 - [ ] `RCON_PORT`: BattlEye's RCon port for remote connections with an Arma 3 compliant RCon client
 
 - [x] Ports tab on the panel: how many ports, and which one players connect on (needs 6, connect on port 1)
@@ -36,8 +34,8 @@ Required with no default (provisioning would build a server that cannot start):
 
 | Env | Default | Editable | Rules |
 | --- | --- | --- | --- |
-| `STEAM_USER` |   | no | required\|string |
-| `STEAM_PASS` |   | no | required\|string |
+| `STEAM_USER` |   | yes | nullable\|string |
+| `STEAM_PASS` |   | yes | nullable\|string |
 | `STEAMCMD_ATTEMPTS` | 3 | no | required\|integer |
 | `RCON_PORT` |   | no | required\|integer\|between:0,65536 |
 | `UPDATE_SERVER` | 1 | yes | boolean |

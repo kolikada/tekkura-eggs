@@ -110,7 +110,7 @@ joined. No egg is `done` yet.
 | Terraria | [Terraria Vanilla](eggs/terraria/NOTES.md) | primary | none | none | configured |
 | Terraria | [tModloader](eggs/terraria-tmodloader/NOTES.md) | variant | none | none | configured |
 | Terraria | [tshock](eggs/terraria-tshock/NOTES.md) | variant | none | none | configured |
-| Arma 3 Reforger | [Arma 3](eggs/arma-3/NOTES.md) | primary | `RCON_PORT` ✓ | `STEAM_USER`, `STEAM_PASS`, `RCON_PORT` | configured |
+| Arma 3 Reforger | [Arma 3](eggs/arma-3/NOTES.md) | primary | `RCON_PORT` ✓ | `RCON_PORT` | configured |
 | Arma 3 Reforger | [Arma Reforger](eggs/arma-reforger/NOTES.md) | primary | none | none | configured |
 | HumanitZ | [HumanitZ](eggs/humanitz/NOTES.md) | primary | `QUERY_PORT` ✓ | none | configured |
 | Windrose | [Windrose](eggs/windrose/NOTES.md) | primary | `DIRECT_CONNECTION_PORT` ✓ | none | configured |

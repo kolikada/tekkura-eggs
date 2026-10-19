@@ -76,21 +76,31 @@ def notes(entry: dict, egg: dict, found: dict, status: dict) -> str:
     if status.get("note"):
         lines += [status["note"], ""]
 
+    mapped = (status.get("ports") or {}).get("port_variables", {})
+    secrets = set(status.get("secrets") or [])
+    tick = lambda done: "x" if done else " "
+
     lines += ["## To configure", ""]
     if found["port_vars"]:
         lines.append("Port variables that keep a fixed default on every server (collide on a shared node):")
         lines.append("")
         for v in found["port_vars"]:
-            lines.append(f"- [ ] `{v['env_variable']}` default `{v.get('default_value')}`: {cell(v.get('description'))}")
+            env = v["env_variable"]
+            how = f" (gets port {mapped[env]})" if env in mapped else ""
+            lines.append(f"- [{tick(env in mapped)}] `{env}` default `{v.get('default_value')}`{how}: {cell(v.get('description'))}")
         lines.append("")
     if found["needs_input"]:
         lines.append("Required with no default (provisioning would build a server that cannot start):")
         lines.append("")
         for v in found["needs_input"]:
-            lines.append(f"- [ ] `{v['env_variable']}`: {cell(v.get('description'))}")
+            env = v["env_variable"]
+            how = " (generated per server)" if env in secrets else ""
+            lines.append(f"- [{tick(env in secrets)}] `{env}`{how}: {cell(v.get('description'))}")
         lines.append("")
+    ports = status.get("ports")
     lines += [
-        "- [ ] Ports tab on the panel: how many ports, and which one players connect on",
+        f"- [{tick(ports)}] Ports tab on the panel: how many ports, and which one players connect on"
+        + (f" (needs {ports['required_ports']}, connect on port {ports['connect_port_index']})" if ports else ""),
         "- [ ] Test deploy from a store order with no admin input, and a player can join",
         "",
         "## Images",
@@ -114,8 +124,14 @@ for entry in MANIFEST:
     found = audit(egg)
     status = STATUS.get(entry["slug"], {})
     (path.parent / "NOTES.md").write_text(notes(entry, egg, found, status), encoding="utf-8")
-    ports = ", ".join(f"`{v['env_variable']}`" for v in found["port_vars"]) or "none"
-    inputs = ", ".join(f"`{v['env_variable']}`" for v in found["needs_input"]) or "none"
+    mapped = (status.get("ports") or {}).get("port_variables", {})
+    secrets = set(status.get("secrets") or [])
+    ports = ", ".join(
+        f"`{v['env_variable']}`" + (" ✓" if v["env_variable"] in mapped else "") for v in found["port_vars"]
+    ) or "none"
+    inputs = ", ".join(
+        f"`{v['env_variable']}`" + (" ✓" if v["env_variable"] in secrets else "") for v in found["needs_input"]
+    ) or "none"
     rows.append(
         f"| {entry['store_category']} | [{egg['name']}](eggs/{entry['slug']}/NOTES.md) | {entry['role']} "
         f"| {ports} | {inputs} | {status.get('state', 'todo')} |"

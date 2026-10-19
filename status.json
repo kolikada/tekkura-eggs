@@ -1,5 +1,10 @@
 {
-  "project-zomboid": {"state": "next", "note": "Already installed on the panel. Compare the live egg with this copy before changing either."},
+  "project-zomboid": {
+    "state": "in progress",
+    "note": "Imported as a new egg next to the old live one, which stays for the customer server already on it. The three PZ plans point at the new egg.",
+    "ports": {"required_ports": 2, "connect_port_index": 1, "port_variables": {"STEAM_PORT": 2}},
+    "secrets": ["ADMIN_PASSWORD"]
+  },
   "ark-survival-ascended": {"state": "todo", "note": "Sold as its own game: a subcategory \"ARK: Survival Ascended\" under \"Ark: Survival\", with its own products."},
   "ark-survival-evolved": {"state": "todo", "note": "Sold as its own game: a subcategory \"ARK: Survival Evolved\" under \"Ark: Survival\", with its own products."},
   "minecraft-paper": {"state": "last", "note": "Minecraft goes last. It has the most eggs and needs a plan for how the store presents the choice."},

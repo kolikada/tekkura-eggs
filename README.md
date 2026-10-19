@@ -70,7 +70,7 @@ own port.
 <!-- status:start -->
 | Store game | Egg | Role | Fixed port variables | Required, no default | Status |
 | --- | --- | --- | --- | --- | --- |
-| Project Zomboid | [Project Zomboid](eggs/project-zomboid/NOTES.md) | primary | `STEAM_PORT` | `ADMIN_PASSWORD` | next |
+| Project Zomboid | [Project Zomboid](eggs/project-zomboid/NOTES.md) | primary | `STEAM_PORT` ✓ | `ADMIN_PASSWORD` ✓ | in progress |
 | Palworld | [Palworld](eggs/palworld/NOTES.md) | primary | `RCON_PORT` | `ADMIN_PASSWORD` | todo |
 | Minecraft | [Paper](eggs/minecraft-paper/NOTES.md) | primary | none | `USER_AGENT` | last |
 | Minecraft | [Vanilla Minecraft](eggs/minecraft-vanilla/NOTES.md) | variant | none | none | last |

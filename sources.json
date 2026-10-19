@@ -1,0 +1,262 @@
+[
+  {
+    "slug": "project-zomboid",
+    "store_category": "Project Zomboid",
+    "role": "primary",
+    "upstream": "https://github.com/pelican-eggs/games-steamcmd/blob/68aa3847dda477c9e5cb0522295b212042f746af/project_zomboid/egg-project-zomboid.json",
+    "repo": "games-steamcmd",
+    "path": "project_zomboid/egg-project-zomboid.json",
+    "commit": "68aa3847dda477c9e5cb0522295b212042f746af",
+    "file": "eggs/project-zomboid/egg-project-zomboid.json"
+  },
+  {
+    "slug": "palworld",
+    "store_category": "Palworld",
+    "role": "primary",
+    "upstream": "https://github.com/pelican-eggs/games-steamcmd/blob/68aa3847dda477c9e5cb0522295b212042f746af/palworld/egg-palworld.yaml",
+    "repo": "games-steamcmd",
+    "path": "palworld/egg-palworld.yaml",
+    "commit": "68aa3847dda477c9e5cb0522295b212042f746af",
+    "file": "eggs/palworld/egg-palworld.yaml"
+  },
+  {
+    "slug": "minecraft-paper",
+    "store_category": "Minecraft",
+    "role": "primary",
+    "upstream": "https://github.com/pelican-eggs/minecraft/blob/c6f2262eb351054d1be44d3f6a3a605ae163d682/java/paper/egg-paper.yaml",
+    "repo": "minecraft",
+    "path": "java/paper/egg-paper.yaml",
+    "commit": "c6f2262eb351054d1be44d3f6a3a605ae163d682",
+    "file": "eggs/minecraft-paper/egg-paper.yaml"
+  },
+  {
+    "slug": "minecraft-vanilla",
+    "store_category": "Minecraft",
+    "role": "variant",
+    "upstream": "https://github.com/pelican-eggs/minecraft/blob/c6f2262eb351054d1be44d3f6a3a605ae163d682/java/vanilla/egg-vanilla-minecraft.yaml",
+    "repo": "minecraft",
+    "path": "java/vanilla/egg-vanilla-minecraft.yaml",
+    "commit": "c6f2262eb351054d1be44d3f6a3a605ae163d682",
+    "file": "eggs/minecraft-vanilla/egg-vanilla-minecraft.yaml"
+  },
+  {
+    "slug": "minecraft-fabric",
+    "store_category": "Minecraft",
+    "role": "variant",
+    "upstream": "https://github.com/pelican-eggs/minecraft/blob/c6f2262eb351054d1be44d3f6a3a605ae163d682/java/fabric/egg-fabric.yaml",
+    "repo": "minecraft",
+    "path": "java/fabric/egg-fabric.yaml",
+    "commit": "c6f2262eb351054d1be44d3f6a3a605ae163d682",
+    "file": "eggs/minecraft-fabric/egg-fabric.yaml"
+  },
+  {
+    "slug": "minecraft-forge",
+    "store_category": "Minecraft",
+    "role": "variant",
+    "upstream": "https://github.com/pelican-eggs/minecraft/blob/c6f2262eb351054d1be44d3f6a3a605ae163d682/java/forge/egg-forge-minecraft.yaml",
+    "repo": "minecraft",
+    "path": "java/forge/egg-forge-minecraft.yaml",
+    "commit": "c6f2262eb351054d1be44d3f6a3a605ae163d682",
+    "file": "eggs/minecraft-forge/egg-forge-minecraft.yaml"
+  },
+  {
+    "slug": "minecraft-neoforge",
+    "store_category": "Minecraft",
+    "role": "variant",
+    "upstream": "https://github.com/pelican-eggs/minecraft/blob/c6f2262eb351054d1be44d3f6a3a605ae163d682/java/neoforge/egg-neo-forge.json",
+    "repo": "minecraft",
+    "path": "java/neoforge/egg-neo-forge.json",
+    "commit": "c6f2262eb351054d1be44d3f6a3a605ae163d682",
+    "file": "eggs/minecraft-neoforge/egg-neo-forge.json"
+  },
+  {
+    "slug": "minecraft-curseforge",
+    "store_category": "Minecraft",
+    "role": "variant",
+    "upstream": "https://github.com/pelican-eggs/minecraft/blob/c6f2262eb351054d1be44d3f6a3a605ae163d682/java/curseforge/egg-curse-forge-generic.yaml",
+    "repo": "minecraft",
+    "path": "java/curseforge/egg-curse-forge-generic.yaml",
+    "commit": "c6f2262eb351054d1be44d3f6a3a605ae163d682",
+    "file": "eggs/minecraft-curseforge/egg-curse-forge-generic.yaml"
+  },
+  {
+    "slug": "minecraft-modrinth",
+    "store_category": "Minecraft",
+    "role": "variant",
+    "upstream": "https://github.com/pelican-eggs/minecraft/blob/c6f2262eb351054d1be44d3f6a3a605ae163d682/java/modrinth/egg-modrinth-generic.json",
+    "repo": "minecraft",
+    "path": "java/modrinth/egg-modrinth-generic.json",
+    "commit": "c6f2262eb351054d1be44d3f6a3a605ae163d682",
+    "file": "eggs/minecraft-modrinth/egg-modrinth-generic.json"
+  },
+  {
+    "slug": "ark-survival-ascended",
+    "store_category": "Ark: Survival",
+    "role": "decide",
+    "upstream": "https://github.com/pelican-eggs/games-steamcmd/blob/68aa3847dda477c9e5cb0522295b212042f746af/ark_survival_ascended/egg-a-r-k--survival-ascended.json",
+    "repo": "games-steamcmd",
+    "path": "ark_survival_ascended/egg-a-r-k--survival-ascended.json",
+    "commit": "68aa3847dda477c9e5cb0522295b212042f746af",
+    "file": "eggs/ark-survival-ascended/egg-a-r-k--survival-ascended.json"
+  },
+  {
+    "slug": "ark-survival-evolved",
+    "store_category": "Ark: Survival",
+    "role": "decide",
+    "upstream": "https://github.com/pelican-eggs/games-steamcmd/blob/68aa3847dda477c9e5cb0522295b212042f746af/ark_survival_evolved/egg-ark--survival-evolved.json",
+    "repo": "games-steamcmd",
+    "path": "ark_survival_evolved/egg-ark--survival-evolved.json",
+    "commit": "68aa3847dda477c9e5cb0522295b212042f746af",
+    "file": "eggs/ark-survival-evolved/egg-ark--survival-evolved.json"
+  },
+  {
+    "slug": "cs2",
+    "store_category": "CS:2",
+    "role": "primary",
+    "upstream": "https://github.com/pelican-eggs/games-steamcmd/blob/68aa3847dda477c9e5cb0522295b212042f746af/counter_strike/counter_strike_2/egg-counter--strike2.yaml",
+    "repo": "games-steamcmd",
+    "path": "counter_strike/counter_strike_2/egg-counter--strike2.yaml",
+    "commit": "68aa3847dda477c9e5cb0522295b212042f746af",
+    "file": "eggs/cs2/egg-counter--strike2.yaml"
+  },
+  {
+    "slug": "hytale",
+    "store_category": "Hytale",
+    "role": "primary",
+    "upstream": "https://github.com/pelican-eggs/games-standalone/blob/e1b52607397c0de9d6918d0659f1ff95721d3b49/hytale/egg-hytale.yaml",
+    "repo": "games-standalone",
+    "path": "hytale/egg-hytale.yaml",
+    "commit": "e1b52607397c0de9d6918d0659f1ff95721d3b49",
+    "file": "eggs/hytale/egg-hytale.yaml"
+  },
+  {
+    "slug": "necesse",
+    "store_category": "Necesse",
+    "role": "primary",
+    "upstream": "https://github.com/pelican-eggs/games-steamcmd/blob/68aa3847dda477c9e5cb0522295b212042f746af/necesse/egg-necesse.json",
+    "repo": "games-steamcmd",
+    "path": "necesse/egg-necesse.json",
+    "commit": "68aa3847dda477c9e5cb0522295b212042f746af",
+    "file": "eggs/necesse/egg-necesse.json"
+  },
+  {
+    "slug": "left-4-dead-2",
+    "store_category": "Left 4 Dead 2",
+    "role": "primary",
+    "upstream": "https://github.com/pelican-eggs/games-steamcmd/blob/68aa3847dda477c9e5cb0522295b212042f746af/left4dead_2/egg-left4-dead2.json",
+    "repo": "games-steamcmd",
+    "path": "left4dead_2/egg-left4-dead2.json",
+    "commit": "68aa3847dda477c9e5cb0522295b212042f746af",
+    "file": "eggs/left-4-dead-2/egg-left4-dead2.json"
+  },
+  {
+    "slug": "unturned",
+    "store_category": "Unturned",
+    "role": "primary",
+    "upstream": "https://github.com/pelican-eggs/games-steamcmd/blob/68aa3847dda477c9e5cb0522295b212042f746af/unturned/egg-unturned.json",
+    "repo": "games-steamcmd",
+    "path": "unturned/egg-unturned.json",
+    "commit": "68aa3847dda477c9e5cb0522295b212042f746af",
+    "file": "eggs/unturned/egg-unturned.json"
+  },
+  {
+    "slug": "conan-exiles",
+    "store_category": "Conan Exiles",
+    "role": "primary",
+    "upstream": "https://github.com/pelican-eggs/games-steamcmd/blob/68aa3847dda477c9e5cb0522295b212042f746af/conan_exiles/egg-conan-exiles-enhanced.yaml",
+    "repo": "games-steamcmd",
+    "path": "conan_exiles/egg-conan-exiles-enhanced.yaml",
+    "commit": "68aa3847dda477c9e5cb0522295b212042f746af",
+    "file": "eggs/conan-exiles/egg-conan-exiles-enhanced.yaml"
+  },
+  {
+    "slug": "sons-of-the-forest",
+    "store_category": "Sons Of The Forest",
+    "role": "primary",
+    "upstream": "https://github.com/pelican-eggs/games-steamcmd/blob/68aa3847dda477c9e5cb0522295b212042f746af/sonsoftheforest/egg-sons-of-the-forest.json",
+    "repo": "games-steamcmd",
+    "path": "sonsoftheforest/egg-sons-of-the-forest.json",
+    "commit": "68aa3847dda477c9e5cb0522295b212042f746af",
+    "file": "eggs/sons-of-the-forest/egg-sons-of-the-forest.json"
+  },
+  {
+    "slug": "valheim",
+    "store_category": "Valheim",
+    "role": "primary",
+    "upstream": "https://github.com/pelican-eggs/games-steamcmd/blob/68aa3847dda477c9e5cb0522295b212042f746af/valheim/valheim_vanilla/egg-valheim.json",
+    "repo": "games-steamcmd",
+    "path": "valheim/valheim_vanilla/egg-valheim.json",
+    "commit": "68aa3847dda477c9e5cb0522295b212042f746af",
+    "file": "eggs/valheim/egg-valheim.json"
+  },
+  {
+    "slug": "valheim-bepinex",
+    "store_category": "Valheim",
+    "role": "variant",
+    "upstream": "https://github.com/pelican-eggs/games-steamcmd/blob/68aa3847dda477c9e5cb0522295b212042f746af/valheim/valheim_bepinex/egg-valheim-bep-i-nex.yaml",
+    "repo": "games-steamcmd",
+    "path": "valheim/valheim_bepinex/egg-valheim-bep-i-nex.yaml",
+    "commit": "68aa3847dda477c9e5cb0522295b212042f746af",
+    "file": "eggs/valheim-bepinex/egg-valheim-bep-i-nex.yaml"
+  },
+  {
+    "slug": "terraria",
+    "store_category": "Terraria",
+    "role": "primary",
+    "upstream": "https://github.com/pelican-eggs/games-standalone/blob/e1b52607397c0de9d6918d0659f1ff95721d3b49/terraria/vanilla/egg-terraria-vanilla.json",
+    "repo": "games-standalone",
+    "path": "terraria/vanilla/egg-terraria-vanilla.json",
+    "commit": "e1b52607397c0de9d6918d0659f1ff95721d3b49",
+    "file": "eggs/terraria/egg-terraria-vanilla.json"
+  },
+  {
+    "slug": "terraria-tmodloader",
+    "store_category": "Terraria",
+    "role": "variant",
+    "upstream": "https://github.com/pelican-eggs/games-standalone/blob/e1b52607397c0de9d6918d0659f1ff95721d3b49/terraria/tmodloader/egg-t-modloader.json",
+    "repo": "games-standalone",
+    "path": "terraria/tmodloader/egg-t-modloader.json",
+    "commit": "e1b52607397c0de9d6918d0659f1ff95721d3b49",
+    "file": "eggs/terraria-tmodloader/egg-t-modloader.json"
+  },
+  {
+    "slug": "terraria-tshock",
+    "store_category": "Terraria",
+    "role": "variant",
+    "upstream": "https://github.com/pelican-eggs/games-standalone/blob/e1b52607397c0de9d6918d0659f1ff95721d3b49/terraria/tshock/egg-tshock.json",
+    "repo": "games-standalone",
+    "path": "terraria/tshock/egg-tshock.json",
+    "commit": "e1b52607397c0de9d6918d0659f1ff95721d3b49",
+    "file": "eggs/terraria-tshock/egg-tshock.json"
+  },
+  {
+    "slug": "arma-reforger",
+    "store_category": "Arma 3 Reforger",
+    "role": "primary",
+    "upstream": "https://github.com/pelican-eggs/games-steamcmd/blob/68aa3847dda477c9e5cb0522295b212042f746af/arma/arma_reforger/egg-arma-reforger.json",
+    "repo": "games-steamcmd",
+    "path": "arma/arma_reforger/egg-arma-reforger.json",
+    "commit": "68aa3847dda477c9e5cb0522295b212042f746af",
+    "file": "eggs/arma-reforger/egg-arma-reforger.json"
+  },
+  {
+    "slug": "humanitz",
+    "store_category": "HumanitZ",
+    "role": "primary",
+    "upstream": "https://github.com/pelican-eggs/games-steamcmd/blob/68aa3847dda477c9e5cb0522295b212042f746af/humanitz/egg-humanit-z.json",
+    "repo": "games-steamcmd",
+    "path": "humanitz/egg-humanit-z.json",
+    "commit": "68aa3847dda477c9e5cb0522295b212042f746af",
+    "file": "eggs/humanitz/egg-humanit-z.json"
+  },
+  {
+    "slug": "windrose",
+    "store_category": "Windrose",
+    "role": "primary",
+    "upstream": "https://github.com/pelican-eggs/games-steamcmd/blob/68aa3847dda477c9e5cb0522295b212042f746af/windrose/egg-windrose.json",
+    "repo": "games-steamcmd",
+    "path": "windrose/egg-windrose.json",
+    "commit": "68aa3847dda477c9e5cb0522295b212042f746af",
+    "file": "eggs/windrose/egg-windrose.json"
+  }
+]

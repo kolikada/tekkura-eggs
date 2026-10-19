@@ -7,7 +7,7 @@
     "exported_at": "2026-04-06T02:01:23+00:00",
     "name": "DayZ",
     "author": "red_thirten@yahoo.com",
-    "uuid": "ef7d4603-175b-4c7c-a827-516a6c19c101",
+    "uuid": "73781e4c-308f-42be-9e7d-23d415f3d3f0",
     "description": "How long can you survive a post-apocalyptic world? A land overrun with an infected \"zombie\" population, where you compete with other survivors for limited resources. Will you team up with strangers and stay strong together? Or play as a lone wolf to avoid betrayal? This is DayZ \u2013 this is your story.",
     "tags": [
         "steamcmd"
@@ -46,24 +46,24 @@
             "field_type": "text"
         },
         {
-            "name": "[Host] Steam Username",
-            "description": "Used for installation and updates. Account does not need to own DayZ, but MUST BE a VALID Steam account (anonymous login cannot be used). For security reasons it is recommended that you create a new Steam account just for your dedicated servers. *This info is not visible to the server owner.*",
+            "name": "Steam Username",
+            "description": "Your own Steam login, used to download DayZ and its Workshop mods. Use a separate Steam account made for this server, with Steam Guard turned off. Workshop mods only download if that account owns DayZ. Once both are filled in, the server reinstalls by itself.",
             "env_variable": "STEAM_USER",
             "default_value": "",
-            "user_viewable": false,
-            "user_editable": false,
-            "rules": "required|string|not_in:anonymous",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "nullable|string|not_in:anonymous",
             "sort": 2,
             "field_type": "text"
         },
         {
-            "name": "[Host] Steam Password",
-            "description": "Used for installation and updates. Steam Guard MUST be completely TURNED OFF for the server and mods to download efficiently. *This info is not visible to the server owner, BUT IS stored in PLAIN TEXT. It is NOT advised to use a personal account; best to use a dummy account.*",
+            "name": "Steam Password",
+            "description": "The password for that Steam account. It is stored on the panel as entered, so never use the password of the Steam account you play on.",
             "env_variable": "STEAM_PASS",
             "default_value": "",
-            "user_viewable": false,
-            "user_editable": false,
-            "rules": "required|string",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "nullable|string",
             "sort": 3,
             "field_type": "text"
         },

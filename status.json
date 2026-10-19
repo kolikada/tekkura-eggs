@@ -405,5 +405,42 @@
       "port_variables": {}
     },
     "panel_egg_id": 38
+  },
+  "rust": {
+    "state": "configured",
+    "ports": {
+      "required_ports": 5,
+      "connect_port_index": 1,
+      "port_variables": {
+        "QUERY_PORT": 2,
+        "RCON_PORT": 3,
+        "APP_PORT": 4
+      }
+    },
+    "secrets": [
+      "RCON_PASS"
+    ],
+    "note": "Query, web RCON (admin tools) and the Rust+ companion app all need to be reachable, so each gets a port; one spare. RCON password generated."
+  },
+  "dayz": {
+    "state": "configured",
+    "ports": {
+      "required_ports": 2,
+      "connect_port_index": 1,
+      "port_variables": {
+        "QUERY_PORT": 2
+      }
+    },
+    "secrets": [
+      "RCON_PASSWORD"
+    ],
+    "internal": [
+      "RCON_PORT"
+    ],
+    "reinstall": [
+      "STEAM_USER",
+      "STEAM_PASS"
+    ],
+    "note": "Query is needed for the server list. Like Arma 3, it installs only with a real Steam login, which the customer supplies; the server reinstalls itself once both are filled."
   }
 }

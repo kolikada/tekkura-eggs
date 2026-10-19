@@ -124,6 +124,8 @@ joined. No egg is `done` yet.
 | Minecraft | [Bungeecord](eggs/minecraft-bungeecord/NOTES.md) | variant | none | none | configured |
 | Minecraft | [Vanilla Bedrock](eggs/minecraft-bedrock/NOTES.md) | variant | none | none | configured |
 | Minecraft | [PocketmineMP](eggs/minecraft-pocketmine/NOTES.md) | variant | none | none | configured |
+| Rust | [Rust](eggs/rust/NOTES.md) | primary | `APP_PORT` ✓, `QUERY_PORT` ✓, `RCON_PORT` ✓ | `RCON_PASS` ✓ | configured |
+| DayZ | [DayZ](eggs/dayz/NOTES.md) | primary | `QUERY_PORT` ✓, `RCON_PORT` (internal) | `RCON_PASSWORD` ✓ | configured |
 <!-- status:end -->
 
 ## Upstream and licence

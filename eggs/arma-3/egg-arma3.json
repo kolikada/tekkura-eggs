@@ -35,27 +35,27 @@
     },
     "variables": [
         {
-            "name": "[Host] Steam Username",
-            "description": "Used for installation and updates. Account does not need to own Arma 3, but MUST BE a VALID Steam account (anonymous login cannot be used). For security reasons it is recommended that you create a new Steam account just for your dedicated servers. *This info is not visible to the server owner.*",
+            "name": "Steam Username",
+            "description": "Your own Steam login, used to download Arma 3 and its Workshop mods. Use a separate Steam account made for this server, with Steam Guard turned off. Workshop mods only download if that account owns Arma 3. After entering it, reinstall the server from Settings.",
             "env_variable": "STEAM_USER",
             "default_value": "",
-            "user_viewable": false,
-            "user_editable": false,
+            "user_viewable": true,
+            "user_editable": true,
             "rules": [
-                "required",
+                "nullable",
                 "string"
             ],
             "sort": 1
         },
         {
-            "name": "[Host] Steam Password",
-            "description": "Used for installation and updates. Steam Guard MUST be completely TURNED OFF for install to complete successfully. *This info is not visible to the server owner, BUT IS stored in PLAIN TEXT. It is NOT advised to use a personal account; best to use a dummy account.*",
+            "name": "Steam Password",
+            "description": "The password for that Steam account. It is stored on the panel as entered, so never use the password of the Steam account you play on.",
             "env_variable": "STEAM_PASS",
             "default_value": "",
-            "user_viewable": false,
-            "user_editable": false,
+            "user_viewable": true,
+            "user_editable": true,
             "rules": [
-                "required",
+                "nullable",
                 "string"
             ],
             "sort": 2

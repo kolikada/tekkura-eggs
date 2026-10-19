@@ -55,7 +55,8 @@
       "connect_port_index": 1,
       "port_variables": {}
     },
-    "note": "USER_AGENT defaults to Tekkura's; PaperMC's API refuses downloads without one."
+    "note": "USER_AGENT defaults to Tekkura's; PaperMC's API refuses downloads without one.",
+    "panel_egg_id": 23
   },
   "minecraft-vanilla": {
     "state": "configured",
@@ -63,7 +64,8 @@
       "required_ports": 1,
       "connect_port_index": 1,
       "port_variables": {}
-    }
+    },
+    "panel_egg_id": 24
   },
   "minecraft-fabric": {
     "state": "configured",
@@ -71,7 +73,8 @@
       "required_ports": 1,
       "connect_port_index": 1,
       "port_variables": {}
-    }
+    },
+    "panel_egg_id": 25
   },
   "minecraft-forge": {
     "state": "configured",
@@ -79,7 +82,8 @@
       "required_ports": 1,
       "connect_port_index": 1,
       "port_variables": {}
-    }
+    },
+    "panel_egg_id": 26
   },
   "minecraft-neoforge": {
     "state": "configured",
@@ -87,7 +91,8 @@
       "required_ports": 1,
       "connect_port_index": 1,
       "port_variables": {}
-    }
+    },
+    "panel_egg_id": 27
   },
   "minecraft-curseforge": {
     "state": "configured",
@@ -96,7 +101,8 @@
       "connect_port_index": 1,
       "port_variables": {}
     },
-    "note": "Needs Tekkura's CurseForge API key as the egg default for API_KEY. Hidden from customers until it is set."
+    "note": "Needs Tekkura's CurseForge API key as the egg default for API_KEY. Hidden from customers until it is set.",
+    "panel_egg_id": 28
   },
   "minecraft-modrinth": {
     "state": "configured",
@@ -105,7 +111,8 @@
       "connect_port_index": 1,
       "port_variables": {}
     },
-    "note": "Used by the modpack installer, not shown as a software choice."
+    "note": "Used by the modpack installer, not shown as a software choice.",
+    "panel_egg_id": 29
   },
   "palworld": {
     "state": "configured",
@@ -312,7 +319,8 @@
       "required_ports": 1,
       "connect_port_index": 1,
       "port_variables": {}
-    }
+    },
+    "panel_egg_id": 30
   },
   "minecraft-quilt": {
     "state": "configured",
@@ -321,7 +329,8 @@
       "connect_port_index": 1,
       "port_variables": {}
     },
-    "note": "Upstream shipped no features; given eula, java_version and pid_limit like the other Java eggs."
+    "note": "Upstream shipped no features; given eula, java_version and pid_limit like the other Java eggs.",
+    "panel_egg_id": 31
   },
   "minecraft-spigot": {
     "state": "configured",
@@ -329,7 +338,8 @@
       "required_ports": 1,
       "connect_port_index": 1,
       "port_variables": {}
-    }
+    },
+    "panel_egg_id": 32
   },
   "minecraft-spongeforge": {
     "state": "skipped",
@@ -341,7 +351,8 @@
       "required_ports": 1,
       "connect_port_index": 1,
       "port_variables": {}
-    }
+    },
+    "panel_egg_id": 33
   },
   "minecraft-purpur-geyser": {
     "state": "configured",
@@ -350,7 +361,8 @@
       "connect_port_index": 1,
       "port_variables": {}
     },
-    "note": "Geyser's Bedrock listener is pointed at the server's own port (UDP side) through plugins/Geyser-Spigot/config.yml; Bedrock players use the same address."
+    "note": "Geyser's Bedrock listener is pointed at the server's own port (UDP side) through plugins/Geyser-Spigot/config.yml; Bedrock players use the same address.",
+    "panel_egg_id": 34
   },
   "minecraft-velocity": {
     "state": "configured",
@@ -359,7 +371,8 @@
       "connect_port_index": 1,
       "port_variables": {}
     },
-    "note": "USER_AGENT defaults to Tekkura's; PaperMC's API refuses downloads without one."
+    "note": "USER_AGENT defaults to Tekkura's; PaperMC's API refuses downloads without one.",
+    "panel_egg_id": 35
   },
   "minecraft-bungeecord": {
     "state": "configured",
@@ -367,7 +380,8 @@
       "required_ports": 1,
       "connect_port_index": 1,
       "port_variables": {}
-    }
+    },
+    "panel_egg_id": 36
   },
   "minecraft-bedrock": {
     "state": "configured",
@@ -375,7 +389,8 @@
       "required_ports": 1,
       "connect_port_index": 1,
       "port_variables": {}
-    }
+    },
+    "panel_egg_id": 37
   },
   "minecraft-pocketmine": {
     "state": "configured",
@@ -383,6 +398,7 @@
       "required_ports": 1,
       "connect_port_index": 1,
       "port_variables": {}
-    }
+    },
+    "panel_egg_id": 38
   }
 }

@@ -3,7 +3,9 @@
 Store category: **Minecraft** (primary)
 Upstream: [minecraft/java/paper/egg-paper.yaml](https://github.com/pelican-eggs/minecraft/blob/c6f2262eb351054d1be44d3f6a3a605ae163d682/java/paper/egg-paper.yaml)
 Format: `PLCN_v3`
-Status: **todo**
+Status: **last**
+
+Minecraft goes last. It has the most eggs and needs a plan for how the store presents the choice.
 
 ## To configure
 

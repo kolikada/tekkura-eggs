@@ -3,7 +3,7 @@
 Store category: **Project Zomboid** (primary)
 Upstream: [games-steamcmd/project_zomboid/egg-project-zomboid.json](https://github.com/pelican-eggs/games-steamcmd/blob/68aa3847dda477c9e5cb0522295b212042f746af/project_zomboid/egg-project-zomboid.json)
 Format: `PLCN_v1`
-Status: **todo**
+Status: **next**
 
 Already installed on the panel. Compare the live egg with this copy before changing either.
 

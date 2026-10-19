@@ -30,16 +30,31 @@ The table below lists both for every egg, generated from the files.
 - A test order deploys it, it starts, and a player can join on the address the
   panel shows. Nobody touched the admin in between.
 
-## Two ways to fix a port variable
+## How a port variable is fixed
 
-Decided on the first egg we configure, then applied the same way everywhere.
+**In the panel** (decided 2026-10-19). The egg's Ports tab has a **Port
+variables** list: "`STEAM_PORT` gets the 2nd port". Provisioning writes each
+server's real port number into those variables, so the egg file itself needs
+no port arithmetic and the panel shows the port that actually runs.
 
-- **In the egg.** The startup command runs through the yolk's entrypoint,
-  which evaluates it in a shell, so `$((SERVER_PORT + 1))` works there. Simple,
-  but the variable shown in the panel then no longer matches what runs.
-- **In the panel.** Provisioning fills named port variables from the server's
-  allocations (second allocation, third, and so on). One change covers every
-  egg, and the panel shows the real port.
+That setting lives in the panel database, not in the egg file, so record it in
+the egg's `status.json` entry (`ports`) when you set it. Then the repo says how
+every egg is configured even though the file does not.
+
+Also make each mapped variable non-editable in the egg file
+(`user_editable: false`), so a customer cannot change it and drift off their
+own port.
+
+## Order of work
+
+1. Every game except Minecraft, one egg at a time, starting with Project
+   Zomboid because it is live and selling.
+2. **ARK** ships as two games: Ascended and Evolved each get their own
+   subcategory under "Ark: Survival", with their own products. Both eggs get
+   configured.
+3. **Minecraft last.** It has the most eggs (Paper, Vanilla, Fabric, Forge,
+   NeoForge, modpack installers) and needs its own plan for how the store
+   presents the choice.
 
 ## Workflow, one egg at a time
 
@@ -55,17 +70,17 @@ Decided on the first egg we configure, then applied the same way everywhere.
 <!-- status:start -->
 | Store game | Egg | Role | Fixed port variables | Required, no default | Status |
 | --- | --- | --- | --- | --- | --- |
-| Project Zomboid | [Project Zomboid](eggs/project-zomboid/NOTES.md) | primary | `STEAM_PORT` | `ADMIN_PASSWORD` | todo |
+| Project Zomboid | [Project Zomboid](eggs/project-zomboid/NOTES.md) | primary | `STEAM_PORT` | `ADMIN_PASSWORD` | next |
 | Palworld | [Palworld](eggs/palworld/NOTES.md) | primary | `RCON_PORT` | `ADMIN_PASSWORD` | todo |
-| Minecraft | [Paper](eggs/minecraft-paper/NOTES.md) | primary | none | `USER_AGENT` | todo |
-| Minecraft | [Vanilla Minecraft](eggs/minecraft-vanilla/NOTES.md) | variant | none | none | todo |
-| Minecraft | [Fabric](eggs/minecraft-fabric/NOTES.md) | variant | none | none | todo |
-| Minecraft | [Forge Minecraft](eggs/minecraft-forge/NOTES.md) | variant | none | none | todo |
-| Minecraft | [NeoForge](eggs/minecraft-neoforge/NOTES.md) | variant | none | none | todo |
-| Minecraft | [CurseForge Generic](eggs/minecraft-curseforge/NOTES.md) | variant | none | `API_KEY`, `PROJECT_ID` | todo |
-| Minecraft | [Modrinth Generic](eggs/minecraft-modrinth/NOTES.md) | variant | none | `PROJECT_ID` | todo |
-| Ark: Survival | [ARK: Survival Ascended](eggs/ark-survival-ascended/NOTES.md) | decide | `RCON_PORT` | `ARK_ADMIN_PASSWORD` | decide |
-| Ark: Survival | [Ark: Survival Evolved](eggs/ark-survival-evolved/NOTES.md) | decide | `RCON_PORT`, `QUERY_PORT` | none | decide |
+| Minecraft | [Paper](eggs/minecraft-paper/NOTES.md) | primary | none | `USER_AGENT` | last |
+| Minecraft | [Vanilla Minecraft](eggs/minecraft-vanilla/NOTES.md) | variant | none | none | last |
+| Minecraft | [Fabric](eggs/minecraft-fabric/NOTES.md) | variant | none | none | last |
+| Minecraft | [Forge Minecraft](eggs/minecraft-forge/NOTES.md) | variant | none | none | last |
+| Minecraft | [NeoForge](eggs/minecraft-neoforge/NOTES.md) | variant | none | none | last |
+| Minecraft | [CurseForge Generic](eggs/minecraft-curseforge/NOTES.md) | variant | none | `API_KEY`, `PROJECT_ID` | last |
+| Minecraft | [Modrinth Generic](eggs/minecraft-modrinth/NOTES.md) | variant | none | `PROJECT_ID` | last |
+| Ark: Survival | [ARK: Survival Ascended](eggs/ark-survival-ascended/NOTES.md) | decide | `RCON_PORT` | `ARK_ADMIN_PASSWORD` | todo |
+| Ark: Survival | [Ark: Survival Evolved](eggs/ark-survival-evolved/NOTES.md) | decide | `RCON_PORT`, `QUERY_PORT` | none | todo |
 | CS:2 | [Counter-Strike 2](eggs/cs2/NOTES.md) | primary | `TV_PORT` | `RCON_PASSWORD`, `STEAM_GSLT` | todo |
 | Hytale | [Hytale](eggs/hytale/NOTES.md) | primary | none | none | todo |
 | Necesse | [Necesse](eggs/necesse/NOTES.md) | primary | none | none | todo |

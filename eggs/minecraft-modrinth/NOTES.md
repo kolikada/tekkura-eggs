@@ -3,7 +3,7 @@
 Store category: **Minecraft** (variant)
 Upstream: [minecraft/java/modrinth/egg-modrinth-generic.json](https://github.com/pelican-eggs/minecraft/blob/c6f2262eb351054d1be44d3f6a3a605ae163d682/java/modrinth/egg-modrinth-generic.json)
 Format: `PLCN_v3`
-Status: **todo**
+Status: **last**
 
 ## To configure
 

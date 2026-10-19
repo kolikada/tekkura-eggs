@@ -3,9 +3,9 @@
 Store category: **Ark: Survival** (decide)
 Upstream: [games-steamcmd/ark_survival_ascended/egg-a-r-k--survival-ascended.json](https://github.com/pelican-eggs/games-steamcmd/blob/68aa3847dda477c9e5cb0522295b212042f746af/ark_survival_ascended/egg-a-r-k--survival-ascended.json)
 Format: `PLCN_v1`
-Status: **decide**
+Status: **todo**
 
-The store category is "Ark: Survival". Pick Ascended or Evolved (or sell both) before configuring.
+Sold as its own game: a subcategory "ARK: Survival Ascended" under "Ark: Survival", with its own products.
 
 ## To configure
 

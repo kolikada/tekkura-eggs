@@ -1,5 +1,12 @@
 {
-  "project-zomboid": {"state": "todo", "note": "Already installed on the panel. Compare the live egg with this copy before changing either."},
-  "ark-survival-ascended": {"state": "decide", "note": "The store category is \"Ark: Survival\". Pick Ascended or Evolved (or sell both) before configuring."},
-  "ark-survival-evolved": {"state": "decide", "note": "The store category is \"Ark: Survival\". Pick Ascended or Evolved (or sell both) before configuring."}
+  "project-zomboid": {"state": "next", "note": "Already installed on the panel. Compare the live egg with this copy before changing either."},
+  "ark-survival-ascended": {"state": "todo", "note": "Sold as its own game: a subcategory \"ARK: Survival Ascended\" under \"Ark: Survival\", with its own products."},
+  "ark-survival-evolved": {"state": "todo", "note": "Sold as its own game: a subcategory \"ARK: Survival Evolved\" under \"Ark: Survival\", with its own products."},
+  "minecraft-paper": {"state": "last", "note": "Minecraft goes last. It has the most eggs and needs a plan for how the store presents the choice."},
+  "minecraft-vanilla": {"state": "last"},
+  "minecraft-fabric": {"state": "last"},
+  "minecraft-forge": {"state": "last"},
+  "minecraft-neoforge": {"state": "last"},
+  "minecraft-curseforge": {"state": "last"},
+  "minecraft-modrinth": {"state": "last"}
 }

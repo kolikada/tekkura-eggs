@@ -253,5 +253,20 @@
     },
     "note": "Invite codes work without it; DirectIP must match the game port, so it follows port 1.",
     "panel_egg_id": 21
+  },
+  "arma-3": {
+    "state": "configured",
+    "ports": {
+      "required_ports": 6,
+      "connect_port_index": 1,
+      "port_variables": {
+        "RCON_PORT": 6
+      }
+    },
+    "secrets": [
+      "RCON_PASSWORD"
+    ],
+    "note": "Game, +1 query, +2 Steam, +3 VON and +4 BattlEye are fixed offsets, hence a run of 5; RCON (required, no default upstream) gets the 6th. Install needs a real Steam account (not anonymous) set as the egg's default STEAM_USER and STEAM_PASS on the panel; Kenneth sets those, they are credentials.",
+    "panel_egg_id": 22
   }
 }

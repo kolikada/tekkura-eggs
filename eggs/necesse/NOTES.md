@@ -3,7 +3,7 @@
 Store category: **Necesse** (primary)
 Upstream: [games-steamcmd/necesse/egg-necesse.json](https://github.com/pelican-eggs/games-steamcmd/blob/68aa3847dda477c9e5cb0522295b212042f746af/necesse/egg-necesse.json)
 Format: `PTDL_v2`
-Status: **imported**
+Status: **configured**
 
 The port reaches the game through cfg/server.cfg.
 

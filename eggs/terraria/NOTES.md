@@ -3,7 +3,7 @@
 Store category: **Terraria** (primary)
 Upstream: [games-standalone/terraria/vanilla/egg-terraria-vanilla.json](https://github.com/pelican-eggs/games-standalone/blob/e1b52607397c0de9d6918d0659f1ff95721d3b49/terraria/vanilla/egg-terraria-vanilla.json)
 Format: `PTDL_v2`
-Status: **imported**
+Status: **configured**
 
 The port reaches the game through serverconfig.txt.
 

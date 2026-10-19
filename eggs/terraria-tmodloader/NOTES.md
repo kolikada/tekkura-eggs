@@ -3,7 +3,7 @@
 Store category: **Terraria** (variant)
 Upstream: [games-standalone/terraria/tmodloader/egg-t-modloader.json](https://github.com/pelican-eggs/games-standalone/blob/e1b52607397c0de9d6918d0659f1ff95721d3b49/terraria/tmodloader/egg-t-modloader.json)
 Format: `PTDL_v2`
-Status: **imported**
+Status: **configured**
 
 ## To configure
 

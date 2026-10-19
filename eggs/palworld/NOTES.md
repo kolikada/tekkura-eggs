@@ -3,7 +3,7 @@
 Store category: **Palworld** (primary)
 Upstream: [games-steamcmd/palworld/egg-palworld.yaml](https://github.com/pelican-eggs/games-steamcmd/blob/68aa3847dda477c9e5cb0522295b212042f746af/palworld/egg-palworld.yaml)
 Format: `PLCN_v3`
-Status: **imported**
+Status: **configured**
 
 RCON stays inside the container (the console uses it), so it needs no allocation.
 

@@ -3,7 +3,7 @@
 Store category: **Left 4 Dead 2** (primary)
 Upstream: [games-steamcmd/left4dead_2/egg-left4-dead2.json](https://github.com/pelican-eggs/games-steamcmd/blob/68aa3847dda477c9e5cb0522295b212042f746af/left4dead_2/egg-left4-dead2.json)
 Format: `PLCN_v1`
-Status: **imported**
+Status: **configured**
 
 ## To configure
 

@@ -3,7 +3,7 @@
 Store category: **HumanitZ** (primary)
 Upstream: [games-steamcmd/humanitz/egg-humanit-z.json](https://github.com/pelican-eggs/games-steamcmd/blob/68aa3847dda477c9e5cb0522295b212042f746af/humanitz/egg-humanit-z.json)
 Format: `PTDL_v2`
-Status: **imported**
+Status: **configured**
 
 ## To configure
 

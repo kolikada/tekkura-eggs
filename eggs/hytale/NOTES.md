@@ -3,7 +3,7 @@
 Store category: **Hytale** (primary)
 Upstream: [games-standalone/hytale/egg-hytale.yaml](https://github.com/pelican-eggs/games-standalone/blob/e1b52607397c0de9d6918d0659f1ff95721d3b49/hytale/egg-hytale.yaml)
 Format: `PLCN_v3`
-Status: **imported**
+Status: **configured**
 
 ## To configure
 

@@ -3,9 +3,9 @@
 Store category: **Ark: Survival** (primary)
 Upstream: [games-steamcmd/ark_survival_ascended/egg-a-r-k--survival-ascended.json](https://github.com/pelican-eggs/games-steamcmd/blob/68aa3847dda477c9e5cb0522295b212042f746af/ark_survival_ascended/egg-a-r-k--survival-ascended.json)
 Format: `PLCN_v1`
-Status: **imported**
+Status: **configured**
 
-Peer port is always game +1, hence 2. RCON is used inside the container for clean shutdown. Sold as its own subcategory under "Ark: Survival".
+Peer port is always game +1, hence 2. RCON is used inside the container for clean shutdown. Its subcategory exists under "Ark: Survival" (hidden until it has products).
 
 ## To configure
 

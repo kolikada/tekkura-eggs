@@ -3,7 +3,7 @@
 Store category: **Sons Of The Forest** (primary)
 Upstream: [games-steamcmd/sonsoftheforest/egg-sons-of-the-forest.json](https://github.com/pelican-eggs/games-steamcmd/blob/68aa3847dda477c9e5cb0522295b212042f746af/sonsoftheforest/egg-sons-of-the-forest.json)
 Format: `PTDL_v2`
-Status: **imported**
+Status: **configured**
 
 ## To configure
 

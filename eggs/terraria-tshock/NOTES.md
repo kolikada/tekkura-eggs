@@ -3,7 +3,7 @@
 Store category: **Terraria** (variant)
 Upstream: [games-standalone/terraria/tshock/egg-tshock.json](https://github.com/pelican-eggs/games-standalone/blob/e1b52607397c0de9d6918d0659f1ff95721d3b49/terraria/tshock/egg-tshock.json)
 Format: `PLCN_v3`
-Status: **imported**
+Status: **configured**
 
 ## To configure
 

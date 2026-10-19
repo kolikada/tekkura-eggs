@@ -3,7 +3,7 @@
 Store category: **Arma 3 Reforger** (primary)
 Upstream: [games-steamcmd/arma/arma_reforger/egg-arma-reforger.json](https://github.com/pelican-eggs/games-steamcmd/blob/68aa3847dda477c9e5cb0522295b212042f746af/arma/arma_reforger/egg-arma-reforger.json)
 Format: `PLCN_v2`
-Status: **imported**
+Status: **configured**
 
 The port reaches the game through config.json. A2S and RCON are optional and off.
 

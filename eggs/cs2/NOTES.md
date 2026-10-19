@@ -3,7 +3,7 @@
 Store category: **CS:2** (primary)
 Upstream: [games-steamcmd/counter_strike/counter_strike_2/egg-counter--strike2.yaml](https://github.com/pelican-eggs/games-steamcmd/blob/68aa3847dda477c9e5cb0522295b212042f746af/counter_strike/counter_strike_2/egg-counter--strike2.yaml)
 Format: `PLCN_v3`
-Status: **imported**
+Status: **configured**
 
 Steam token made optional: it is the customer's own credential. Without one the server is LAN only.
 

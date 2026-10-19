@@ -3,7 +3,7 @@
 Store category: **Valheim** (variant)
 Upstream: [games-steamcmd/valheim/valheim_bepinex/egg-valheim-bep-i-nex.yaml](https://github.com/pelican-eggs/games-steamcmd/blob/68aa3847dda477c9e5cb0522295b212042f746af/valheim/valheim_bepinex/egg-valheim-bep-i-nex.yaml)
 Format: `PLCN_v3`
-Status: **imported**
+Status: **configured**
 
 Query is always game +1. The join password defaulted to "secret" on every server; now generated.
 

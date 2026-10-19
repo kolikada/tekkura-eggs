@@ -3,7 +3,7 @@
 Store category: **Windrose** (primary)
 Upstream: [games-steamcmd/windrose/egg-windrose.json](https://github.com/pelican-eggs/games-steamcmd/blob/68aa3847dda477c9e5cb0522295b212042f746af/windrose/egg-windrose.json)
 Format: `PLCN_v3`
-Status: **imported**
+Status: **configured**
 
 Invite codes work without it; DirectIP must match the game port, so it follows port 1.
 

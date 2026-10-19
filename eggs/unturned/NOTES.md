@@ -3,7 +3,7 @@
 Store category: **Unturned** (primary)
 Upstream: [games-steamcmd/unturned/egg-unturned.json](https://github.com/pelican-eggs/games-steamcmd/blob/68aa3847dda477c9e5cb0522295b212042f746af/unturned/egg-unturned.json)
 Format: `PTDL_v2`
-Status: **imported**
+Status: **configured**
 
 Game +1 is required. Steam token made optional and passed only when set.
 

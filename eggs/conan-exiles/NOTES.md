@@ -3,7 +3,7 @@
 Store category: **Conan Exiles** (primary)
 Upstream: [games-steamcmd/conan_exiles/egg-conan-exiles-enhanced.yaml](https://github.com/pelican-eggs/games-steamcmd/blob/68aa3847dda477c9e5cb0522295b212042f746af/conan_exiles/egg-conan-exiles-enhanced.yaml)
 Format: `PLCN_v3`
-Status: **imported**
+Status: **configured**
 
 Game +1 is fixed, query is the 3rd port. Players connect on the game port (1st).
 

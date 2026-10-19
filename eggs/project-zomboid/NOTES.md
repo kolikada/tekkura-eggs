@@ -3,9 +3,9 @@
 Store category: **Project Zomboid** (primary)
 Upstream: [games-steamcmd/project_zomboid/egg-project-zomboid.json](https://github.com/pelican-eggs/games-steamcmd/blob/68aa3847dda477c9e5cb0522295b212042f746af/project_zomboid/egg-project-zomboid.json)
 Format: `PLCN_v1`
-Status: **in progress**
+Status: **configured**
 
-Production egg #3 (Tekkura UUID). The three PZ plans point at it. Egg #1 is the old upstream copy, kept unconfigured for the customer server already on it. Left: a test order that a player can join.
+Production egg #3 (Tekkura UUID). The three PZ plans point at it. Egg #1, renamed "Project Zomboid (old)", stays for the customer server already on it.
 
 ## To configure
 

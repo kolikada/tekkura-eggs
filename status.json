@@ -1,7 +1,7 @@
 {
   "project-zomboid": {
-    "state": "in progress",
-    "note": "Production egg #3 (Tekkura UUID). The three PZ plans point at it. Egg #1 is the old upstream copy, kept unconfigured for the customer server already on it. Left: a test order that a player can join.",
+    "state": "configured",
+    "note": "Production egg #3 (Tekkura UUID). The three PZ plans point at it. Egg #1, renamed \"Project Zomboid (old)\", stays for the customer server already on it.",
     "ports": {
       "required_ports": 2,
       "connect_port_index": 1,
@@ -11,10 +11,11 @@
     },
     "secrets": [
       "ADMIN_PASSWORD"
-    ]
+    ],
+    "panel_egg_id": 3
   },
   "ark-survival-ascended": {
-    "state": "imported",
+    "state": "configured",
     "ports": {
       "required_ports": 2,
       "connect_port_index": 1,
@@ -23,13 +24,14 @@
     "secrets": [
       "ARK_ADMIN_PASSWORD"
     ],
-    "note": "Peer port is always game +1, hence 2. RCON is used inside the container for clean shutdown. Sold as its own subcategory under \"Ark: Survival\".",
+    "note": "Peer port is always game +1, hence 2. RCON is used inside the container for clean shutdown. Its subcategory exists under \"Ark: Survival\" (hidden until it has products).",
     "internal": [
       "RCON_PORT"
-    ]
+    ],
+    "panel_egg_id": 5
   },
   "ark-survival-evolved": {
-    "state": "imported",
+    "state": "configured",
     "ports": {
       "required_ports": 3,
       "connect_port_index": 1,
@@ -40,10 +42,11 @@
     "secrets": [
       "ARK_ADMIN_PASSWORD"
     ],
-    "note": "Raw UDP is always game +1, query is the 3rd port. The egg default admin password was PleaseChangeMe. Sold as its own subcategory under \"Ark: Survival\".",
+    "note": "Raw UDP is always game +1, query is the 3rd port. The egg default admin password was PleaseChangeMe. Its subcategory exists under \"Ark: Survival\" (hidden until it has products).",
     "internal": [
       "RCON_PORT"
-    ]
+    ],
+    "panel_egg_id": 6
   },
   "minecraft-paper": {
     "state": "last",
@@ -68,7 +71,7 @@
     "state": "last"
   },
   "palworld": {
-    "state": "imported",
+    "state": "configured",
     "ports": {
       "required_ports": 1,
       "connect_port_index": 1,
@@ -80,10 +83,11 @@
     "note": "RCON stays inside the container (the console uses it), so it needs no allocation.",
     "internal": [
       "RCON_PORT"
-    ]
+    ],
+    "panel_egg_id": 4
   },
   "cs2": {
-    "state": "imported",
+    "state": "configured",
     "ports": {
       "required_ports": 1,
       "connect_port_index": 1,
@@ -95,44 +99,49 @@
     "note": "Steam token made optional: it is the customer's own credential. Without one the server is LAN only.",
     "internal": [
       "TV_PORT"
-    ]
+    ],
+    "panel_egg_id": 7
   },
   "hytale": {
-    "state": "imported",
-    "ports": {
-      "required_ports": 1,
-      "connect_port_index": 1,
-      "port_variables": {}
-    }
-  },
-  "necesse": {
-    "state": "imported",
+    "state": "configured",
     "ports": {
       "required_ports": 1,
       "connect_port_index": 1,
       "port_variables": {}
     },
-    "note": "The port reaches the game through cfg/server.cfg."
+    "panel_egg_id": 8
   },
-  "left-4-dead-2": {
-    "state": "imported",
+  "necesse": {
+    "state": "configured",
     "ports": {
       "required_ports": 1,
       "connect_port_index": 1,
       "port_variables": {}
-    }
+    },
+    "note": "The port reaches the game through cfg/server.cfg.",
+    "panel_egg_id": 9
+  },
+  "left-4-dead-2": {
+    "state": "configured",
+    "ports": {
+      "required_ports": 1,
+      "connect_port_index": 1,
+      "port_variables": {}
+    },
+    "panel_egg_id": 10
   },
   "unturned": {
-    "state": "imported",
+    "state": "configured",
     "ports": {
       "required_ports": 2,
       "connect_port_index": 1,
       "port_variables": {}
     },
-    "note": "Game +1 is required. Steam token made optional and passed only when set."
+    "note": "Game +1 is required. Steam token made optional and passed only when set.",
+    "panel_egg_id": 11
   },
   "conan-exiles": {
-    "state": "imported",
+    "state": "configured",
     "ports": {
       "required_ports": 3,
       "connect_port_index": 1,
@@ -143,10 +152,11 @@
     "note": "Game +1 is fixed, query is the 3rd port. Players connect on the game port (1st).",
     "internal": [
       "RCON_PORT"
-    ]
+    ],
+    "panel_egg_id": 12
   },
   "sons-of-the-forest": {
-    "state": "imported",
+    "state": "configured",
     "ports": {
       "required_ports": 3,
       "connect_port_index": 1,
@@ -154,10 +164,11 @@
         "QUERY_PORT": 2,
         "BLOBSYNC_PORT": 3
       }
-    }
+    },
+    "panel_egg_id": 13
   },
   "valheim": {
-    "state": "imported",
+    "state": "configured",
     "ports": {
       "required_ports": 2,
       "connect_port_index": 1,
@@ -166,10 +177,11 @@
     "secrets": [
       "PASSWORD"
     ],
-    "note": "Query is always game +1. The join password defaulted to \"secret\" on every server; now generated."
+    "note": "Query is always game +1. The join password defaulted to \"secret\" on every server; now generated.",
+    "panel_egg_id": 14
   },
   "valheim-bepinex": {
-    "state": "imported",
+    "state": "configured",
     "ports": {
       "required_ports": 2,
       "connect_port_index": 1,
@@ -178,54 +190,60 @@
     "secrets": [
       "PASSWORD"
     ],
-    "note": "Query is always game +1. The join password defaulted to \"secret\" on every server; now generated."
+    "note": "Query is always game +1. The join password defaulted to \"secret\" on every server; now generated.",
+    "panel_egg_id": 15
   },
   "terraria": {
-    "state": "imported",
+    "state": "configured",
     "ports": {
       "required_ports": 1,
       "connect_port_index": 1,
       "port_variables": {}
     },
-    "note": "The port reaches the game through serverconfig.txt."
+    "note": "The port reaches the game through serverconfig.txt.",
+    "panel_egg_id": 16
   },
   "terraria-tmodloader": {
-    "state": "imported",
-    "ports": {
-      "required_ports": 1,
-      "connect_port_index": 1,
-      "port_variables": {}
-    }
-  },
-  "terraria-tshock": {
-    "state": "imported",
-    "ports": {
-      "required_ports": 1,
-      "connect_port_index": 1,
-      "port_variables": {}
-    }
-  },
-  "arma-reforger": {
-    "state": "imported",
+    "state": "configured",
     "ports": {
       "required_ports": 1,
       "connect_port_index": 1,
       "port_variables": {}
     },
-    "note": "The port reaches the game through config.json. A2S and RCON are optional and off."
+    "panel_egg_id": 17
+  },
+  "terraria-tshock": {
+    "state": "configured",
+    "ports": {
+      "required_ports": 1,
+      "connect_port_index": 1,
+      "port_variables": {}
+    },
+    "panel_egg_id": 18
+  },
+  "arma-reforger": {
+    "state": "configured",
+    "ports": {
+      "required_ports": 1,
+      "connect_port_index": 1,
+      "port_variables": {}
+    },
+    "note": "The port reaches the game through config.json. A2S and RCON are optional and off.",
+    "panel_egg_id": 19
   },
   "humanitz": {
-    "state": "imported",
+    "state": "configured",
     "ports": {
       "required_ports": 2,
       "connect_port_index": 1,
       "port_variables": {
         "QUERY_PORT": 2
       }
-    }
+    },
+    "panel_egg_id": 20
   },
   "windrose": {
-    "state": "imported",
+    "state": "configured",
     "ports": {
       "required_ports": 1,
       "connect_port_index": 1,
@@ -233,6 +251,7 @@
         "DIRECT_CONNECTION_PORT": 1
       }
     },
-    "note": "Invite codes work without it; DirectIP must match the game port, so it follows port 1."
+    "note": "Invite codes work without it; DirectIP must match the game port, so it follows port 1.",
+    "panel_egg_id": 21
   }
 }

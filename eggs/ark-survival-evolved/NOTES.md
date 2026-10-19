@@ -3,9 +3,9 @@
 Store category: **Ark: Survival** (primary)
 Upstream: [games-steamcmd/ark_survival_evolved/egg-ark--survival-evolved.json](https://github.com/pelican-eggs/games-steamcmd/blob/68aa3847dda477c9e5cb0522295b212042f746af/ark_survival_evolved/egg-ark--survival-evolved.json)
 Format: `PLCN_v3`
-Status: **imported**
+Status: **configured**
 
-Raw UDP is always game +1, query is the 3rd port. The egg default admin password was PleaseChangeMe. Sold as its own subcategory under "Ark: Survival".
+Raw UDP is always game +1, query is the 3rd port. The egg default admin password was PleaseChangeMe. Its subcategory exists under "Ark: Survival" (hidden until it has products).
 
 ## To configure
 

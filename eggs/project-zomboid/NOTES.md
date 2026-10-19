@@ -5,7 +5,7 @@ Upstream: [games-steamcmd/project_zomboid/egg-project-zomboid.json](https://gith
 Format: `PLCN_v1`
 Status: **in progress**
 
-Imported as a new egg next to the old live one, which stays for the customer server already on it. The three PZ plans point at the new egg.
+Production egg #3 (Tekkura UUID). The three PZ plans point at it. Egg #1 is the old upstream copy, kept unconfigured for the customer server already on it. Left: a test order that a player can join.
 
 ## To configure
 

@@ -58,7 +58,11 @@ own port.
 
 ## Workflow, one egg at a time
 
-1. Pick the next egg from the table and open its `NOTES.md`.
+1. Pick the next egg from the table and open its `NOTES.md`. **Give it a new
+   `uuid` first.** The panel's importer matches eggs by UUID, so an egg that
+   still carries upstream's UUID overwrites any copy already on the panel,
+   rewriting the startup of every server on it and deleting their variables.
+   Production's original Zomboid egg had exactly that UUID.
 2. Edit the egg file here and commit, so the diff against upstream is the record
    of what we changed and why.
 3. Run `python tools/audit.py` to refresh the notes and the table.

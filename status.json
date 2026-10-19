@@ -1,17 +1,46 @@
 {
   "project-zomboid": {
     "state": "in progress",
-    "note": "Imported as a new egg next to the old live one, which stays for the customer server already on it. The three PZ plans point at the new egg.",
-    "ports": {"required_ports": 2, "connect_port_index": 1, "port_variables": {"STEAM_PORT": 2}},
-    "secrets": ["ADMIN_PASSWORD"]
+    "note": "Production egg #3 (Tekkura UUID). The three PZ plans point at it. Egg #1 is the old upstream copy, kept unconfigured for the customer server already on it. Left: a test order that a player can join.",
+    "ports": {
+      "required_ports": 2,
+      "connect_port_index": 1,
+      "port_variables": {
+        "STEAM_PORT": 2
+      }
+    },
+    "secrets": [
+      "ADMIN_PASSWORD"
+    ]
   },
-  "ark-survival-ascended": {"state": "todo", "note": "Sold as its own game: a subcategory \"ARK: Survival Ascended\" under \"Ark: Survival\", with its own products."},
-  "ark-survival-evolved": {"state": "todo", "note": "Sold as its own game: a subcategory \"ARK: Survival Evolved\" under \"Ark: Survival\", with its own products."},
-  "minecraft-paper": {"state": "last", "note": "Minecraft goes last. It has the most eggs and needs a plan for how the store presents the choice."},
-  "minecraft-vanilla": {"state": "last"},
-  "minecraft-fabric": {"state": "last"},
-  "minecraft-forge": {"state": "last"},
-  "minecraft-neoforge": {"state": "last"},
-  "minecraft-curseforge": {"state": "last"},
-  "minecraft-modrinth": {"state": "last"}
+  "ark-survival-ascended": {
+    "state": "todo",
+    "note": "Sold as its own game: a subcategory \"ARK: Survival Ascended\" under \"Ark: Survival\", with its own products."
+  },
+  "ark-survival-evolved": {
+    "state": "todo",
+    "note": "Sold as its own game: a subcategory \"ARK: Survival Evolved\" under \"Ark: Survival\", with its own products."
+  },
+  "minecraft-paper": {
+    "state": "last",
+    "note": "Minecraft goes last. It has the most eggs and needs a plan for how the store presents the choice."
+  },
+  "minecraft-vanilla": {
+    "state": "last"
+  },
+  "minecraft-fabric": {
+    "state": "last"
+  },
+  "minecraft-forge": {
+    "state": "last"
+  },
+  "minecraft-neoforge": {
+    "state": "last"
+  },
+  "minecraft-curseforge": {
+    "state": "last"
+  },
+  "minecraft-modrinth": {
+    "state": "last"
+  }
 }

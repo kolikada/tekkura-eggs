@@ -368,5 +368,25 @@
     "path": "bedrock/pocketmine_mp/egg-pocketmine-m-p.json",
     "commit": "c6f2262eb351054d1be44d3f6a3a605ae163d682",
     "file": "eggs/minecraft-pocketmine/egg-pocketmine-m-p.json"
+  },
+  {
+    "slug": "rust",
+    "store_category": "Rust",
+    "role": "primary",
+    "upstream": "https://github.com/pelican-eggs/games-steamcmd/blob/68aa3847dda477c9e5cb0522295b212042f746af/rust/vanilla/egg-rust.yaml",
+    "repo": "games-steamcmd",
+    "path": "rust/vanilla/egg-rust.yaml",
+    "commit": "68aa3847dda477c9e5cb0522295b212042f746af",
+    "file": "eggs/rust/egg-rust.yaml"
+  },
+  {
+    "slug": "dayz",
+    "store_category": "DayZ",
+    "role": "primary",
+    "upstream": "https://github.com/pelican-eggs/games-steamcmd/blob/68aa3847dda477c9e5cb0522295b212042f746af/dayz/egg-day-z.json",
+    "repo": "games-steamcmd",
+    "path": "dayz/egg-day-z.json",
+    "commit": "68aa3847dda477c9e5cb0522295b212042f746af",
+    "file": "eggs/dayz/egg-day-z.json"
   }
 ]

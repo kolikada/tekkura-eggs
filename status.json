@@ -420,7 +420,8 @@
     "secrets": [
       "RCON_PASS"
     ],
-    "note": "Query, web RCON (admin tools) and the Rust+ companion app all need to be reachable, so each gets a port; one spare. RCON password generated."
+    "note": "Query, web RCON (admin tools) and the Rust+ companion app all need to be reachable, so each gets a port; one spare. RCON password generated.",
+    "panel_egg_id": 39
   },
   "dayz": {
     "state": "configured",
@@ -441,6 +442,7 @@
       "STEAM_USER",
       "STEAM_PASS"
     ],
-    "note": "Query is needed for the server list. Like Arma 3, it installs only with a real Steam login, which the customer supplies; the server reinstalls itself once both are filled."
+    "note": "Query is needed for the server list. Like Arma 3, it installs only with a real Steam login, which the customer supplies; the server reinstalls itself once both are filled.",
+    "panel_egg_id": 40
   }
 }

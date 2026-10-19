@@ -1,0 +1,5 @@
+{
+  "project-zomboid": {"state": "todo", "note": "Already installed on the panel. Compare the live egg with this copy before changing either."},
+  "ark-survival-ascended": {"state": "decide", "note": "The store category is \"Ark: Survival\". Pick Ascended or Evolved (or sell both) before configuring."},
+  "ark-survival-evolved": {"state": "decide", "note": "The store category is \"Ark: Survival\". Pick Ascended or Evolved (or sell both) before configuring."}
+}

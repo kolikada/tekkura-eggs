@@ -39,7 +39,7 @@ Required with no default (provisioning would build a server that cannot start):
 | `MAX_PLAYERS` | 32 | yes | required\|numeric\|between:1,32 |
 | `ADMIN_PASSWORD` |   | yes | required\|alpha_dash\|between:1,30 |
 | `PUBLIC_IP` |   | no | nullable\|string |
-| `SERVER_NAME` | A Pelican hosted Palworld Server | yes | required\|string\|max:64 |
+| `SERVER_NAME` | A Tekkura hosted Palworld Server | yes | required\|string\|max:64 |
 | `SERVER_PASSWORD` |   | yes | nullable\|alpha_dash\|between:1,30 |
 | `RCON_PORT` | 25575 | no | required\|numeric |
 | `RCON_ENABLE` | True | no | required\|string\|in:True |

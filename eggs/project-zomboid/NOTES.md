@@ -34,7 +34,7 @@ export PATH="./jre64/bin:$PATH" ; export LD_LIBRARY_PATH="./linux64:./natives:.:
 
 | Env | Default | Editable | Rules |
 | --- | --- | --- | --- |
-| `SERVER_NAME` | Pelican | yes | required\|alpha_num\|max:64 |
+| `SERVER_NAME` | Tekkura | yes | required\|alpha_num\|max:64 |
 | `ADMIN_USER` | admin | yes | required\|string\|max:20 |
 | `ADMIN_PASSWORD` |   | yes | required\|string\|max:32 |
 | `STEAM_PORT` | 16262 | no | required\|string\|max:20 |

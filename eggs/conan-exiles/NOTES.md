@@ -34,6 +34,6 @@ Port variables that keep a fixed default on every server (collide on a shared no
 | `SRCDS_APPID` | 443030 | no | required\|string\|in:443030 |
 | `AUTO_UPDATE` | 1 | yes | boolean |
 | `QUERY_PORT` | 27015 | no | required\|numeric\|max:65535 |
-| `SRV_NAME` | Pelican hosted Server | yes | required\|string\|max:40 |
+| `SRV_NAME` | Tekkura Conan Exiles Server | yes | required\|string\|max:40 |
 | `SRV_PW` |   | yes | nullable\|string |
 | `RCON_PORT` | 25575 | no | required\|numeric |

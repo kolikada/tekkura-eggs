@@ -19,7 +19,7 @@
         "ghcr.io\/parkervcp\/steamcmd:debian": "ghcr.io\/parkervcp\/steamcmd:debian"
     },
     "file_denylist": [],
-    "startup": "export PATH=\".\/jre64\/bin:$PATH\" ; export LD_LIBRARY_PATH=\".\/linux64:.\/natives:.:.\/jre64\/lib\/amd64:${LD_LIBRARY_PATH}\" ; JSIG=\"libjsig.so\" ; LD_PRELOAD=\"${LD_PRELOAD}:${JSIG}\" .\/ProjectZomboid64  -port {{SERVER_PORT}} -udpport {{STEAM_PORT}} -cachedir=\/home\/container\/.cache -servername \"{{SERVER_NAME}}\" -adminusername {{ADMIN_USER}} -adminpassword \"{{ADMIN_PASSWORD}}\"",
+    "startup": "if [ \"${SERVER_MEMORY:-0}\" -gt 0 ]; then sed -i -E \"s\/-Xmx[0-9]+[kKmMgG]?\/-Xmx$(( SERVER_MEMORY - SERVER_MEMORY \/ 4 ))m\/\" ProjectZomboid64.json; fi ; export PATH=\".\/jre64\/bin:$PATH\" ; export LD_LIBRARY_PATH=\".\/linux64:.\/natives:.:.\/jre64\/lib\/amd64:${LD_LIBRARY_PATH}\" ; JSIG=\"libjsig.so\" ; LD_PRELOAD=\"${LD_PRELOAD}:${JSIG}\" .\/ProjectZomboid64  -port {{SERVER_PORT}} -udpport {{STEAM_PORT}} -cachedir=\/home\/container\/.cache -servername \"{{SERVER_NAME}}\" -adminusername {{ADMIN_USER}} -adminpassword \"{{ADMIN_PASSWORD}}\"",
     "config": {
         "files": "{}",
         "startup": "{\r\n    \"done\": \"SERVER STARTED\"\r\n}",

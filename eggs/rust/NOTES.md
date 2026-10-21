@@ -43,7 +43,7 @@ Required with no default (provisioning would build a server that cannot start):
 | `SERVER_URL` | http://example.com | yes | nullable\|url |
 | `WORLD_SIZE` | 3000 | yes | required\|integer |
 | `WORLD_SEED` |   | yes | nullable\|string |
-| `MAX_PLAYERS` | 40 | no | required\|integer |
+| `MAX_PLAYERS` | 40 | yes | required\|integer\|between:1,500 |
 | `SERVER_IMG` |   | yes | nullable\|url |
 | `QUERY_PORT` | 27017 | no | required\|integer |
 | `RCON_PORT` | 28016 | no | required\|integer |

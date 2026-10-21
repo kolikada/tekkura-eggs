@@ -38,10 +38,12 @@ Port variables that keep a fixed default on every server (collide on a shared no
 | `SERVER_PASSWORD` |   | yes | nullable\|string\|max:64 |
 | `MAX_PLAYERS` | 4 | yes | required\|integer\|min:1\|max:10 |
 | `SERVER_REGION` |   | yes | nullable\|string\|in:,SEA,CIS,EU |
-| `WORLD_NAME` | Windrose World | yes | required\|string\|max:64 |
-| `WORLD_PRESET_TYPE` | Medium | yes | required\|string\|in:Easy,Medium,Hard |
+| `WORLD_NAME` | Windrose World | hidden | required\|string\|max:64 |
+| `WORLD_PRESET_TYPE` | Medium | hidden | required\|string\|in:Easy,Medium,Hard |
 | `SRCDS_APPID` | 4129620 | no | required\|string\|in:4129620 |
 | `SRCDS_BETAID` |   | yes | nullable\|string |
 | `SRCDS_BETAPASS` |   | yes | nullable\|string |
 | `WINDOWS_INSTALL` | 1 | no | boolean\|in:1 |
 | `AUTO_UPDATE` | 1 | yes | boolean |
+
+`WORLD_NAME` and `WORLD_PRESET_TYPE` are hidden (2026-10-22): nothing reads them. The world's settings live in `WorldDescription.json` under a generated world id, which a Wings config file cannot address, so they are changed in that file.

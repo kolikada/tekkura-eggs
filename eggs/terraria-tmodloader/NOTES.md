@@ -26,7 +26,7 @@ Status: **configured**
 | Env | Default | Editable | Rules |
 | --- | --- | --- | --- |
 | `WORLD_NAME` | world | yes | required\|string\|max:20 |
-| `MAX_PLAYERS` | 8 | no | required\|numeric\|digits_between:1,3 |
+| `MAX_PLAYERS` | 8 | yes | required\|integer\|between:1,255 |
 | `WORLD_SIZE` | 1 | yes | required\|string\|in:1,2,3 |
 | `VERSION` | latest | yes | required\|string\|max:20 |
 | `GITHUB_USER` |   | no | string\|nullable |

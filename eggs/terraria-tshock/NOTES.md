@@ -25,7 +25,7 @@ Status: **configured**
 
 | Env | Default | Editable | Rules |
 | --- | --- | --- | --- |
-| `MAX_PLAYERS` | 8 | no | required\|numeric\|digits_between:1,3 |
+| `MAX_PLAYERS` | 8 | yes | required\|integer\|between:1,255 |
 | `WORLD_NAME` | world | yes | required\|string\|max:20 |
 | `WORLD_SIZE` | 1 | no | required\|string\|alpha_dash\|max:20 |
 | `TSHOCK_VERSION` | latest | no | required\|string\|max:20 |

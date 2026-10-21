@@ -53,7 +53,11 @@ the arithmetic is `SERVER_MEMORY - SERVER_MEMORY / 4` and not `* 75 / 100`.
 | `ADMIN_USER` | admin | yes | required\|string\|max:20 |
 | `ADMIN_PASSWORD` |   | yes | required\|string\|max:32 |
 | `STEAM_PORT` | 16262 | no | required\|string\|max:20 |
-| `MAX_PLAYERS` | 10 | no | required\|string\|max:20 |
+| `MAX_PLAYERS` | 10 | yes | required\|integer\|between:1,100 |
 | `SRCDS_APPID` | 380870 | no | required\|string\|max:20 |
 | `SRCDS_BETAID` |   | yes | nullable\|string\|max:64 |
 | `AUTO_UPDATE` | 0 | yes | required\|string\|max:20 |
+
+## Max players (2026-10-22)
+
+`MAX_PLAYERS` reached nothing: no startup flag and no config file, while the game reads `MaxPlayers=` from `.cache/Server/<SERVER_NAME>.ini`, so Settings said 10 (locked) while the .ini said 32. The startup now begins by writing the variable into that line when the .ini exists, and the variable is editable. Settings is the place to change it; an edit in the file is replaced at the next start. The panel migration `2026_10_22_100000_wire_game_max_players` copied each existing server's .ini value into the variable before giving it the new startup.

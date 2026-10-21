@@ -221,8 +221,8 @@
             "description": "Display name for the server world. The first world is auto-created on initial startup. To rename an existing world, stop the server and edit WorldDescription.WorldName in R5/Saved/SaveProfiles/Default/RocksDB/<version>/Worlds/<worldId>/WorldDescription.json (a copy is also kept under RocksDB_v2_Backups/).",
             "env_variable": "WORLD_NAME",
             "default_value": "Windrose World",
-            "user_viewable": true,
-            "user_editable": true,
+            "user_viewable": false,
+            "user_editable": false,
             "rules": [
                 "required",
                 "string",
@@ -235,8 +235,8 @@
             "description": "Gameplay difficulty preset for the world. Valid values: Easy, Medium, Hard. Custom world parameters (mob multipliers, combat difficulty, etc.) must be edited manually in WorldDescription.json.",
             "env_variable": "WORLD_PRESET_TYPE",
             "default_value": "Medium",
-            "user_viewable": true,
-            "user_editable": true,
+            "user_viewable": false,
+            "user_editable": false,
             "rules": [
                 "required",
                 "string",

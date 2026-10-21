@@ -19,7 +19,7 @@
         "ghcr.io\/parkervcp\/steamcmd:debian": "ghcr.io\/parkervcp\/steamcmd:debian"
     },
     "file_denylist": [],
-    "startup": "if [ \"${SERVER_MEMORY:-0}\" -gt 0 ]; then sed -i -E \"s\/-Xmx[0-9]+[kKmMgG]?\/-Xmx$(( SERVER_MEMORY - SERVER_MEMORY \/ 4 ))m\/\" ProjectZomboid64.json; fi ; export PATH=\".\/jre64\/bin:$PATH\" ; export LD_LIBRARY_PATH=\".\/linux64:.\/natives:.:.\/jre64\/lib\/amd64:${LD_LIBRARY_PATH}\" ; JSIG=\"libjsig.so\" ; LD_PRELOAD=\"${LD_PRELOAD}:${JSIG}\" .\/ProjectZomboid64  -port {{SERVER_PORT}} -udpport {{STEAM_PORT}} -cachedir=\/home\/container\/.cache -servername \"{{SERVER_NAME}}\" -adminusername {{ADMIN_USER}} -adminpassword \"{{ADMIN_PASSWORD}}\"",
+    "startup": "if [ -f \".cache\/Server\/${SERVER_NAME}.ini\" ]; then sed -i -E \"s\/^MaxPlayers=[0-9]+\/MaxPlayers=${MAX_PLAYERS}\/\" \".cache\/Server\/${SERVER_NAME}.ini\"; fi ; if [ \"${SERVER_MEMORY:-0}\" -gt 0 ]; then sed -i -E \"s\/-Xmx[0-9]+[kKmMgG]?\/-Xmx$(( SERVER_MEMORY - SERVER_MEMORY \/ 4 ))m\/\" ProjectZomboid64.json; fi ; export PATH=\".\/jre64\/bin:$PATH\" ; export LD_LIBRARY_PATH=\".\/linux64:.\/natives:.:.\/jre64\/lib\/amd64:${LD_LIBRARY_PATH}\" ; JSIG=\"libjsig.so\" ; LD_PRELOAD=\"${LD_PRELOAD}:${JSIG}\" .\/ProjectZomboid64  -port {{SERVER_PORT}} -udpport {{STEAM_PORT}} -cachedir=\/home\/container\/.cache -servername \"{{SERVER_NAME}}\" -adminusername {{ADMIN_USER}} -adminpassword \"{{ADMIN_PASSWORD}}\"",
     "config": {
         "files": "{}",
         "startup": "{\r\n    \"done\": \"SERVER STARTED\"\r\n}",
@@ -93,15 +93,15 @@
         {
             "sort": 5,
             "name": "Max Players",
-            "description": "Maximum players to allow",
+            "description": "Written to MaxPlayers in the server's .ini every time it starts, so change it here: an edit made in the file is replaced from this at the next start. 1 to 100.",
             "env_variable": "MAX_PLAYERS",
             "default_value": "10",
             "user_viewable": true,
-            "user_editable": false,
+            "user_editable": true,
             "rules": [
                 "required",
-                "string",
-                "max:20"
+                "integer",
+                "between:1,100"
             ]
         },
         {

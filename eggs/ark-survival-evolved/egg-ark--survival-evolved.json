@@ -121,7 +121,7 @@
         },
         {
             "name": "Auto-update server",
-            "description": "This is to enable auto-updating for servers.\r\n\r\nDefault is 0. Set to 1 to update",
+            "description": "Update the server from Steam every time it starts.",
             "env_variable": "AUTO_UPDATE",
             "default_value": "0",
             "user_viewable": true,
@@ -133,7 +133,7 @@
         },
         {
             "name": "Battle Eye",
-            "description": "Enable BattleEye\r\n\r\n0 to disable\r\n1 to enable\r\n\r\ndefault=\"1\"",
+            "description": "Run BattlEye anti-cheat.",
             "env_variable": "BATTLE_EYE",
             "default_value": "1",
             "user_viewable": true,

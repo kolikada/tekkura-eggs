@@ -135,7 +135,7 @@
         {
             "sort": 8,
             "name": "Steam Auto Update",
-            "description": "Enable or disable auto-update on startup. 0 to disable and 1 to enable.",
+            "description": "Update the server from Steam every time it starts.",
             "env_variable": "AUTO_UPDATE",
             "default_value": "0",
             "user_viewable": true,

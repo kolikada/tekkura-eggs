@@ -89,7 +89,7 @@
         },
         {
             "name": "Automatic Updates",
-            "description": "Quickly checks for any server or mod updates on startup, and updates if necessary. (1 Enable | 0 Disable)",
+            "description": "Check for server and mod updates at every start, and install them.",
             "env_variable": "UPDATE_SERVER",
             "default_value": "1",
             "user_viewable": true,

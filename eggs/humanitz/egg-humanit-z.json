@@ -177,7 +177,7 @@
         },
         {
             "name": "PvP",
-            "description": "0\/1 Off\/On. Enable or disable Player vs Player.",
+            "description": "Players can hurt each other.",
             "env_variable": "PVP",
             "default_value": "1",
             "user_viewable": true,
@@ -188,7 +188,7 @@
         },
         {
             "name": "Clear Infection",
-            "description": "0=Respawning does not rid you of the infection, 1=You lose it upon respawning",
+            "description": "Respawning cures the infection.",
             "env_variable": "CLEAR_INFECTION",
             "default_value": "1",
             "user_viewable": true,
@@ -199,7 +199,7 @@
         },
         {
             "name": "Eagle Eye",
-            "description": "1=Able to purchase the eagle eye skill, 0=You can't",
+            "description": "The Eagle Eye skill can be bought.",
             "env_variable": "EAGLE_EYE",
             "default_value": "1",
             "user_viewable": true,
@@ -210,7 +210,7 @@
         },
         {
             "name": "Air Drop",
-            "description": "1=Enabled, 0=Disabled. Controls whether air drops are enabled.",
+            "description": "Air drops happen.",
             "env_variable": "AIR_DROP",
             "default_value": "1",
             "user_viewable": true,
@@ -221,7 +221,7 @@
         },
         {
             "name": "Weapon Durability",
-            "description": "1=Weapons break when reaching 0% durability except crowbar, 0=Only improvised weapons break at 0% durability",
+            "description": "On: every weapon except the crowbar breaks at 0% durability. Off: only improvised weapons break.",
             "env_variable": "WEAPON_BREAK",
             "default_value": "1",
             "user_viewable": true,
@@ -232,7 +232,7 @@
         },
         {
             "name": "Multiplayer Sleep",
-            "description": "1=Time passes if everyone performs the sleep emote at the same time, 0=Passing time is disabled",
+            "description": "Time passes when every player does the sleep emote at the same time.",
             "env_variable": "MULTIPLAYER_SLEEP",
             "default_value": "0",
             "user_viewable": true,
@@ -254,7 +254,7 @@
         },
         {
             "name": "Loot Respawn",
-            "description": "1=Loot does respawn, 0=Never respawn",
+            "description": "Loot respawns.",
             "env_variable": "LOOT_RESPAWN",
             "default_value": "1",
             "user_viewable": true,
@@ -529,7 +529,7 @@
         },
         {
             "name": "No Death Feedback",
-            "description": "0 to enable player died notification in chat - 1 to disable player died notification in chat.",
+            "description": "Hide the chat message when a player dies.",
             "env_variable": "NO_DEATH_FEEDBACK",
             "default_value": "0",
             "user_viewable": true,
@@ -540,7 +540,7 @@
         },
         {
             "name": "Allow Dismantle",
-            "description": "1 = Enable players to dismantle their own buildings, 0 = Disable",
+            "description": "Players can dismantle their own buildings.",
             "env_variable": "ALLOW_DISMANTLE",
             "default_value": "1",
             "user_viewable": true,
@@ -551,7 +551,7 @@
         },
         {
             "name": "Allow House Dismantle",
-            "description": "1 = Players are able to dismantle house props, 0 = Disable",
+            "description": "Players can dismantle house props.",
             "env_variable": "ALLOW_HOUSE_DISMANTLE",
             "default_value": "1",
             "user_viewable": true,
@@ -562,7 +562,7 @@
         },
         {
             "name": "Territory",
-            "description": "1 = Enabled. In PVE you are not allowed to build in someone's spawn point area. Only non recruit clan members can. 0 = Disable",
+            "description": "In PvE, only clan members who are not recruits can build in someone else's spawn area.",
             "env_variable": "TERRITORY",
             "default_value": "1",
             "user_viewable": true,

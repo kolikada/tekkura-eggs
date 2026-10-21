@@ -160,7 +160,7 @@
         {
             "sort": 4,
             "name": "Public Server",
-            "description": "Public visibility of your server. Set it to false to make the server invisible and only joinable via the 'Join IP'-button.",
+            "description": "Shown in the server list. Off: players join only by IP.",
             "env_variable": "PUBLIC_SERVER",
             "default_value": "1",
             "user_viewable": true,

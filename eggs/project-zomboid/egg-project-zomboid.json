@@ -142,8 +142,7 @@
             "user_editable": true,
             "rules": [
                 "required",
-                "string",
-                "max:20"
+                "boolean"
             ]
         }
     ]

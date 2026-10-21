@@ -56,7 +56,7 @@ the arithmetic is `SERVER_MEMORY - SERVER_MEMORY / 4` and not `* 75 / 100`.
 | `MAX_PLAYERS` | 10 | yes | required\|integer\|between:1,100 |
 | `SRCDS_APPID` | 380870 | no | required\|string\|max:20 |
 | `SRCDS_BETAID` |   | yes | nullable\|string\|max:64 |
-| `AUTO_UPDATE` | 0 | yes | required\|string\|max:20 |
+| `AUTO_UPDATE` | 0 | yes | required\|boolean |
 
 ## Max players (2026-10-22)
 

@@ -4,7 +4,7 @@ meta:
   update_url: 'https://raw.githubusercontent.com/kolikada/tekkura-eggs/main/eggs/minecraft-spigot/egg-spigot.yaml'
 exported_at: '2026-07-14T12:09:49+00:00'
 name: Spigot
-author: team@pelican.dev
+author: admin@tekkura.cloud
 uuid: 36e07f81-9bcf-4aed-bbfd-8c85ee54001c
 description: |-
   Spigot is the most widely-used modded Minecraft server software in the world. It powers many of the

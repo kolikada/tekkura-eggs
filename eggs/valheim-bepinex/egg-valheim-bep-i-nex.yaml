@@ -4,7 +4,7 @@ meta:
   update_url: 'https://raw.githubusercontent.com/kolikada/tekkura-eggs/main/eggs/valheim-bepinex/egg-valheim-bep-i-nex.yaml'
 exported_at: '2026-01-03T15:22:56+00:00'
 name: 'Valheim BepINex'
-author: eggs@goover.dev
+author: admin@tekkura.cloud
 uuid: 22a409d1-c369-41db-b2b8-78b60107f8ed
 description: |-
   A brutal exploration and survival game for 1-10 players, set in a procedurally-generated purgatory

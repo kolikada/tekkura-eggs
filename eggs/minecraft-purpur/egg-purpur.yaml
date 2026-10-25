@@ -4,7 +4,7 @@ meta:
   update_url: 'https://raw.githubusercontent.com/kolikada/tekkura-eggs/main/eggs/minecraft-purpur/egg-purpur.yaml'
 exported_at: '2026-05-15T14:52:45+00:00'
 name: Purpur
-author: purpur@birdflop.com
+author: admin@tekkura.cloud
 uuid: ee85bd29-2d60-4243-bdc2-86ea4a78ec2d
 description: |-
   A drop-in replacement for Paper servers designed for configurability, and new fun and exciting

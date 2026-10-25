@@ -4,7 +4,7 @@ meta:
   update_url: 'https://raw.githubusercontent.com/kolikada/tekkura-eggs/main/eggs/minecraft-vanilla/egg-vanilla-minecraft.yaml'
 exported_at: '2026-03-27T18:15:51+00:00'
 name: 'Vanilla Minecraft'
-author: panel@example.com
+author: admin@tekkura.cloud
 uuid: 78553843-381e-4ef8-a789-afbc98f21839
 description: |-
   Minecraft is a game about placing blocks and going on adventures. Explore randomly generated worlds

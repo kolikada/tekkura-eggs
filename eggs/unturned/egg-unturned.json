@@ -42,7 +42,7 @@
             "user_viewable": true,
             "user_editable": true,
             "rules": "string|max:50",
-            "sort": null,
+            "sort": 1,
             "field_type": "text"
         },
         {
@@ -53,18 +53,18 @@
             "user_viewable": true,
             "user_editable": true,
             "rules": "nullable|string",
-            "sort": null,
+            "sort": 2,
             "field_type": "text"
         },
         {
             "name": "GSLT",
-            "description": "Your own Steam Game Server Login Token. Without one the server only accepts players on its local network. Create one for free at https://steamcommunity.com/dev/managegameservers",
+            "description": "Your own Steam Game Server Login Token. Without one the server only accepts players on its local network. Create one for free at https:\/\/steamcommunity.com\/dev\/managegameservers",
             "env_variable": "GSLT",
             "default_value": "",
             "user_viewable": true,
             "user_editable": true,
             "rules": "nullable|string",
-            "sort": null,
+            "sort": 3,
             "field_type": "text"
         },
         {
@@ -75,7 +75,7 @@
             "user_viewable": false,
             "user_editable": false,
             "rules": "string",
-            "sort": null,
+            "sort": 4,
             "field_type": "text"
         },
         {
@@ -86,7 +86,7 @@
             "user_viewable": true,
             "user_editable": true,
             "rules": "boolean",
-            "sort": null,
+            "sort": 5,
             "field_type": "text"
         },
         {
@@ -97,7 +97,7 @@
             "user_viewable": false,
             "user_editable": false,
             "rules": "required|string|in:1110390",
-            "sort": null,
+            "sort": 6,
             "field_type": "text"
         },
         {
@@ -108,7 +108,7 @@
             "user_viewable": false,
             "user_editable": false,
             "rules": "required|string",
-            "sort": null,
+            "sort": 7,
             "field_type": "text"
         }
     ]

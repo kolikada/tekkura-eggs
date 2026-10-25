@@ -16,6 +16,7 @@ features:
   - java_version
   - pid_limit
   - plugins
+  - srv-minecraft
 docker_images:
   'Java 25': 'ghcr.io/pelican-eggs/yolks:java_25'
   'Java 21': 'ghcr.io/pelican-eggs/yolks:java_21'
@@ -185,7 +186,7 @@ variables:
       Required to use the paper fill API.
       See https://docs.papermc.io/misc/downloads-service/
     env_variable: USER_AGENT
-    default_value: "Tekkura (https://www.tekkura.cloud)"
+    default_value: 'Tekkura (https://www.tekkura.cloud)'
     user_viewable: false
     user_editable: false
     rules:

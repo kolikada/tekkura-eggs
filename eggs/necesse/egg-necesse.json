@@ -42,7 +42,7 @@
             "user_viewable": true,
             "user_editable": true,
             "rules": "required|string|max:20",
-            "sort": null,
+            "sort": 1,
             "field_type": "text"
         },
         {
@@ -53,7 +53,7 @@
             "user_viewable": true,
             "user_editable": true,
             "rules": "required|numeric|max:99",
-            "sort": null,
+            "sort": 2,
             "field_type": "text"
         },
         {
@@ -64,7 +64,7 @@
             "user_viewable": true,
             "user_editable": true,
             "rules": "nullable|string|max:32",
-            "sort": null,
+            "sort": 3,
             "field_type": "text"
         },
         {
@@ -75,7 +75,7 @@
             "user_viewable": true,
             "user_editable": false,
             "rules": "required|string|in:1169370",
-            "sort": null,
+            "sort": 4,
             "field_type": "text"
         },
         {
@@ -86,7 +86,7 @@
             "user_viewable": true,
             "user_editable": true,
             "rules": "boolean",
-            "sort": null,
+            "sort": 5,
             "field_type": "text"
         },
         {
@@ -97,7 +97,7 @@
             "user_viewable": true,
             "user_editable": true,
             "rules": "nullable|string|max:64",
-            "sort": null,
+            "sort": 6,
             "field_type": "text"
         }
     ]

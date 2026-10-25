@@ -16,6 +16,7 @@ features:
   - java_version
   - pid_limit
   - mods
+  - srv-minecraft
 docker_images:
   'Java 8': 'ghcr.io/pelican-eggs/yolks:java_8'
   'Java 11': 'ghcr.io/pelican-eggs/yolks:java_11'
@@ -89,7 +90,7 @@ variables:
       - required
       - string
       - 'between:3,15'
-    sort: null
+    sort: 1
   -
     name: 'Fabric Version'
     description: 'The version of Fabric to install.'
@@ -101,7 +102,7 @@ variables:
       - required
       - string
       - 'between:3,15'
-    sort: null
+    sort: 2
   -
     name: 'Minecraft Version'
     description: |-
@@ -115,7 +116,7 @@ variables:
       - required
       - string
       - 'between:3,15'
-    sort: null
+    sort: 3
   -
     name: 'Server Jar File'
     description: 'The name of the server jarfile to run the server with.'
@@ -126,4 +127,4 @@ variables:
     rules:
       - required
       - 'regex:/^([\w\d._-]+)(\.jar)$/'
-    sort: null
+    sort: 4

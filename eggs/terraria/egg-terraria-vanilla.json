@@ -9,7 +9,7 @@
     "author": "admin@tekkura.cloud",
     "uuid": "a60c52ef-da3f-4ad3-8a52-34960b0c70a8",
     "description": "Dig, fight, explore, build! Nothing is impossible in this action-packed adventure game.",
-    "features": null,
+    "features": [],
     "docker_images": {
         "Debian": "ghcr.io\/parkervcp\/yolks:debian"
     },
@@ -37,7 +37,7 @@
             "user_viewable": true,
             "user_editable": true,
             "rules": "required|string|max:20",
-            "sort": null,
+            "sort": 1,
             "field_type": "text"
         },
         {
@@ -48,7 +48,7 @@
             "user_viewable": true,
             "user_editable": true,
             "rules": "required|string|max:20",
-            "sort": null,
+            "sort": 2,
             "field_type": "text"
         },
         {
@@ -59,7 +59,7 @@
             "user_viewable": true,
             "user_editable": true,
             "rules": "required|numeric|max:255",
-            "sort": null,
+            "sort": 3,
             "field_type": "text"
         },
         {
@@ -70,7 +70,7 @@
             "user_viewable": true,
             "user_editable": true,
             "rules": "required|numeric|in:1,2,3",
-            "sort": null,
+            "sort": 4,
             "field_type": "text"
         },
         {
@@ -81,7 +81,7 @@
             "user_viewable": true,
             "user_editable": true,
             "rules": "required|numeric|in:0,1,2,3",
-            "sort": null,
+            "sort": 5,
             "field_type": "text"
         },
         {
@@ -92,7 +92,7 @@
             "user_viewable": true,
             "user_editable": true,
             "rules": "required|string|max:128",
-            "sort": null,
+            "sort": 6,
             "field_type": "text"
         },
         {
@@ -103,7 +103,7 @@
             "user_viewable": true,
             "user_editable": true,
             "rules": "nullable|string|max:20",
-            "sort": null,
+            "sort": 7,
             "field_type": "text"
         },
         {
@@ -114,7 +114,7 @@
             "user_viewable": true,
             "user_editable": true,
             "rules": "nullable|string",
-            "sort": null,
+            "sort": 8,
             "field_type": "text"
         },
         {
@@ -125,8 +125,9 @@
             "user_viewable": true,
             "user_editable": true,
             "rules": "required|int|between:0,60",
-            "sort": null,
+            "sort": 9,
             "field_type": "text"
         }
-    ]
+    ],
+    "tags": []
 }

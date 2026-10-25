@@ -19,6 +19,7 @@ features:
   - eula
   - java_version
   - pid_limit
+  - srv-minecraft
 docker_images:
   'Java 25': 'ghcr.io/pelican-eggs/yolks:java_25'
   'Java 21': 'ghcr.io/pelican-eggs/yolks:java_21'

@@ -318,7 +318,7 @@ variables:
       - required
       - integer
   -
-    sort: 100
+    sort: 19
     name: 'Server Tags'
     description: |-
       Steam server browser keywords (comma-separated, lowercase, max 4 shown). Categories: wipe schedule

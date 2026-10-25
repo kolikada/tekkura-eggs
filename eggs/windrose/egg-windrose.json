@@ -2,7 +2,7 @@
     "_comment": "DO NOT EDIT: FILE GENERATED AUTOMATICALLY BY PANEL",
     "meta": {
         "version": "PLCN_v3",
-        "update_url": null
+        "update_url": "https:\/\/raw.githubusercontent.com\/kolikada\/tekkura-eggs\/main\/eggs\/windrose\/egg-windrose.json"
     },
     "exported_at": "2026-10-14T15:52:38+00:00",
     "name": "Windrose",

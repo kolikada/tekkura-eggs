@@ -1,7 +1,7 @@
 _comment: 'DO NOT EDIT: FILE GENERATED AUTOMATICALLY BY PANEL'
 meta:
   version: PLCN_v3
-  update_url: null
+  update_url: 'https://raw.githubusercontent.com/kolikada/tekkura-eggs/main/eggs/conan-exiles/egg-conan-exiles-enhanced.yaml'
 exported_at: '2026-05-16T17:15:04+00:00'
 name: 'Conan Exiles Enhanced'
 author: mrbretzel@proton.me

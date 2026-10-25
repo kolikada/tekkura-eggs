@@ -1,7 +1,7 @@
 _comment: 'DO NOT EDIT: FILE GENERATED AUTOMATICALLY BY PANEL'
 meta:
   version: PLCN_v3
-  update_url: null
+  update_url: 'https://raw.githubusercontent.com/kolikada/tekkura-eggs/main/eggs/palworld/egg-palworld.yaml'
 exported_at: '2026-07-11T16:15:38+00:00'
 name: Palworld
 author: admin@ballaual.de

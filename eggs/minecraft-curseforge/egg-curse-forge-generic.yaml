@@ -1,7 +1,7 @@
 _comment: 'DO NOT EDIT: FILE GENERATED AUTOMATICALLY BY PANEL'
 meta:
   version: PLCN_v3
-  update_url: 'https://raw.githubusercontent.com/pelican-eggs/minecraft/refs/heads/main/java/curseforge/egg-curse-forge-generic.yaml'
+  update_url: 'https://raw.githubusercontent.com/kolikada/tekkura-eggs/main/eggs/minecraft-curseforge/egg-curse-forge-generic.yaml'
 exported_at: '2026-09-29T04:41:17+00:00'
 name: 'CurseForge Generic'
 author: contact@chromozone.dev

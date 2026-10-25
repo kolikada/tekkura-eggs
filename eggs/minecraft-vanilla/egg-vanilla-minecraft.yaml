@@ -1,7 +1,7 @@
 _comment: 'DO NOT EDIT: FILE GENERATED AUTOMATICALLY BY PANEL'
 meta:
   version: PLCN_v3
-  update_url: 'https://raw.githubusercontent.com/pelican-eggs/minecraft/refs/heads/main/java/vanilla/egg-vanilla-minecraft.yaml'
+  update_url: 'https://raw.githubusercontent.com/kolikada/tekkura-eggs/main/eggs/minecraft-vanilla/egg-vanilla-minecraft.yaml'
 exported_at: '2026-03-27T18:15:51+00:00'
 name: 'Vanilla Minecraft'
 author: panel@example.com

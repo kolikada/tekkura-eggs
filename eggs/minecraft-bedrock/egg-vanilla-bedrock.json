@@ -2,7 +2,7 @@
     "_comment": "DO NOT EDIT: FILE GENERATED AUTOMATICALLY BY PANEL",
     "meta": {
         "version": "PLCN_v1",
-        "update_url": "https://raw.githubusercontent.com/pelican-eggs/minecraft/refs/heads/main/bedrock/bedrock/egg-vanilla-bedrock.json"
+        "update_url": "https:\/\/raw.githubusercontent.com\/kolikada\/tekkura-eggs\/main\/eggs\/minecraft-bedrock\/egg-vanilla-bedrock.json"
     },
     "exported_at": "2026-04-21T19:02:00+00:00",
     "name": "Vanilla Bedrock",

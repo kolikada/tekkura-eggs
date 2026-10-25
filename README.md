@@ -77,6 +77,22 @@ own port.
 4. Import it on the panel, set its Ports tab, and run a test order.
 5. Set its state to `done` in `status.json` and rerun the audit.
 
+### Update URLs point here, never at upstream
+
+Every egg's `meta.update_url` is its own raw file in this repository
+(`https://raw.githubusercontent.com/kolikada/tekkura-eggs/main/eggs/<slug>/<file>`),
+which is why the repository is public. The panel compares each egg with its
+update URL every day (`p:egg:check-updates`) and offers an **Update** button
+when they differ; that button imports the URL over the egg. Pointed at
+pelican-eggs, as ten production eggs were until 2026-10-26, one click put
+back upstream's variables and undid our configuration. Pointed here, the
+button appears only when this repository has changed, and it brings our
+version. An update keeps the egg's Ports and Secrets tabs, which live in the
+panel database, not the file. The same URLs work for Import from URL.
+
+So: push here first, then press Update on the panel. A new egg file gets its
+own URL before it is imported.
+
 States: `configured` means the file is edited, the egg is on the panel (its id
 is `panel_egg_id`) and its Ports and Secrets tabs match `status.json`, checked
 by reading them back. `done` additionally needs a real order that a player

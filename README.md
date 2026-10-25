@@ -91,7 +91,18 @@ version. An update keeps the egg's Ports and Secrets tabs, which live in the
 panel database, not the file. The same URLs work for Import from URL.
 
 So: push here first, then press Update on the panel. A new egg file gets its
-own URL before it is imported.
+own URL before it is imported. An egg changed in the panel's admin needs the
+same change here, or the next Update undoes it.
+
+**One exception: CurseForge Generic.** On production its `API_KEY` variable
+has a CurseForge API key as its default. This repository is public, so the
+key is never committed and the file here keeps it blank. Production's copy of
+that egg therefore has **no update URL**: an update would wipe the key. If it
+is ever updated anyway, re-enter the key in the panel afterwards.
+
+Production and this repository were compared egg by egg on 2026-10-26 (all
+38 shared eggs, through the panel's own importer) and match, apart from that
+key.
 
 States: `configured` means the file is edited, the egg is on the panel (its id
 is `panel_egg_id`) and its Ports and Secrets tabs match `status.json`, checked

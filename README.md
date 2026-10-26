@@ -153,7 +153,32 @@ joined. No egg is `done` yet.
 | Minecraft | [PocketmineMP](eggs/minecraft-pocketmine/NOTES.md) | variant | none | none | configured |
 | Rust | [Rust](eggs/rust/NOTES.md) | primary | `APP_PORT` ✓, `QUERY_PORT` ✓, `RCON_PORT` ✓ | `RCON_PASS` ✓ | configured |
 | DayZ | [DayZ](eggs/dayz/NOTES.md) | primary | `QUERY_PORT` ✓, `RCON_PORT` (internal) | `RCON_PASSWORD` ✓ | configured |
+| Bots | [Node.js bot](eggs/bot-nodejs/NOTES.md) | runtime | none | none | todo |
+| Bots | [Python bot](eggs/bot-python/NOTES.md) | runtime | none | none | todo |
 <!-- status:end -->
+
+## Bots
+
+`bot-nodejs` and `bot-python` are upstream's generic runtimes, configured for a
+store order the same way the games are, with three differences:
+
+- **No ports.** A bot talks out to Discord and listens on nothing, so its Ports
+  tab needs no port at all (`required_ports` 0, which needs the panel's bot
+  `kind` first). A plan that sells the web port add-on gives it one, and the
+  bot reads it from `SERVER_PORT`.
+- **Running means the process started.** Their Start Configuration is the line
+  each image prints just before it launches the bot (`:/home/container$ ` for
+  Node.js, `container~ ` for Python). Upstream ships `change this text`, which
+  leaves a working bot at Starting for ever; `tools/audit.py` now refuses it in
+  any egg.
+- **No repository is a normal state.** A store order has none yet, so the
+  install leaves a placeholder that prints what to do and waits, and setting
+  `GIT_ADDRESS` later reinstalls from it (the panel's reinstall variables).
+
+These are for customers' own code, the product miners buy, so their limits
+live in the billing plans and on the node, not here. See "Custom scripts:
+strict by default" in the panel's `docs/PLATFORM-PLAN.md`. Ready-made bot
+templates get one egg each, pinned to a release.
 
 ## Upstream and licence
 

@@ -444,5 +444,31 @@
     ],
     "note": "Query is needed for the server list. Like Arma 3, it installs only with a real Steam login, which the customer supplies; the server reinstalls itself once both are filled.",
     "panel_egg_id": 40
+  },
+  "bot-nodejs": {
+    "state": "todo",
+    "kind": "bot",
+    "ports": {
+      "required_ports": 0,
+      "connect_port_index": 1,
+      "port_variables": {}
+    },
+    "reinstall": [
+      "GIT_ADDRESS"
+    ],
+    "note": "Node.js 24 LTS by default, 26 and 22 offered; 23 and 25 dropped (end of life). Running is the entrypoint's `:/home/container$ ` line. Kind bot: no ports by default (required_ports 0 needs the panel's bot kind first, see the panel's docs/PLATFORM-PLAN.md), the web port add-on brings one. With no repository the install leaves a placeholder that prints what to do and idles, so a store order starts and reads Running. Setting GIT_ADDRESS reinstalls by itself (reinstall) and the placeholder is removed first. Checked in Docker on the real images 2026-10-26: no repo, then repo set and reinstalled. Not on the panel yet."
+  },
+  "bot-python": {
+    "state": "todo",
+    "kind": "bot",
+    "ports": {
+      "required_ports": 0,
+      "connect_port_index": 1,
+      "port_variables": {}
+    },
+    "reinstall": [
+      "GIT_ADDRESS"
+    ],
+    "note": "Python 3.13 by default, 3.10 to 3.14 offered; 3.7 to 3.9 dropped (end of life). Running is the entrypoint's `container~ ` line. Upstream's install checked for requirements.txt while installing REQUIREMENTS_FILE; fixed. Kind bot: no ports by default (required_ports 0 needs the panel's bot kind first, see the panel's docs/PLATFORM-PLAN.md), the web port add-on brings one. With no repository the install leaves a placeholder that prints what to do and idles, so a store order starts and reads Running. Setting GIT_ADDRESS reinstalls by itself (reinstall) and the placeholder is removed first. Checked in Docker on the real images 2026-10-26: no repo, then repo set and reinstalled. Not on the panel yet."
   }
 }

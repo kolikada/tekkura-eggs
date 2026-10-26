@@ -15,6 +15,11 @@ ROOT = pathlib.Path(__file__).resolve().parent.parent
 MANIFEST = json.loads((ROOT / "sources.json").read_text(encoding="utf-8"))
 STATUS = json.loads((ROOT / "status.json").read_text(encoding="utf-8"))
 
+# Upstream's Start Configuration placeholder. Wings marks a server Running only
+# when the console prints a "done" string, so an egg that keeps it sits at
+# Starting for ever while working (both production bots did, 2026-10-25).
+PLACEHOLDER_DONE = "change this text"
+
 # SERVER_PORT is the one variable the daemon fills from the primary allocation.
 # Any other port variable keeps the egg's default on every server built from
 # it, so two servers on one node collide on it.
@@ -41,6 +46,14 @@ def blank(value) -> bool:
     return value is None or str(value).strip() == ""
 
 
+def done_strings(egg: dict) -> list:
+    startup = (egg.get("config") or {}).get("startup") or {}
+    if isinstance(startup, str):
+        startup = json.loads(startup or "{}")
+    done = startup.get("done") or []
+    return [done] if isinstance(done, str) else list(done)
+
+
 def audit(egg: dict) -> dict:
     variables = egg.get("variables") or []
     text = startup(egg)
@@ -55,6 +68,7 @@ def audit(egg: dict) -> dict:
         "startup_ports": sorted(set(re.findall(r"\{\{(\w*PORT\w*)\}\}|\$\{?(\w*PORT\w*)", text)) - {("", "")}),
         "variables": variables,
         "startup": text,
+        "placeholder_done": any(PLACEHOLDER_DONE in d for d in done_strings(egg)),
     }
 
 
@@ -99,11 +113,22 @@ def notes(entry: dict, egg: dict, found: dict, status: dict) -> str:
             lines.append(f"- [{tick(env in secrets)}] `{env}`{how}: {cell(v.get('description'))}")
         lines.append("")
     ports = status.get("ports")
+    if found["placeholder_done"]:
+        lines.append(f"- [ ] Start Configuration still says \"{PLACEHOLDER_DONE}\": the server would never read Running")
+    if status.get("kind") == "bot":
+        lines += [
+            f"- [{tick(ports and status.get('state') in ('configured', 'done'))}] Ports tab on the panel: no ports unless the plan sells a web port",
+            "- [ ] Test deploy from a store order with no admin input: it installs, starts and reads Running",
+            "",
+        ]
+    else:
+        lines += [
+            f"- [{tick(ports)}] Ports tab on the panel: how many ports, and which one players connect on"
+            + (f" (needs {ports['required_ports']}, connect on port {ports['connect_port_index']})" if ports else ""),
+            "- [ ] Test deploy from a store order with no admin input, and a player can join",
+            "",
+        ]
     lines += [
-        f"- [{tick(ports)}] Ports tab on the panel: how many ports, and which one players connect on"
-        + (f" (needs {ports['required_ports']}, connect on port {ports['connect_port_index']})" if ports else ""),
-        "- [ ] Test deploy from a store order with no admin input, and a player can join",
-        "",
         "## Images",
         "",
     ]
@@ -119,10 +144,13 @@ def notes(entry: dict, egg: dict, found: dict, status: dict) -> str:
 
 
 rows = []
+placeholders = []
 for entry in MANIFEST:
     path = ROOT / entry["file"]
     egg = load(path)
     found = audit(egg)
+    if found["placeholder_done"]:
+        placeholders.append(entry["file"])
     status = STATUS.get(entry["slug"], {})
     (path.parent / "NOTES.md").write_text(notes(entry, egg, found, status), encoding="utf-8")
     mapped = (status.get("ports") or {}).get("port_variables", {})
@@ -153,3 +181,6 @@ before, rest = text.split(start, 1)
 _, after = rest.split(end, 1)
 readme.write_text(f"{before}{start}\n{table}\n{end}{after}", encoding="utf-8")
 print(f"{len(rows)} eggs audited")
+
+if placeholders:
+    raise SystemExit(f"Start Configuration still says \"{PLACEHOLDER_DONE}\" in: " + ", ".join(placeholders))

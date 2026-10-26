@@ -155,6 +155,8 @@ joined. No egg is `done` yet.
 | DayZ | [DayZ](eggs/dayz/NOTES.md) | primary | `QUERY_PORT` ✓, `RCON_PORT` (internal) | `RCON_PASSWORD` ✓ | configured |
 | Bots | [Node.js bot](eggs/bot-nodejs/NOTES.md) | runtime | none | none | todo |
 | Bots | [Python bot](eggs/bot-python/NOTES.md) | runtime | none | none | todo |
+| Bots | [Muse](eggs/bot-muse/NOTES.md) | ready-made | none | none | todo |
+| Bots | [Game Server Watcher](eggs/bot-game-server-watcher/NOTES.md) | ready-made | none | `SECRET` ✓ | todo |
 <!-- status:end -->
 
 ## Bots
@@ -177,8 +179,25 @@ store order the same way the games are, with three differences:
 
 These are for customers' own code, the product miners buy, so their limits
 live in the billing plans and on the node, not here. See "Custom scripts:
-strict by default" in the panel's `docs/PLATFORM-PLAN.md`. Ready-made bot
-templates get one egg each, pinned to a release.
+strict by default" in the panel's `docs/PLATFORM-PLAN.md`.
+
+**Ready-made bots** (`bot-muse`, `bot-game-server-watcher`) get one egg each,
+pinned to a release in a `VERSION` variable customers cannot change. Three
+rules every bot egg keeps:
+
+- **Never put a secret in the startup line.** The yolk images print that line
+  to the console after Wings has filled in `${VARIABLES}`, so a token there
+  lands in the logs, which subusers read and anyone can download. Pass it in a
+  file the program loads instead (`config.files`, usually `.env`).
+- **What the customer supplies after buying is optional in the egg** and listed
+  in the panel's Secrets tab under "Customer sets up after buying"
+  (`setup_variables`, recorded as `setup` in `status.json`). Core refuses to
+  build a server with a required variable empty, and a store order has no
+  token yet. The bot's overview asks for each one, and the startup waits
+  rather than crash looping until it is there.
+- **The program folder is on the file deny list** (`*` except `data/`), so the
+  customer cannot swap the program for something else. Wings still lists the
+  names; opening or writing one is refused.
 
 ## Upstream and licence
 

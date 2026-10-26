@@ -1,103 +1,82 @@
 _comment: 'DO NOT EDIT: FILE GENERATED AUTOMATICALLY BY PANEL'
 meta:
   version: PLCN_v3
-  update_url: 'https://raw.githubusercontent.com/pelican-eggs/chatbots/refs/heads/main/discord/game-server-watcher/egg-game-server-watcher.yaml'
+  update_url: 'https://raw.githubusercontent.com/kolikada/tekkura-eggs/main/eggs/bot-game-server-watcher/egg-game-server-watcher.yaml'
 exported_at: '2025-12-23T00:20:05+00:00'
 name: 'Game Server Watcher'
-author: a-sync@devs.space
-uuid: d163b89a-a9e6-4525-b073-a405eec86fc1
+author: admin@tekkura.cloud
+uuid: 3f8a91c6-2d47-4b5e-9c13-e6a07d2b58f1
 description: |-
-  A simple discord/telegram/slack bot that can be hosted on a free service to monitor your game
-  servers and players in style. 😎
+  Posts your game servers' status and who is playing to a Discord channel, and keeps it up to date. Works with most games, including the ones we host.
+  Set it up from its own web page, at the address on the Overview. Open source by a-sync (AGPL-3.0); Tekkura installs a pinned release.
 image: null
 tags: {  }
 features: {  }
 docker_images:
-  'Node.js 20': 'ghcr.io/parkervcp/yolks:nodejs_20'
-file_denylist: {  }
+  'Node.js 22': 'ghcr.io/pelican-eggs/yolks:nodejs_22'
+file_denylist:
+  - '*'
+  - '!/data'
+  - '!/data/**'
 startup_commands:
-  Default: 'env PORT={{SERVER_PORT}} /usr/local/bin/node /home/container/dist/server.js'
+  Default: 'env PORT=${SERVER_PORT} /usr/local/bin/node /home/container/dist/server.js'
 config:
-  files: {  }
+  files:
+    .env:
+      parser: file
+      find:
+        DISCORD_BOT_TOKEN: 'DISCORD_BOT_TOKEN={{server.environment.DISCORD_TOKEN}}'
   startup:
     done: 'starting loop...'
   logs: {  }
-  stop: ^^C
+  stop: ^C
 scripts:
   installation:
     script: |-
       #!/bin/bash
+      # Tekkura: a pinned release of a-sync/game-server-watcher, never the
+      # moving main branch, rebuilt from scratch on every reinstall. Only
+      # data/, where its settings live, survives.
 
-      apt-get update && apt-get install ca-certificates git -yq --no-install-suggests --no-install-recommends --allow-downgrades --allow-remove-essential --allow-change-held-packages
+      apt-get update && apt-get install -y --no-install-recommends ca-certificates curl tar
 
-
+      mkdir -p /mnt/server
       cd /mnt/server
 
-      git config --global --add safe.directory /mnt/server
-      git clone https://github.com/a-sync/game-server-watcher.git . || git pull
+      find . -mindepth 1 -depth ! -path './data' ! -path './data/*' -exec rm -rf {} +
 
+      curl -fLo gsw.tar.gz "https://api.github.com/repos/a-sync/game-server-watcher/tarball/${VERSION}" || exit 1
+      tar -xzf gsw.tar.gz --strip-components=1
+      rm gsw.tar.gz
 
-      npm install --no-save && npm update gamedig && npm run build
+      npm ci --no-audit --no-fund || exit 1
+      npm run build || exit 1
       npm prune --omit=dev
+      mkdir -p data
+      # The token reaches the bot through this file (Wings writes the line at
+      # every start), never the startup line, which the console prints.
+      cp .env.example .env
 
-
-      ## install end
       echo "-----------------------------------------"
-      echo "Installation completed..."
+      echo "Game Server Watcher ${VERSION} installed"
       echo "-----------------------------------------"
-    container: 'node:20-bookworm-slim'
+    container: 'node:22-bookworm-slim'
     entrypoint: bash
 variables:
   -
-    name: DATA_PATH
-    description: 'Writable folder for data storage'
-    env_variable: DATA_PATH
-    default_value: ./data/
-    user_viewable: true
-    user_editable: true
-    rules:
-      - required
-      - string
-      - 'min:1'
-      - 'max:255'
-    sort: 1
-  -
-    name: DISCORD_BOT_TOKEN
-    description: 'Discord bot token'
-    env_variable: DISCORD_BOT_TOKEN
+    name: 'Discord bot token'
+    description: 'From the Bot page of your application in the Discord developer portal.'
+    env_variable: DISCORD_TOKEN
     default_value: ''
     user_viewable: true
     user_editable: true
     rules:
       - nullable
       - string
-    sort: 2
+    sort: 1
   -
-    name: 'Debug Mode'
-    description: 'Enable or disable debug mode.'
-    env_variable: DBG
-    default_value: 0
-    user_viewable: true
-    user_editable: true
-    rules:
-      - required
-      - 'in:0,1'
-    sort: 3
-  -
-    name: REFRESH_TIME_MINUTES
-    description: 'Game server info refresh interval in minutes'
-    env_variable: REFRESH_TIME_MINUTES
-    default_value: 2
-    user_viewable: true
-    user_editable: true
-    rules:
-      - required
-      - integer
-      - 'min:1'
-    sort: 4
-  -
-    name: SECRET
-    description: 'Admin secret'
+    name: 'Admin password'
+    description: 'Signs you in to the setup page, where you add the game servers to watch. Generated for this server.'
     env_variable: SECRET
     default_value: ''
     user_viewable: true
@@ -107,10 +86,45 @@ variables:
       - string
       - 'min:8'
       - 'max:255'
+    sort: 2
+  -
+    name: 'Refresh every (minutes)'
+    description: 'How often the status is checked and the message updated.'
+    env_variable: REFRESH_TIME_MINUTES
+    default_value: 2
+    user_viewable: true
+    user_editable: true
+    rules:
+      - required
+      - integer
+      - 'min:1'
+      - 'max:60'
+    sort: 3
+  -
+    name: 'Telegram bot token'
+    description: 'Optional. Also post the status to Telegram.'
+    env_variable: TELEGRAM_BOT_TOKEN
+    default_value: ''
+    user_viewable: true
+    user_editable: true
+    rules:
+      - nullable
+      - string
+    sort: 4
+  -
+    name: 'Slack bot token'
+    description: 'Optional. Also post the status to Slack.'
+    env_variable: SLACK_BOT_TOKEN
+    default_value: ''
+    user_viewable: true
+    user_editable: true
+    rules:
+      - nullable
+      - string
     sort: 5
   -
-    name: SLACK_APP_TOKEN
-    description: 'Slack app token'
+    name: 'Slack app token'
+    description: 'Optional. Needed with the Slack bot token.'
     env_variable: SLACK_APP_TOKEN
     default_value: ''
     user_viewable: true
@@ -120,9 +134,9 @@ variables:
       - string
     sort: 6
   -
-    name: SLACK_BOT_TOKEN
-    description: 'Slack bot token'
-    env_variable: SLACK_BOT_TOKEN
+    name: 'Steam web API key'
+    description: 'Optional. Lets it look up Steam servers by name.'
+    env_variable: STEAM_WEB_API_KEY
     default_value: ''
     user_viewable: true
     user_editable: true
@@ -131,24 +145,35 @@ variables:
       - string
     sort: 7
   -
-    name: STEAM_WEB_API_KEY
-    description: 'Steam web API key'
-    env_variable: STEAM_WEB_API_KEY
-    default_value: ''
+    name: 'Debug logging'
+    description: 'On: writes more detail to the log.'
+    env_variable: DBG
+    default_value: 0
     user_viewable: true
     user_editable: true
     rules:
-      - nullable
-      - string
+      - required
+      - boolean
     sort: 8
   -
-    name: TELEGRAM_BOT_TOKEN
-    description: 'Telegram bot token'
-    env_variable: TELEGRAM_BOT_TOKEN
-    default_value: ''
-    user_viewable: true
-    user_editable: true
+    name: 'Data folder'
+    description: 'Where its settings are kept.'
+    env_variable: DATA_PATH
+    default_value: ./data/
+    user_viewable: false
+    user_editable: false
     rules:
-      - nullable
+      - required
       - string
     sort: 9
+  -
+    name: 'Release'
+    description: 'The release Tekkura installs. Updated by us when a new release is tested.'
+    env_variable: VERSION
+    default_value: v3.1.25
+    user_viewable: true
+    user_editable: false
+    rules:
+      - required
+      - string
+    sort: 10

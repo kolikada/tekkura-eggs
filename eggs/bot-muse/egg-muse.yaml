@@ -1,31 +1,34 @@
 _comment: 'DO NOT EDIT: FILE GENERATED AUTOMATICALLY BY PANEL'
 meta:
   version: PLCN_v3
-  update_url: 'https://raw.githubusercontent.com/pelican-eggs/chatbots/refs/heads/main/discord/muse/egg-muse.yaml'
+  update_url: 'https://raw.githubusercontent.com/kolikada/tekkura-eggs/main/eggs/bot-muse/egg-muse.yaml'
 exported_at: '2025-12-23T00:21:41+00:00'
 name: Muse
-author: red_thirten@yahoo.com
-uuid: d0cd727e-3f34-40f2-918e-85556830365c
+author: admin@tekkura.cloud
+uuid: 7d2e5c1a-8b94-4f3e-a6d0-2c9b51e7f483
 description: |-
-  Muse is a self-hosted Discord music bot that is made for small to medium-sized Discord
-  servers/guilds.
+  Plays music in your voice channels from YouTube and Spotify links, with a queue, skip and loop.
+  Muse is open source by museofficial (MIT). Tekkura installs a pinned release and keeps it updated.
 image: null
 tags: {  }
 features: {  }
 docker_images:
-  'ghcr.io/parkervcp/yolks:nodejs_22': 'ghcr.io/parkervcp/yolks:nodejs_22'
-file_denylist: {  }
+  'Node.js 22': 'ghcr.io/pelican-eggs/yolks:nodejs_22'
+file_denylist:
+  - '*'
+  - '!/data'
+  - '!/data/**'
 startup_commands:
-  Default: 'yarn start'
+  Default: 'if ! grep -qE "^DISCORD_TOKEN=." .env 2>/dev/null; then echo "Waiting for a bot token. Add it on the Overview page and the bot starts."; exec sleep infinity; fi; yarn start'
 config:
   files:
     .env:
       parser: file
       find:
-        DISCORD_TOKEN: 'DISCORD_TOKEN={{server.environment.BOT_TOKEN}}'
+        DISCORD_TOKEN: 'DISCORD_TOKEN={{server.environment.DISCORD_TOKEN}}'
         YOUTUBE_API_KEY: 'YOUTUBE_API_KEY={{server.environment.YOUTUBE_API_KEY}}'
-        SPOTIFY_CLIENT_ID: 'SPOTIFY_CLIENT_ID= {{server.environment.SPOTIFY_CLIENT_ID}}'
-        SPOTIFY_CLIENT_SECRET: 'SPOTIFY_CLIENT_ID= {{server.environment.SPOTIFY_CLIENT_SECRET}}'
+        SPOTIFY_CLIENT_ID: 'SPOTIFY_CLIENT_ID={{server.environment.SPOTIFY_CLIENT_ID}}'
+        SPOTIFY_CLIENT_SECRET: 'SPOTIFY_CLIENT_SECRET={{server.environment.SPOTIFY_CLIENT_SECRET}}'
   startup:
     done: Ready!
   logs: {  }
@@ -39,6 +42,7 @@ scripts:
       ## Authors: David Wolfe (Red-Thirten), TubaApollo, parkervcp
       ## Date: 2025/06/25
       ## License: MIT License
+      ## Tekkura: pinned to the release in VERSION, which customers cannot change.
 
       GITHUB_PACKAGE="museofficial/muse"
 
@@ -55,26 +59,14 @@ scripts:
       # Remove all existing files/folders, except `data` folder
       find . -mindepth 1 -depth ! -path './data' ! -path './data/*' -exec rm -rf {} +
 
-      # Get download URL
-      LATEST_JSON=$(curl --silent "https://api.github.com/repos/${GITHUB_PACKAGE}/releases/latest")
-      RELEASES=$(curl --silent "https://api.github.com/repos/${GITHUB_PACKAGE}/releases")
-
-      if [ -z "${VERSION}" ] || [ "${VERSION}" == "latest" ]; then
-          DOWNLOAD_URL=$(echo ${LATEST_JSON} | jq -r .tarball_url)
-      else
-          VERSION_CHECK=$(echo ${RELEASES} | jq -r --arg VERSION "${VERSION}" '.[] | select(.tag_name==$VERSION) | .tag_name')
-          if [ "${VERSION}" == "${VERSION_CHECK}" ]; then
-              DOWNLOAD_URL=$(echo ${RELEASES} | jq -r --arg VERSION "${VERSION}" '.[] | select(.tag_name==$VERSION) | .tarball_url')
-          else
-              echo -e "Defaulting to latest release..."
-              DOWNLOAD_URL=$(echo ${LATEST_JSON} | jq -r .tarball_url)
-          fi
-      fi
+      # Tekkura: the exact tag, never "latest", so every server runs the release
+      # we tested. Updating Muse is a new egg version.
+      DOWNLOAD_URL="https://api.github.com/repos/${GITHUB_PACKAGE}/tarball/${VERSION}"
 
       # Download tarball & check for success
       echo -e "Downloading ${VERSION} from ${DOWNLOAD_URL}..."
-      curl -Lo muse-${VERSION}.tar.gz ${DOWNLOAD_URL}
-      if [[ ! -f muse-${VERSION}.tar.gz ]]; then
+      curl -fLo muse-${VERSION}.tar.gz ${DOWNLOAD_URL}
+      if [[ ! -s muse-${VERSION}.tar.gz ]]; then
           echo -e "
 
       Failed to download ${VERSION} version of Muse!"
@@ -85,79 +77,75 @@ scripts:
 
       # Extract & delete tarball
       echo -e "Extracting muse-${VERSION}.tar.gz..."
-      tar -xzvf muse-${VERSION}.tar.gz --strip-components=1
+      tar -xzf muse-${VERSION}.tar.gz --strip-components=1
       rm muse-${VERSION}.tar.gz
 
       # Install dependencies & clean up
       echo -e "Installing dependencies..."
-      yarn install --prod || exit 1
+      # Tekkura: not --prod. Muse runs `prisma migrate` at every start, and
+      # prisma is a dev dependency, so a production install cannot start.
+      yarn install --frozen-lockfile || exit 1
       cp .env.example .env
+      mkdir -p data
       echo -e "Removing unneeded files..."
       rm -rf .dockerignore Dockerfile .gitignore .github/ RELEASING.md
 
       echo -e "
       Muse successfully installed!"
-    container: 'node:lts-bookworm-slim'
+    container: 'node:22-bookworm-slim'
     entrypoint: /bin/bash
 variables:
   -
-    name: 'Discord Bot Token'
-    description: |-
-      The token for your Discord bot. Learn how to obtain a token and configure your bot application
-      properly here: https://jmusicbot.com/getting-a-bot-token/
+    name: 'Discord bot token'
+    description: 'From the Bot page of your application in the Discord developer portal.'
     env_variable: DISCORD_TOKEN
     default_value: ''
     user_viewable: true
     user_editable: true
     rules:
-      - required
+      - nullable
       - string
     sort: 1
   -
-    name: 'Spotify Client ID'
-    description: "Can be acquired at https://developer.spotify.com/dashboard/applications with 'Create a Client ID'."
-    env_variable: SPOTIFY_CLIENT_ID
-    default_value: ''
-    user_viewable: true
-    user_editable: true
-    rules:
-      - required
-      - string
-    sort: 3
-  -
-    name: 'Spotify Client Secret'
-    description: "Can be acquired at https://developer.spotify.com/dashboard/applications with 'Create a Client ID'."
-    env_variable: SPOTIFY_CLIENT_SECRET
-    default_value: ''
-    user_viewable: true
-    user_editable: true
-    rules:
-      - required
-      - string
-    sort: 4
-  -
-    name: 'YouTube API Key'
-    description: |-
-      Can be acquired by creating a new project in Google's Developer Console
-      (https://console.developers.google.com/), enabling the YouTube API, and creating an API key under
-      credentials.
+    name: 'YouTube API key'
+    description: 'Muse searches YouTube with your own key. Create a project in the Google Cloud console, enable the YouTube Data API v3 and create an API key under Credentials.'
     env_variable: YOUTUBE_API_KEY
     default_value: ''
     user_viewable: true
     user_editable: true
     rules:
-      - required
+      - nullable
       - string
     sort: 2
   -
-    name: '[Advanced] Release Version Tag'
-    description: |-
-      Which release (based on tag) to download from https://github.com/museofficial/muse/releases. To
-      download the latest release version, "latest" can be used.
-    env_variable: VERSION
-    default_value: latest
+    name: 'Spotify client ID'
+    description: 'Optional. Lets Muse play Spotify links. Create an app at developer.spotify.com/dashboard.'
+    env_variable: SPOTIFY_CLIENT_ID
+    default_value: ''
     user_viewable: true
     user_editable: true
+    rules:
+      - nullable
+      - string
+    sort: 3
+  -
+    name: 'Spotify client secret'
+    description: 'Optional. From the same Spotify app as the client ID.'
+    env_variable: SPOTIFY_CLIENT_SECRET
+    default_value: ''
+    user_viewable: true
+    user_editable: true
+    rules:
+      - nullable
+      - string
+    sort: 4
+  -
+    name: 'Muse release'
+    description: 'The release Tekkura installs. Updated by us when a new release is tested.'
+    env_variable: VERSION
+    default_value: v2.11.8
+    user_viewable: true
+    user_editable: false
     rules:
       - required
       - string

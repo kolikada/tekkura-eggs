@@ -470,5 +470,35 @@
       "GIT_ADDRESS"
     ],
     "note": "Python 3.13 by default, 3.10 to 3.14 offered; 3.7 to 3.9 dropped (end of life). Running is the entrypoint's `container~ ` line. Upstream's install checked for requirements.txt while installing REQUIREMENTS_FILE; fixed. Kind bot: no ports by default (required_ports 0 needs the panel's bot kind first, see the panel's docs/PLATFORM-PLAN.md), the web port add-on brings one. With no repository the install leaves a placeholder that prints what to do and idles, so a store order starts and reads Running. Setting GIT_ADDRESS reinstalls by itself (reinstall) and the placeholder is removed first. Checked in Docker on the real images 2026-10-26: no repo, then repo set and reinstalled. Not on the panel yet."
+  },
+  "bot-muse": {
+    "state": "todo",
+    "kind": "bot",
+    "ports": {
+      "required_ports": 0,
+      "connect_port_index": 1,
+      "port_variables": {}
+    },
+    "setup": [
+      "DISCORD_TOKEN",
+      "YOUTUBE_API_KEY"
+    ],
+    "note": "Muse v2.11.8 (MIT), pinned in VERSION, which customers cannot change. Upstream bugs fixed: .env read BOT_TOKEN, which does not exist, so the token was always empty; the Spotify secret was written to the client id line; `yarn install --prod` left out prisma, which Muse runs at every start. Token and YouTube key are optional in the egg (core refuses to build a server with a required variable empty) and listed in the panel's setup_variables, which the bot's overview asks for; until the token is set the startup waits instead of crash looping. Kind bot, ready-made: the egg decides what runs. The program folder is on the file deny list ('*' except data/), so Files and SFTP cannot open or change it; Wings still lists the names. No secret is ever in the startup line: the yolk entrypoint prints that line to the console after Wings fills in ${VARIABLES}, so the token reaches the bot through .env (Wings config file) instead. Checked on the local Docker stack 2026-10-26: bought through the store, built by billing, installed and started on Wings rc.1."
+  },
+  "bot-game-server-watcher": {
+    "state": "todo",
+    "kind": "bot",
+    "ports": {
+      "required_ports": 1,
+      "connect_port_index": 1,
+      "port_variables": {}
+    },
+    "secrets": [
+      "SECRET"
+    ],
+    "setup": [
+      "DISCORD_TOKEN"
+    ],
+    "note": "a-sync/game-server-watcher v3.1.25 (AGPL-3.0, hosted unmodified), pinned in VERSION. Needs its one port: the setup page where customers add the game servers to watch listens on SERVER_PORT. SECRET (that page's admin password) is generated per server. Upstream cloned the moving main branch, ran Node 20 (end of life) and had stop '^^C'. Kind bot, ready-made: the egg decides what runs. The program folder is on the file deny list ('*' except data/), so Files and SFTP cannot open or change it; Wings still lists the names. No secret is ever in the startup line: the yolk entrypoint prints that line to the console after Wings fills in ${VARIABLES}, so the token reaches the bot through .env (Wings config file) instead. Checked on the local Docker stack 2026-10-26: bought through the store, built by billing, installed and started on Wings rc.1."
   }
 }

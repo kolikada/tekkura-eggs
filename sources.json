@@ -388,5 +388,25 @@
     "path": "dayz/egg-day-z.json",
     "commit": "68aa3847dda477c9e5cb0522295b212042f746af",
     "file": "eggs/dayz/egg-day-z.json"
+  },
+  {
+    "slug": "bot-nodejs",
+    "store_category": "Bots",
+    "role": "runtime",
+    "upstream": "https://github.com/pelican-eggs/generic/blob/eec3d4b153ccb8b901905b486f29d4d199154f5b/nodejs/egg-nodejs-generic.yaml",
+    "repo": "generic",
+    "path": "nodejs/egg-nodejs-generic.yaml",
+    "commit": "eec3d4b153ccb8b901905b486f29d4d199154f5b",
+    "file": "eggs/bot-nodejs/egg-nodejs-generic.yaml"
+  },
+  {
+    "slug": "bot-python",
+    "store_category": "Bots",
+    "role": "runtime",
+    "upstream": "https://github.com/pelican-eggs/generic/blob/eec3d4b153ccb8b901905b486f29d4d199154f5b/python/egg-python-generic.yaml",
+    "repo": "generic",
+    "path": "python/egg-python-generic.yaml",
+    "commit": "eec3d4b153ccb8b901905b486f29d4d199154f5b",
+    "file": "eggs/bot-python/egg-python-generic.yaml"
   }
 ]

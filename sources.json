@@ -408,5 +408,25 @@
     "path": "python/egg-python-generic.yaml",
     "commit": "eec3d4b153ccb8b901905b486f29d4d199154f5b",
     "file": "eggs/bot-python/egg-python-generic.yaml"
+  },
+  {
+    "slug": "bot-muse",
+    "store_category": "Bots",
+    "role": "ready-made",
+    "upstream": "https://github.com/pelican-eggs/chatbots/blob/7019bbaf35883b27c52532bc29bc1f090659a074/discord/muse/egg-muse.yaml",
+    "repo": "chatbots",
+    "path": "discord/muse/egg-muse.yaml",
+    "commit": "7019bbaf35883b27c52532bc29bc1f090659a074",
+    "file": "eggs/bot-muse/egg-muse.yaml"
+  },
+  {
+    "slug": "bot-game-server-watcher",
+    "store_category": "Bots",
+    "role": "ready-made",
+    "upstream": "https://github.com/pelican-eggs/chatbots/blob/7019bbaf35883b27c52532bc29bc1f090659a074/discord/game-server-watcher/egg-game-server-watcher.yaml",
+    "repo": "chatbots",
+    "path": "discord/game-server-watcher/egg-game-server-watcher.yaml",
+    "commit": "7019bbaf35883b27c52532bc29bc1f090659a074",
+    "file": "eggs/bot-game-server-watcher/egg-game-server-watcher.yaml"
   }
 ]

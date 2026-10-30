@@ -30,7 +30,9 @@ config:
         SPOTIFY_CLIENT_ID: 'SPOTIFY_CLIENT_ID={{server.environment.SPOTIFY_CLIENT_ID}}'
         SPOTIFY_CLIENT_SECRET: 'SPOTIFY_CLIENT_SECRET={{server.environment.SPOTIFY_CLIENT_SECRET}}'
   startup:
-    done: Ready!
+    done:
+      - Ready!
+      - 'Waiting for a bot token.'
   logs: {  }
   stop: ^C
 scripts:

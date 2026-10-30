@@ -9,6 +9,8 @@ Python 3.13 by default, 3.10 to 3.14 offered; 3.7 to 3.9 dropped (end of life). 
 
 Deploys (2026-10-29), for the panel's Deploy and Variables pages: a hidden `DEPLOY_KEY` variable the startup reads with `printenv` (Wings prints `${VAR}` expanded in the startup line, so the key is never written as one) into `/tmp/.ssh` for `GIT_SSH_COMMAND`; one `git pull` when the panel leaves a `.tekkura-deploy` marker; `.env` sourced into the environment at start. The install marks the folder git-safe (it runs as root on the server user's files), clones through a temp folder so files already there survive, switches an existing checkout to a new repository or branch, and restores the old remote if the fetch fails, so the panel retries. Checked on the local stack with Wings rc.1: checkout, pull, push webhook, `.env`, deploy key.
 
+Deploy results (2026-10-30): after a checkout, and after the pull a deploy asks for, the egg writes `.tekkura-deploy-result` (`ok|failed <time> <sha>`), which the panel's `RecordDeployResultJob` reads, since Wings reports an install that exits 1 as successful. Checked on the local stack: a pull recorded ok, and failed with the git server stopped.
+
 ## To configure
 
 - [ ] Ports tab on the panel: no ports unless the plan sells a web port
@@ -25,7 +27,7 @@ Deploys (2026-10-29), for the panel's Deploy and Variables pages: a hidden `DEPL
 ## Startup
 
 ```sh
-[Default] if [ -n "$(printenv DEPLOY_KEY)" ]; then mkdir -p /tmp/.ssh && printenv DEPLOY_KEY > /tmp/.ssh/deploy_key && chmod 600 /tmp/.ssh/deploy_key && export GIT_SSH_COMMAND="ssh -i /tmp/.ssh/deploy_key -o IdentitiesOnly=yes -o StrictHostKeyChecking=accept-new -o UserKnownHostsFile=/tmp/.ssh/known_hosts"; fi; if [[ -d .git ]] && { [[ "{{AUTO_UPDATE}}" == "1" ]] || [[ -f .tekkura-deploy ]]; }; then rm -f .tekkura-deploy; git pull; fi; if [[ -f .env ]]; then set -a; . ./.env; set +a; fi; if [[ ! -z "{{PY_PACKAGES}}" ]]; then pip install -U --prefix .local {{PY_PACKAGES}}; fi; if [[ -f /home/container/${REQUIREMENTS_FILE} ]]; then pip install -U --prefix .local -r ${REQUIREMENTS_FILE}; fi; /usr/local/bin/python /home/container/{{PY_FILE}}
+[Default] if [ -n "$(printenv DEPLOY_KEY)" ]; then mkdir -p /tmp/.ssh && printenv DEPLOY_KEY > /tmp/.ssh/deploy_key && chmod 600 /tmp/.ssh/deploy_key && export GIT_SSH_COMMAND="ssh -i /tmp/.ssh/deploy_key -o IdentitiesOnly=yes -o StrictHostKeyChecking=accept-new -o UserKnownHostsFile=/tmp/.ssh/known_hosts"; fi; if [[ -d .git ]] && { [[ "{{AUTO_UPDATE}}" == "1" ]] || [[ -f .tekkura-deploy ]]; }; then rm -f .tekkura-deploy; if git pull; then R=ok; else R=failed; fi; printf "%s %s %s\n" "$R" "$(date -u +%Y-%m-%dT%H:%M:%SZ)" "$(git rev-parse HEAD)" > .tekkura-deploy-result; fi; if [[ -f .env ]]; then set -a; . ./.env; set +a; fi; if [[ ! -z "{{PY_PACKAGES}}" ]]; then pip install -U --prefix .local {{PY_PACKAGES}}; fi; if [[ -f /home/container/${REQUIREMENTS_FILE} ]]; then pip install -U --prefix .local -r ${REQUIREMENTS_FILE}; fi; /usr/local/bin/python /home/container/{{PY_FILE}}
 ```
 
 ## Variables

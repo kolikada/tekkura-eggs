@@ -456,7 +456,7 @@
     "reinstall": [
       "GIT_ADDRESS"
     ],
-    "note": "Node.js 24 LTS by default, 26 and 22 offered; 23 and 25 dropped (end of life). Running is the entrypoint's `:/home/container$ ` line. Kind bot: no ports by default (required_ports 0 needs the panel's bot kind first, see the panel's docs/PLATFORM-PLAN.md), the web port add-on brings one. With no repository the install leaves a placeholder that prints what to do and idles, so a store order starts and reads Running. Setting GIT_ADDRESS reinstalls by itself (reinstall) and the placeholder is removed first. Checked in Docker on the real images 2026-10-26: no repo, then repo set and reinstalled. Not on the panel yet."
+    "note": "Node.js 24 LTS by default, 26 and 22 offered; 23 and 25 dropped (end of life). Running is the entrypoint's `:/home/container$ ` line. Kind bot: no ports by default (required_ports 0 needs the panel's bot kind first, see the panel's docs/PLATFORM-PLAN.md), the web port add-on brings one. With no repository the install leaves a placeholder that prints what to do and idles, so a store order starts and reads Running. Setting GIT_ADDRESS reinstalls by itself (reinstall) and the placeholder is removed first. Checked in Docker on the real images 2026-10-26: no repo, then repo set and reinstalled. Not on the panel yet. Deploy results (2026-10-30): after a checkout or a deploy's pull the egg writes `.tekkura-deploy-result` (`ok|failed <time> <sha>`), which the panel's RecordDeployResultJob reads, since Wings reports an install that exits 1 as successful. Checked on the local stack: a pull recorded ok, and failed with the git server down."
   },
   "bot-python": {
     "state": "todo",
@@ -469,7 +469,7 @@
     "reinstall": [
       "GIT_ADDRESS"
     ],
-    "note": "Python 3.13 by default, 3.10 to 3.14 offered; 3.7 to 3.9 dropped (end of life). Running is the entrypoint's `container~ ` line. Upstream's install checked for requirements.txt while installing REQUIREMENTS_FILE; fixed. Kind bot: no ports by default (required_ports 0 needs the panel's bot kind first, see the panel's docs/PLATFORM-PLAN.md), the web port add-on brings one. With no repository the install leaves a placeholder that prints what to do and idles, so a store order starts and reads Running. Setting GIT_ADDRESS reinstalls by itself (reinstall) and the placeholder is removed first. Checked in Docker on the real images 2026-10-26: no repo, then repo set and reinstalled. Not on the panel yet."
+    "note": "Python 3.13 by default, 3.10 to 3.14 offered; 3.7 to 3.9 dropped (end of life). Running is the entrypoint's `container~ ` line. Upstream's install checked for requirements.txt while installing REQUIREMENTS_FILE; fixed. Kind bot: no ports by default (required_ports 0 needs the panel's bot kind first, see the panel's docs/PLATFORM-PLAN.md), the web port add-on brings one. With no repository the install leaves a placeholder that prints what to do and idles, so a store order starts and reads Running. Setting GIT_ADDRESS reinstalls by itself (reinstall) and the placeholder is removed first. Checked in Docker on the real images 2026-10-26: no repo, then repo set and reinstalled. Not on the panel yet. Deploy results (2026-10-30): after a checkout or a deploy's pull the egg writes `.tekkura-deploy-result` (`ok|failed <time> <sha>`), which the panel's RecordDeployResultJob reads, since Wings reports an install that exits 1 as successful. Checked on the local stack: a pull recorded ok, and failed with the git server down."
   },
   "bot-muse": {
     "state": "todo",

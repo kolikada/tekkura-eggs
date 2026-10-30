@@ -16,7 +16,7 @@ docker_images:
   'Node.js 22 (LTS)': 'ghcr.io/pelican-eggs/yolks:nodejs_22'
 file_denylist: {  }
 startup_commands:
-  Default: 'if [ -n "$(printenv DEPLOY_KEY)" ]; then mkdir -p /tmp/.ssh && printenv DEPLOY_KEY > /tmp/.ssh/deploy_key && chmod 600 /tmp/.ssh/deploy_key && export GIT_SSH_COMMAND="ssh -i /tmp/.ssh/deploy_key -o IdentitiesOnly=yes -o StrictHostKeyChecking=accept-new -o UserKnownHostsFile=/tmp/.ssh/known_hosts"; fi; if [[ -d .git ]] && { [[ "{{AUTO_UPDATE}}" == "1" ]] || [[ -f .tekkura-deploy ]]; }; then rm -f .tekkura-deploy; git pull; fi; if [[ -f .env ]]; then set -a; . ./.env; set +a; fi; if [[ ! -z ${NODE_PACKAGES} ]]; then /usr/local/bin/npm install ${NODE_PACKAGES}; fi; if [[ ! -z ${UNNODE_PACKAGES} ]]; then /usr/local/bin/npm uninstall ${UNNODE_PACKAGES}; fi; if [ -f /home/container/package.json ]; then /usr/local/bin/npm install; fi; if [[ "${MAIN_FILE}" == "*.js" ]]; then /usr/local/bin/node "/home/container/${MAIN_FILE}" ${NODE_ARGS}; else /usr/local/bin/tsx "/home/container/${MAIN_FILE}" ${NODE_ARGS}; fi'
+  Default: 'if [ -n "$(printenv DEPLOY_KEY)" ]; then mkdir -p /tmp/.ssh && printenv DEPLOY_KEY > /tmp/.ssh/deploy_key && chmod 600 /tmp/.ssh/deploy_key && export GIT_SSH_COMMAND="ssh -i /tmp/.ssh/deploy_key -o IdentitiesOnly=yes -o StrictHostKeyChecking=accept-new -o UserKnownHostsFile=/tmp/.ssh/known_hosts"; fi; if [[ -d .git ]] && { [[ "{{AUTO_UPDATE}}" == "1" ]] || [[ -f .tekkura-deploy ]]; }; then rm -f .tekkura-deploy; if git pull; then R=ok; else R=failed; fi; printf "%s %s %s\n" "$R" "$(date -u +%Y-%m-%dT%H:%M:%SZ)" "$(git rev-parse HEAD)" > .tekkura-deploy-result; fi; if [[ -f .env ]]; then set -a; . ./.env; set +a; fi; if [[ ! -z ${NODE_PACKAGES} ]]; then /usr/local/bin/npm install ${NODE_PACKAGES}; fi; if [[ ! -z ${UNNODE_PACKAGES} ]]; then /usr/local/bin/npm uninstall ${UNNODE_PACKAGES}; fi; if [ -f /home/container/package.json ]; then /usr/local/bin/npm install; fi; if [[ "${MAIN_FILE}" == "*.js" ]]; then /usr/local/bin/node "/home/container/${MAIN_FILE}" ${NODE_ARGS}; else /usr/local/bin/tsx "/home/container/${MAIN_FILE}" ${NODE_ARGS}; fi'
 config:
   files: {  }
   startup:
@@ -98,6 +98,12 @@ scripts:
       # which git refuses as dubious ownership without this.
       git config --global --add safe.directory /mnt/server
 
+      # Tekkura: what the panel reads to record whether a deploy worked,
+      # since Wings reports an install that exits 1 as successful.
+      deploy_result() {
+          printf '%s %s %s\n' "$1" "$(date -u +%Y-%m-%dT%H:%M:%SZ)" "$(git rev-parse HEAD 2>/dev/null || echo -)" > /mnt/server/.tekkura-deploy-result
+      }
+
       if [ -d .git ]; then
           echo -e "updating the existing checkout"
           # The old address goes back if the fetch fails, so the panel sees
@@ -107,17 +113,18 @@ scripts:
           git config remote.origin.fetch "+refs/heads/*:refs/remotes/origin/*"
           if ! git fetch origin; then
               git remote set-url origin "${PREVIOUS}"
+              deploy_result failed
               exit 1
           fi
           TARGET="${BRANCH:-$(git remote show origin | sed -n 's/.*HEAD branch: //p')}"
-          git checkout -f -B "${TARGET}" "origin/${TARGET}" || exit 1
+          git checkout -f -B "${TARGET}" "origin/${TARGET}" || { deploy_result failed; exit 1; }
       else
           echo -e "cloning ${BRANCH:-the default branch}"
           rm -rf /tmp/checkout
           if [ -z "${BRANCH}" ]; then
-              git clone "${GIT_ADDRESS}" /tmp/checkout || exit 1
+              git clone "${GIT_ADDRESS}" /tmp/checkout || { deploy_result failed; exit 1; }
           else
-              git clone --single-branch --branch "${BRANCH}" "${GIT_ADDRESS}" /tmp/checkout || exit 1
+              git clone --single-branch --branch "${BRANCH}" "${GIT_ADDRESS}" /tmp/checkout || { deploy_result failed; exit 1; }
           fi
           cp -a /tmp/checkout/. /mnt/server/
           rm -rf /tmp/checkout
@@ -132,6 +139,7 @@ scripts:
           /usr/local/bin/npm install --production
       fi
 
+      deploy_result ok
       echo -e "install complete"
       exit 0
     container: 'node:22-trixie-slim'

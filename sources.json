@@ -447,6 +447,6 @@
     "repo": "discord-tickets/bot",
     "path": "eggs/pelican.json",
     "commit": "fe7e6579ae554d95d94f49ec55103a85cf3f2a2d",
-    "file": "eggs/bot-discord-tickets/egg-discord-tickets.json"
+    "file": "eggs/bot-discord-tickets/egg-discord-tickets.yaml"
   }
 ]

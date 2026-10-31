@@ -1,95 +1,107 @@
 _comment: 'DO NOT EDIT: FILE GENERATED AUTOMATICALLY BY PANEL'
 meta:
   version: PLCN_v3
-  update_url: 'https://raw.githubusercontent.com/pelican-eggs/chatbots/refs/heads/main/discord/redbot/egg-red.yaml'
+  update_url: 'https://raw.githubusercontent.com/kolikada/tekkura-eggs/main/eggs/bot-red/egg-red.yaml'
 exported_at: '2025-12-23T00:23:02+00:00'
 name: Red
-author: parker@parkervcp.com
-uuid: b9413cbb-4422-4bd2-960f-1d4367248809
-description: "A multifunction Discord bot \r\n\r\nhttps://github.com/Cog-Creators/Red-DiscordBot"
+author: admin@tekkura.cloud
+uuid: 22aab6d0-3970-445a-a1a2-8e7d47d2800d
+description: |-
+  An all-in-one Discord bot: moderation, music, games, custom commands and hundreds of community add-ons (cogs).
+  Red is open source by Cog-Creators (GPL-3.0). Tekkura installs a pinned release and keeps it updated.
 image: null
 tags: {  }
 features: {  }
 docker_images:
-  'ghcr.io/parkervcp/yolks:bot_red': 'ghcr.io/parkervcp/yolks:bot_red'
-file_denylist: {  }
+  'Python 3.11': 'ghcr.io/pelican-eggs/yolks:bot_red'
+file_denylist:
+  - '*'
+  - '!/data'
+  - '!/data/**'
 startup_commands:
-  Default: 'PATH=$PATH:/home/container/.local/bin redbot pelican --token {{TOKEN}} --prefix {{PREFIX}}'
+  Default: 'mkdir -p .tmp; export TMPDIR=/home/container/.tmp; if [ -z "$(printenv DISCORD_TOKEN)" ]; then echo "Waiting for a bot token. Add it on the Overview page and the bot starts."; exec sleep infinity; fi; RED_TOKEN="$(printenv DISCORD_TOKEN)" PATH="$PATH:/home/container/.local/bin" redbot tekkura --prefix "{{PREFIX}}" --no-prompt'
 config:
   files: {  }
   startup:
-    done: 'Invite URL:'
+    done:
+      - 'cogs with'
+      - 'Waiting for a bot token.'
   logs: {  }
   stop: ^C
 scripts:
   installation:
     script: |-
       #!/bin/bash
-      # red-discordbot install script
+      # Red-DiscordBot install script
+      # Tekkura: pinned to the release in VERSION, which customers cannot change.
+      # Red goes into the server's own ~/.local, its data into data/, which a
+      # reinstall keeps.
 
-      ## install deps
-      mkdir -p /usr/share/man/man1
       apt update
-      apt -y install git ca-certificates dnsutils iproute2 make build-essential libssl-dev zlib1g-dev libbz2-dev libreadline-dev libsqlite3-dev wget curl llvm libncurses5-dev xz-utils tk-dev libxml2-dev libxmlsec1-dev libffi-dev liblzma-dev libgdbm-dev uuid-dev git openjdk-17-jre-headless
+      apt -y install git ca-certificates build-essential libssl-dev libffi-dev
 
-      ## config folder layouts
-      echo -e "generating config folder layout"
-      mkdir -p /mnt/server/.config/{Red-DiscordBot,share}/ /mnt/server/.local/share/Red-DiscordBot/data/pelican/
-      cd /mnt/server/
-      ln -s .local/share/Red-DiscordBot/data/pelican/ ./configs
+      cd /mnt/server
+      mkdir -p data .tmp .config/Red-DiscordBot
 
-      ## install red
-      echo -e "add container user to install"
-      ln -s /mnt/server/ /home/container
-      useradd -m -d /home/container container
-      chown -R container /mnt/server/
-      echo -e "install red locally as user"
+      echo -e "Installing Red ${VERSION}..."
+      export PYTHONUSERBASE=/mnt/server/.local TMPDIR=/mnt/server/.tmp
       pip install --upgrade pip
-      su - container -c 'pip install -U pip wheel'
-      su - container -c 'pip install -U Red-DiscordBot'
+      pip install --user --upgrade wheel "Red-DiscordBot==${VERSION}" || exit 1
 
-      ## ensure the config is in place if it doesn't exist
-      if [ ! -f /mnt/server/.config/Red-DiscordBot/config.json ]; then
-          curl https://raw.githubusercontent.com/parkervcp/eggs/master/bots/discord/redbot/config.json -o /mnt/server/.config/Red-DiscordBot/config.json
+      # Tekkura: the instance config is written here rather than downloaded,
+      # and points Red at data/ so cogs and settings sit where the customer
+      # can see them. Never overwritten, so a reinstall keeps the instance.
+      if [ ! -f .config/Red-DiscordBot/config.json ]; then
+          cat > .config/Red-DiscordBot/config.json <<'JSON'
+      {
+          "tekkura": {
+              "DATA_PATH": "/home/container/data",
+              "COG_PATH_APPEND": "cogs",
+              "CORE_PATH_APPEND": "core",
+              "STORAGE_TYPE": "JSON",
+              "STORAGE_DETAILS": {}
+          }
+      }
+      JSON
       fi
 
       echo "-------------------------------------------------------"
       echo "Installation completed"
       echo "-------------------------------------------------------"
-    container: 'python:3.11-slim'
+    container: 'python:3.11-slim-bookworm'
     entrypoint: bash
 variables:
   -
-    name: 'Command Prefix'
-    description: 'The prefix for commands from the bot.'
-    env_variable: PREFIX
-    default_value: .
-    user_viewable: true
-    user_editable: true
-    rules:
-      - required
-      - string
-    sort: 1
-  -
-    name: 'Discord Bot Token'
-    description: 'Get your own token here - https://discordapp.com/developers/applications/'
-    env_variable: TOKEN
-    default_value: GET_YOUR_OWN
-    user_viewable: true
-    user_editable: true
-    rules:
-      - required
-      - string
-    sort: 2
-  -
-    name: Owner
-    description: 'Owner of the Bot to use special commands'
-    env_variable: OWNER
+    name: 'Discord bot token'
+    description: 'From the Bot page of your application in the Discord developer portal. Turn on the Message Content and Server Members intents there too.'
+    env_variable: DISCORD_TOKEN
     default_value: ''
     user_viewable: true
     user_editable: true
     rules:
+      - nullable
+      - string
+    sort: 1
+  -
+    name: 'Command prefix'
+    description: 'What starts a command in chat, such as ! for !help.'
+    env_variable: PREFIX
+    default_value: '!'
+    user_viewable: true
+    user_editable: true
+    rules:
       - required
       - string
-      - 'max:30'
+      - 'max:10'
+    sort: 2
+  -
+    name: 'Red release'
+    description: 'The release Tekkura installs. Updated by us when a new release is tested.'
+    env_variable: VERSION
+    default_value: 3.5.24
+    user_viewable: true
+    user_editable: false
+    rules:
+      - required
+      - string
     sort: 3

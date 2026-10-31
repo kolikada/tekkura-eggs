@@ -1,0 +1,165 @@
+_comment: 'DO NOT EDIT: FILE GENERATED AUTOMATICALLY BY PANEL'
+meta:
+  version: PLCN_v3
+  update_url: 'https://raw.githubusercontent.com/kolikada/tekkura-eggs/main/eggs/bot-discord-tickets/egg-discord-tickets.yaml'
+exported_at: '2025-02-02T14:27:20+00:00'
+name: 'Discord Tickets'
+author: admin@tekkura.cloud
+uuid: 5deb7a71-4a09-4333-a4ef-abff707b77f3
+description: |-
+  Support tickets for your Discord server, with a web portal for settings, transcripts and feedback.
+  Discord Tickets is open source by the Discord Tickets team (GPL-3.0). Tekkura runs a pinned release and keeps it updated.
+image: null
+tags: {  }
+features: {  }
+docker_images:
+  'Discord Tickets 4.0.52': 'ghcr.io/discord-tickets/bot:4.0.52'
+file_denylist:
+  - '/app'
+  - '/app/**'
+startup_commands:
+  Default: /app/scripts/start.sh
+config:
+  files:
+    .env:
+      parser: properties
+      find:
+        HTTP_PORT: '{{server.allocations.default.port}}'
+        HTTP_EXTERNAL: 'http://{{server.allocations.default.ip}}:{{server.allocations.default.port}}'
+  startup:
+    done: SUCCESS
+  logs: {  }
+  stop: exit
+scripts:
+  installation:
+    script: |-
+      #!/bin/bash
+      # Tekkura: the program comes with the pinned image and is copied in at
+      # every start, so the install only prepares .env. It never replaces a
+      # key already there: upstream appended a new one at every reinstall,
+      # and a new key makes everything encrypted with the old one unreadable.
+
+      output_file="/mnt/server/.env"
+      touch "$output_file"
+
+      if ! grep -q '^ENCRYPTION_KEY=.' "$output_file"; then
+          echo "ENCRYPTION_KEY=$(head -c 24 /dev/urandom | od -An -tx1 | tr -d ' \n')" >> "$output_file"
+          echo "Generated an encryption key. Keep .env safe: without this key the bot's data cannot be read."
+      fi
+
+      # Wings fills these in at every start from the server's own address.
+      grep -q '^HTTP_EXTERNAL=' "$output_file" || echo "HTTP_EXTERNAL=" >> "$output_file"
+      grep -q '^HTTP_PORT=' "$output_file" || echo "HTTP_PORT=" >> "$output_file"
+
+      mkdir -p /mnt/server/user
+      echo "Environment ready in $output_file"
+    container: 'debian:bookworm-slim'
+    entrypoint: bash
+variables:
+  -
+    name: 'Discord bot token'
+    description: 'From the Bot page of your application in the Discord developer portal. Turn on the Server Members and Message Content intents there too.'
+    env_variable: DISCORD_TOKEN
+    default_value: ''
+    user_viewable: true
+    user_editable: true
+    rules:
+      - nullable
+      - string
+      - 'max:100'
+    sort: 1
+  -
+    name: 'Discord client secret'
+    description: 'From the OAuth2 page of the same application, for signing in to the web portal. Add your portal address followed by /auth/callback as a redirect there.'
+    env_variable: DISCORD_SECRET
+    default_value: ''
+    user_viewable: true
+    user_editable: true
+    rules:
+      - nullable
+      - string
+      - 'max:75'
+    sort: 2
+  -
+    name: 'Bot owners'
+    description: 'Optional. Discord user IDs, separated by commas, who may change the bot''s settings in every server it is in. Server admins can always manage their own server.'
+    env_variable: SUPER
+    default_value: ''
+    user_viewable: true
+    user_editable: true
+    rules:
+      - nullable
+      - string
+      - 'max:200'
+    sort: 3
+  -
+    name: 'Database type'
+    description: 'sqlite keeps everything in a file on this server and needs no setup. For mysql, create a database on the Databases tab and enter its address below.'
+    env_variable: DB_PROVIDER
+    default_value: sqlite
+    user_viewable: true
+    user_editable: true
+    rules:
+      - required
+      - string
+      - 'in:sqlite,mysql'
+    sort: 4
+  -
+    name: 'Database address'
+    description: 'Only for mysql: mysql://username:password@host:port/database, from the Databases tab. Leave empty for sqlite.'
+    env_variable: DB_CONNECTION_URL
+    default_value: ''
+    user_viewable: true
+    user_editable: true
+    rules:
+      - nullable
+      - string
+      - 'max:250'
+    sort: 5
+  -
+    name: 'Publish commands at start'
+    description: 'Registers the slash commands with Discord each time the bot starts.'
+    env_variable: PUBLISH_COMMANDS
+    default_value: 'true'
+    user_viewable: true
+    user_editable: true
+    rules:
+      - required
+      - string
+      - 'in:true,false'
+    sort: 6
+  -
+    name: 'Override archive'
+    description: 'Set to false to turn off transcripts in every server the bot is in.'
+    env_variable: OVERRIDE_ARCHIVE
+    default_value: ''
+    user_viewable: true
+    user_editable: true
+    rules:
+      - nullable
+      - string
+      - 'max:20'
+    sort: 7
+  -
+    name: '[System] Hosted panel'
+    description: 'Tells the bot it runs in a hosted container, which its start script needs.'
+    env_variable: PTERODACTYL
+    default_value: 'true'
+    user_viewable: false
+    user_editable: false
+    rules:
+      - required
+      - string
+    sort: 8
+  -
+    name: '[System] Trust proxies'
+    description: 'Off: the portal is reached directly, not through a reverse proxy.'
+    env_variable: HTTP_TRUST_PROXY
+    default_value: 'false'
+    user_viewable: false
+    user_editable: false
+    rules:
+      - required
+      - string
+      - 'in:true,false'
+    sort: 9

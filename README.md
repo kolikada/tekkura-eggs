@@ -157,6 +157,8 @@ joined. No egg is `done` yet.
 | Bots | [Python bot](eggs/bot-python/NOTES.md) | runtime | none | none | configured |
 | Bots | [Muse](eggs/bot-muse/NOTES.md) | ready-made | none | none | configured |
 | Bots | [Game Server Watcher](eggs/bot-game-server-watcher/NOTES.md) | ready-made | none | `SECRET` ✓ | configured |
+| Bots | [Red](eggs/bot-red/NOTES.md) | ready-made | none | none | configured |
+| Bots | [Discord Tickets](eggs/bot-discord-tickets/NOTES.md) | ready-made | none | none | configured |
 <!-- status:end -->
 
 ## Bots

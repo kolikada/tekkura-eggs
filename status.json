@@ -506,5 +506,32 @@
     ],
     "note": "a-sync/game-server-watcher v3.1.25 (AGPL-3.0, hosted unmodified), pinned in VERSION. Needs its one port: the setup page where customers add the game servers to watch listens on SERVER_PORT. SECRET (that page's admin password) is generated per server. Upstream cloned the moving main branch, ran Node 20 (end of life) and had stop '^^C'. Kind bot, ready-made: the egg decides what runs. The program folder is on the file deny list ('*' except data/), so Files and SFTP cannot open or change it; Wings still lists the names. No secret is ever in the startup line: the yolk entrypoint prints that line to the console after Wings fills in ${VARIABLES}, so the token reaches the bot through .env (Wings config file) instead. Checked on the local Docker stack 2026-10-26: bought through the store, built by billing, installed and started on Wings rc.1. On production as egg #44 (2026-10-31), set from this entry.",
     "panel_egg_id": 44
+  },
+  "bot-red": {
+    "state": "configured",
+    "kind": "bot",
+    "ports": {
+      "required_ports": 0,
+      "connect_port_index": 1,
+      "port_variables": {}
+    },
+    "setup": [
+      "DISCORD_TOKEN"
+    ],
+    "note": "Red-DiscordBot 3.5.24 (GPL-3.0, hosted unmodified), pinned in VERSION, which customers cannot change; Python 3.11 (Red 3.5 supports up to 3.11). Upstream passed the token as --token {{TOKEN}} in the startup line, which the console prints; Red reads RED_TOKEN from the environment, so the startup sets it from printenv. Upstream's token defaulted to GET_YOUR_OWN and its Owner variable was required with no default and never used (Red takes the application owner); both fixed, Owner dropped. Installed with pip into the server's ~/.local at the pinned version (upstream took whatever was newest) and the instance config is written by the install (upstream fetched it from parkervcp/eggs, an old repository). Data, cogs included, live in data/; everything else is on the file deny list. TMPDIR is the server's .tmp, since pip and the Audio cog fill the container's small /tmp. Ready-made, but cogs a customer installs from community repositories are Python code, so the CPU watch matters here as much as on a runtime. The Audio cog runs Lavalink on Java inside the container, on localhost, so no port; it wants about 1 GB of memory on its own. Not yet tested end to end: covered by the E2E runs."
+  },
+  "bot-discord-tickets": {
+    "state": "configured",
+    "kind": "bot",
+    "ports": {
+      "required_ports": 1,
+      "connect_port_index": 1,
+      "port_variables": {}
+    },
+    "setup": [
+      "DISCORD_TOKEN",
+      "DISCORD_SECRET"
+    ],
+    "note": "Discord Tickets 4.0.52 (GPL-3.0, hosted unmodified), from the project's own Pelican egg, rewritten as PLCN_v3. Runs the project's image pinned to 4.0.52 (upstream offered the moving 4.0, latest and main tags); its start script copies the program into app/ at every start, so app/ is on the file deny list and the image decides what runs. Its one port is the web portal (HTTP_PORT); Wings writes the port and HTTP_EXTERNAL (the server's address) into .env at every start, where upstream wrote the address once at install. Upstream's SUPER (bot owners with power over every server) defaulted to the upstream developer's own Discord ID; now empty. Its install appended a fresh ENCRYPTION_KEY at every reinstall, which makes all encrypted data unreadable; it now writes one only when none is there. Database: sqlite by default, in user/, so it needs nothing; mysql works with a database from the Databases tab (Postgres dropped, Tekkura has no Postgres host). Known gap: the image runs its own start script, so the startup cannot wait for a token the way Muse does; without one it exits, Wings gives up after the second quick exit, and the server reads Offline until the token and secret are in and it is started. Not yet tested end to end: covered by the E2E runs."
   }
 }

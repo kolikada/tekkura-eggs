@@ -3,7 +3,7 @@
 Store category: **Bots** (runtime)
 Upstream: [generic/nodejs/egg-nodejs-generic.yaml](https://github.com/pelican-eggs/generic/blob/eec3d4b153ccb8b901905b486f29d4d199154f5b/nodejs/egg-nodejs-generic.yaml)
 Format: `PLCN_v3`
-Status: **todo**
+Status: **configured**
 
 Node.js 24 LTS by default, 26 and 22 offered; 23 and 25 dropped (end of life). Running is the entrypoint's `:/home/container$ ` line. Kind bot: no ports by default (required_ports 0 needs the panel's bot kind first, see the panel's docs/PLATFORM-PLAN.md), the web port add-on brings one. With no repository the install leaves a placeholder that prints what to do and idles, so a store order starts and reads Running. Setting GIT_ADDRESS reinstalls by itself (reinstall) and the placeholder is removed first. Checked in Docker on the real images 2026-10-26: no repo, then repo set and reinstalled.
 
@@ -13,7 +13,7 @@ Deploy results (2026-10-30): after a checkout, and after the pull a deploy asks 
 
 ## To configure
 
-- [ ] Ports tab on the panel: no ports unless the plan sells a web port
+- [x] Ports tab on the panel: no ports unless the plan sells a web port
 - [ ] Test deploy from a store order with no admin input: it installs, starts and reads Running
 
 ## Images

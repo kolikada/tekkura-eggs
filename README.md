@@ -153,10 +153,10 @@ joined. No egg is `done` yet.
 | Minecraft | [PocketmineMP](eggs/minecraft-pocketmine/NOTES.md) | variant | none | none | configured |
 | Rust | [Rust](eggs/rust/NOTES.md) | primary | `APP_PORT` ✓, `QUERY_PORT` ✓, `RCON_PORT` ✓ | `RCON_PASS` ✓ | configured |
 | DayZ | [DayZ](eggs/dayz/NOTES.md) | primary | `QUERY_PORT` ✓, `RCON_PORT` (internal) | `RCON_PASSWORD` ✓ | configured |
-| Bots | [Node.js bot](eggs/bot-nodejs/NOTES.md) | runtime | none | none | todo |
-| Bots | [Python bot](eggs/bot-python/NOTES.md) | runtime | none | none | todo |
-| Bots | [Muse](eggs/bot-muse/NOTES.md) | ready-made | none | none | todo |
-| Bots | [Game Server Watcher](eggs/bot-game-server-watcher/NOTES.md) | ready-made | none | `SECRET` ✓ | todo |
+| Bots | [Node.js bot](eggs/bot-nodejs/NOTES.md) | runtime | none | none | configured |
+| Bots | [Python bot](eggs/bot-python/NOTES.md) | runtime | none | none | configured |
+| Bots | [Muse](eggs/bot-muse/NOTES.md) | ready-made | none | none | configured |
+| Bots | [Game Server Watcher](eggs/bot-game-server-watcher/NOTES.md) | ready-made | none | `SECRET` ✓ | configured |
 <!-- status:end -->
 
 ## Bots

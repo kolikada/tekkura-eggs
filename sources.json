@@ -428,5 +428,25 @@
     "path": "discord/game-server-watcher/egg-game-server-watcher.yaml",
     "commit": "7019bbaf35883b27c52532bc29bc1f090659a074",
     "file": "eggs/bot-game-server-watcher/egg-game-server-watcher.yaml"
+  },
+  {
+    "slug": "bot-red",
+    "store_category": "Bots",
+    "role": "ready-made",
+    "upstream": "https://github.com/pelican-eggs/chatbots/blob/774c22aab6a1982a97338ed4f807ead4b7bf0350/discord/redbot/egg-red.yaml",
+    "repo": "chatbots",
+    "path": "discord/redbot/egg-red.yaml",
+    "commit": "774c22aab6a1982a97338ed4f807ead4b7bf0350",
+    "file": "eggs/bot-red/egg-red.yaml"
+  },
+  {
+    "slug": "bot-discord-tickets",
+    "store_category": "Bots",
+    "role": "ready-made",
+    "upstream": "https://github.com/discord-tickets/bot/blob/fe7e6579ae554d95d94f49ec55103a85cf3f2a2d/eggs/pelican.json",
+    "repo": "discord-tickets/bot",
+    "path": "eggs/pelican.json",
+    "commit": "fe7e6579ae554d95d94f49ec55103a85cf3f2a2d",
+    "file": "eggs/bot-discord-tickets/egg-discord-tickets.json"
   }
 ]

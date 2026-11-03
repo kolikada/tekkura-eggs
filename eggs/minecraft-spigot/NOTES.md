@@ -29,6 +29,7 @@ Status: **configured**
 
 | Env | Default | Editable | Rules |
 | --- | --- | --- | --- |
+| `SERVER_NAME` | A Minecraft Server | yes | required\|string\|max:60 |
 | `DL_PATH` |   | no | nullable\|string |
 | `SERVER_JARFILE` | server.jar | yes | required\|regex:/^([\w\d._-]+)(\.jar)$/ |
 | `DL_VERSION` | latest | yes | required\|string\|between:3,10 |

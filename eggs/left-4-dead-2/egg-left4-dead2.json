@@ -21,7 +21,7 @@
     "file_denylist": [],
     "startup": ".\/srcds_run -console -port {{SERVER_PORT}} +map {{SRCDS_MAP}} +ip 0.0.0.0 -strictportbind -norestart",
     "config": {
-        "files": "{}",
+        "files": "{\n    \"left4dead2/cfg/server.cfg\": {\n        \"parser\": \"file\",\n        \"find\": {\n            \"hostname \": \"hostname \\\"{{server.environment.SERVER_NAME}}\\\"\"\n        }\n    }\n}",
         "startup": "{\r\n    \"done\": \"Connection to Steam servers successful.\"\r\n}",
         "logs": "{}",
         "stop": "quit"
@@ -34,6 +34,20 @@
         }
     },
     "variables": [
+        {
+            "name": "Server Name",
+            "description": "The name players see in their server list. Written at every start, so change it here.",
+            "env_variable": "SERVER_NAME",
+            "default_value": "Tekkura Left 4 Dead 2 Server",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": [
+                "required",
+                "string",
+                "max:60"
+            ],
+            "sort": 0
+        },
         {
             "name": "Game ID",
             "description": "The ID corresponding to the game to download and run using SRCDS.",

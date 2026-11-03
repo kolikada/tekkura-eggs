@@ -36,6 +36,7 @@ Required with no default (provisioning would build a server that cannot start):
 
 | Env | Default | Editable | Rules |
 | --- | --- | --- | --- |
+| `SERVER_NAME` | A Minecraft Server | yes | required\|string\|max:60 |
 | `PROJECT_ID` |   | yes | required\|string |
 | `VERSION_ID` |   | yes | string |
 | `API_KEY` |   | no | required\|string\|max:60 |

@@ -31,6 +31,7 @@ java -Xms128M -Xmx{{SERVER_MEMORY}}M -Dterminal.jline=false -Dterminal.ansi=true
 
 | Env | Default | Editable | Rules |
 | --- | --- | --- | --- |
+| `SERVER_NAME` | A Minecraft Server | yes | required\|string\|max:60 |
 | `MINECRAFT_VERSION` | latest | yes | required\|string\|max:20 |
 | `SERVER_JARFILE` | server.jar | yes | required\|regex:/^([\w\d._-]+)(\.jar)$/\|max:80 |
 | `BUILD_NUMBER` | latest | yes | required\|string\|max:20 |

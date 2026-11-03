@@ -31,5 +31,6 @@ The standard start: Minecraft products point at this egg, and the customer picks
 
 | Env | Default | Editable | Rules |
 | --- | --- | --- | --- |
+| `SERVER_NAME` | A Minecraft Server | yes | required\|string\|max:60 |
 | `SERVER_JARFILE` | server.jar | yes | required\|regex:/^([\w\d._-]+)(\.jar)$/ |
 | `VANILLA_VERSION` | latest | yes | required\|string\|between:3,15 |

@@ -29,5 +29,6 @@ Status: **configured**
 
 | Env | Default | Editable | Rules |
 | --- | --- | --- | --- |
+| `SERVER_NAME` | A Minecraft Server | yes | required\|string\|max:60 |
 | `BUNGEE_VERSION` | latest | yes | required\|alpha_num\|between:1,6 |
 | `SERVER_JARFILE` | bungeecord.jar | yes | required\|regex:/^([\w\d._-]+)(\.jar)$/ |

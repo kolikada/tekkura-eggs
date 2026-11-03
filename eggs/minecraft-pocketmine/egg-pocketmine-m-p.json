@@ -25,7 +25,7 @@
         "Default": "./bin/php7/bin/php ./PocketMine-MP.phar --no-wizard"
     },
     "config": {
-        "files": "{\n    \"server.properties\": {\n        \"parser\": \"properties\",\n        \"find\": {\n            \"server-ip\": \"0.0.0.0\",\n            \"enable-query\": \"true\",\n            \"server-port\": \"{{server.allocations.default.port}}\",\n            \"query.port\": \"{{server.allocations.default.port}}\"\n        }\n    }\n}",
+        "files": "{\n    \"server.properties\": {\n        \"parser\": \"properties\",\n        \"find\": {\n            \"motd\": \"{{server.environment.SERVER_NAME}}\",\n            \"server-ip\": \"0.0.0.0\",\n            \"enable-query\": \"true\",\n            \"server-port\": \"{{server.allocations.default.port}}\",\n            \"query.port\": \"{{server.allocations.default.port}}\"\n        }\n    }\n}",
         "startup": "{\n    \"done\": \")! \"\n}",
         "logs": "{}",
         "stop": "stop"
@@ -38,6 +38,20 @@
         }
     },
     "variables": [
+        {
+            "name": "Server Name",
+            "description": "The name players see in their server list. Written at every start, so change it here.",
+            "env_variable": "SERVER_NAME",
+            "default_value": "A Minecraft Server",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": [
+                "required",
+                "string",
+                "max:60"
+            ],
+            "sort": 0
+        },
         {
             "sort": 1,
             "name": "Version to install",

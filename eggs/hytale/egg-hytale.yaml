@@ -19,7 +19,11 @@ file_denylist: {}
 startup_commands:
   Default: 'java -Xms128M -XX:MaxRAMPercentage=95.0 -jar HytaleServer.jar --bind 0.0.0.0:{{SERVER_PORT}} --assets ../Assets.zip'
 config:
-  files: {}
+  files:
+    'Server/config.json':
+      parser: json
+      find:
+        'ServerName': '{{server.environment.SERVER_NAME}}'
   startup:
     done: 'Hytale Server Booted!'
   logs: {}
@@ -136,6 +140,18 @@ scripts:
     container: 'ghcr.io/pelican-eggs/installers:debian'
     entrypoint: bash
 variables:
+  -
+    name: 'Server Name'
+    description: 'The name players see in their server list. Written at every start, so change it here.'
+    env_variable: SERVER_NAME
+    default_value: 'Hytale Server'
+    user_viewable: true
+    user_editable: true
+    rules:
+      - 'required'
+      - 'string'
+      - 'max:60'
+    sort: 0
   - sort: 1
     name: 'Auto Update'
     description: 'Automatically update game files on startup.'

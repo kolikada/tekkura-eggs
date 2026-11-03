@@ -34,6 +34,7 @@ Required with no default (provisioning would build a server that cannot start):
 
 | Env | Default | Editable | Rules |
 | --- | --- | --- | --- |
+| `SERVER_NAME` | Arma 3 Server | yes | required\|string\|max:60 |
 | `STEAM_USER` |   | yes | nullable\|string |
 | `STEAM_PASS` |   | yes | nullable\|string |
 | `STEAMCMD_ATTEMPTS` | 3 | no | required\|integer |

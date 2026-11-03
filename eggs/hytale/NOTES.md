@@ -24,6 +24,7 @@ Status: **configured**
 
 | Env | Default | Editable | Rules |
 | --- | --- | --- | --- |
+| `SERVER_NAME` | Hytale Server | yes | required\|string\|max:60 |
 | `AUTO_UPDATE` | 1 | yes | boolean |
 | `PATCHLINE` | release | yes | required\|string\|in:release,pre-release |
 | `SERVER_VERSION` | latest | yes | required\|string |

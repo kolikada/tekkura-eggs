@@ -32,7 +32,7 @@
     "file_denylist": [],
     "startup": "java -Xms128M -Xmx{{SERVER_MEMORY}}M -Dterminal.jline=false -Dterminal.ansi=true --add-modules=jdk.incubator.vector -jar {{SERVER_JARFILE}}",
     "config": {
-        "files": "{\r\n    \"server.properties\": {\r\n        \"parser\": \"properties\",\r\n        \"find\": {\r\n            \"server-ip\": \"0.0.0.0\",\r\n            \"server-port\": \"{{server.allocations.default.port}}\"\r\n        }\r\n    },\r\n    \"plugins/Geyser-Spigot/config.yml\": {\r\n        \"parser\": \"yaml\",\r\n        \"find\": {\r\n            \"bedrock.port\": \"{{server.allocations.default.port}}\"\r\n        }\r\n    }\r\n}",
+        "files": "{\n    \"server.properties\": {\n        \"parser\": \"properties\",\n        \"find\": {\n            \"motd\": \"{{server.environment.SERVER_NAME}}\",\n            \"server-ip\": \"0.0.0.0\",\n            \"server-port\": \"{{server.allocations.default.port}}\"\n        }\n    },\n    \"plugins/Geyser-Spigot/config.yml\": {\n        \"parser\": \"yaml\",\n        \"find\": {\n            \"bedrock.port\": \"{{server.allocations.default.port}}\"\n        }\n    }\n}",
         "startup": "{\r\n    \"done\": \")! For help, type \"\r\n}",
         "logs": "{}",
         "stop": "stop"
@@ -45,6 +45,20 @@
         }
     },
     "variables": [
+        {
+            "name": "Server Name",
+            "description": "The name players see in their server list. Written at every start, so change it here.",
+            "env_variable": "SERVER_NAME",
+            "default_value": "A Minecraft Server",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": [
+                "required",
+                "string",
+                "max:60"
+            ],
+            "sort": 0
+        },
         {
             "sort": 1,
             "name": "Minecraft Version",

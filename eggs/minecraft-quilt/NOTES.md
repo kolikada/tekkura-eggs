@@ -31,5 +31,6 @@ Upstream shipped no features; given eula, java_version and pid_limit like the ot
 
 | Env | Default | Editable | Rules |
 | --- | --- | --- | --- |
+| `SERVER_NAME` | A Minecraft Server | yes | required\|string\|max:60 |
 | `MC_VERSION` | 1.20.2 | yes | required\|string\|between:3,15 |
 | `SERVER_JARFILE` | server.jar | yes | required\|regex:/^([\w\d._-]+)(\.jar)$/ |

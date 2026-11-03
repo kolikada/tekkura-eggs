@@ -31,6 +31,7 @@ USER_AGENT defaults to Tekkura's; PaperMC's API refuses downloads without one.
 
 | Env | Default | Editable | Rules |
 | --- | --- | --- | --- |
+| `SERVER_NAME` | A Velocity Server | yes | required\|string\|max:60 |
 | `VELOCITY_VERSION` | latest | no | required\|string\|max:20 |
 | `SERVER_JARFILE` | velocity.jar | no | required\|string\|max:32\|regex:/^([\w\d._-]+)(\.jar)$/ |
 | `DL_PATH` |   | no | nullable\|string |

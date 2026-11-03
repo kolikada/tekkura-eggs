@@ -24,4 +24,5 @@ Status: **configured**
 
 | Env | Default | Editable | Rules |
 | --- | --- | --- | --- |
+| `SERVER_NAME` | A Minecraft Server | yes | required\|string\|max:60 |
 | `VERSION` | PM5PHP83 | yes | required\|string\|in:PM5,PM5PHP83,PM5PHP84,PM4 |

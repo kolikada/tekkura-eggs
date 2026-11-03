@@ -24,6 +24,7 @@ Status: **configured**
 
 | Env | Default | Editable | Rules |
 | --- | --- | --- | --- |
+| `SERVER_NAME` | Tekkura Left 4 Dead 2 Server | yes | required\|string\|max:60 |
 | `SRCDS_APPID` | 222860 | no | required\|in:222860 |
 | `SRCDS_MAP` | c1m1_hotel | yes | required\|string\|max:40 |
 | `AUTO_UPDATE` | 1 | yes | boolean |

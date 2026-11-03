@@ -27,6 +27,9 @@ The table below lists both for every egg, generated from the files.
 - Every required variable has a working default.
 - The panel's **Ports** tab on the egg says how many ports the game needs and
   which one players connect on.
+- The name players see is a variable the panel can fill: `PUBLIC_NAME`,
+  `SESSION_NAME`, `SRV_NAME`, `SERVER_HOSTNAME`, `SERVERNAME` or `SERVER_NAME`.
+  One that only takes letters and digits is skipped, since it names files.
 - A test order deploys it, it starts, and a player can join on the address the
   panel shows. Nobody touched the admin in between.
 

@@ -31,6 +31,7 @@ USER_AGENT defaults to Tekkura's; PaperMC's API refuses downloads without one.
 
 | Env | Default | Editable | Rules |
 | --- | --- | --- | --- |
+| `SERVER_NAME` | A Minecraft Server | yes | required\|string\|max:60 |
 | `MINECRAFT_VERSION` | latest | yes | nullable\|string\|max:20 |
 | `SERVER_JARFILE` | server.jar | yes | required\|regex:/^([\w\d._-]+)(\.jar)$/ |
 | `DL_PATH` |   | no | nullable\|string |

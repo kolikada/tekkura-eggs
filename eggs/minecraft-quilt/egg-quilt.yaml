@@ -35,6 +35,7 @@ config:
     server.properties:
       parser: properties
       find:
+        'motd': '{{server.environment.SERVER_NAME}}'
         server-ip: 0.0.0.0
         enable-query: true
         server-port: '{{server.allocations.default.port}}'
@@ -74,6 +75,18 @@ scripts:
     container: 'ghcr.io/pelican-eggs/installers:java_21'
     entrypoint: bash
 variables:
+  -
+    name: 'Server Name'
+    description: 'The name players see in their server list. Written at every start, so change it here.'
+    env_variable: SERVER_NAME
+    default_value: 'A Minecraft Server'
+    user_viewable: true
+    user_editable: true
+    rules:
+      - 'required'
+      - 'string'
+      - 'max:60'
+    sort: 0
   -
     name: 'Minecraft Version'
     description: |-

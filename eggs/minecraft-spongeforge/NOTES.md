@@ -30,6 +30,7 @@ java -Xms128M -Xmx{{SERVER_MEMORY}}M -jar {{SERVER_JARFILE}}
 
 | Env | Default | Editable | Rules |
 | --- | --- | --- | --- |
+| `SERVER_NAME` | A Minecraft Server | yes | required\|string\|max:60 |
 | `SERVER_JARFILE` | server.jar | yes | required\|regex:/^([\w\d._-]+)(\.jar)$/ |
 | `SF_VERSION` | recommended | yes | required\|string |
 | `FORGE_VERSION` |   | yes | nullable\|regex:/^[0-9\.\-]+$/ |

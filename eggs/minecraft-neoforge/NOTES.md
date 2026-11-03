@@ -29,5 +29,6 @@ Status: **configured**
 
 | Env | Default | Editable | Rules |
 | --- | --- | --- | --- |
+| `SERVER_NAME` | A Minecraft Server | yes | required\|string\|max:60 |
 | `MC_VERSION` | latest | yes | required\|string\|max:9 |
 | `NEOFORGE_VERSION` |   | yes | nullable\|regex:/^[0-9\.\-]+$/ |

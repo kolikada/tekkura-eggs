@@ -21,7 +21,7 @@
     "file_denylist": [],
     "startup": ".\/{{SERVER_BINARY}} -par=startup_params_server.txt",
     "config": {
-        "files": "{\r\n    \"server.cfg\": {\r\n        \"parser\": \"file\",\r\n        \"find\": {\r\n            \"password=\": \"password = \\\"{{server.environment.SERVER_PASSWORD}}\\\";\",\r\n            \"\/\/password=\": \"password = \\\"{{server.environment.SERVER_PASSWORD}}\\\";\",\r\n            \"password =\": \"password = \\\"{{server.environment.SERVER_PASSWORD}}\\\";\",\r\n            \"\/\/password =\": \"password = \\\"{{server.environment.SERVER_PASSWORD}}\\\";\",\r\n            \"maxPlayers\": \"maxPlayers = {{server.environment.MAX_PLAYERS}};\",\r\n            \"headlessClients\": \"headlessClients[] = { \\\"127.0.0.1\\\" };\",\r\n            \"localClient\": \"localClient[] = { \\\"127.0.0.1\\\" };\"\r\n        }\r\n    },\r\n    \"battleye\/launch\/beserver.cfg\": {\r\n        \"parser\": \"file\",\r\n        \"find\": {\r\n            \"RConPassword\": \"RConPassword {{server.environment.RCON_PASSWORD}}\",\r\n            \"RConPort\": \"RConPort {{server.environment.RCON_PORT}}\"\r\n        }\r\n    },\r\n    \"battleye\/launch\/beserver_x64.cfg\": {\r\n        \"parser\": \"file\",\r\n        \"find\": {\r\n            \"RConPassword\": \"RConPassword {{server.environment.RCON_PASSWORD}}\",\r\n            \"RConPort\": \"RConPort {{server.environment.RCON_PORT}}\"\r\n        }\r\n    }\r\n}",
+        "files": "{\n    \"server.cfg\": {\n        \"parser\": \"file\",\n        \"find\": {\n            \"hostname =\": \"hostname = \\\"{{server.environment.SERVER_NAME}}\\\";\",\n            \"password=\": \"password = \\\"{{server.environment.SERVER_PASSWORD}}\\\";\",\n            \"//password=\": \"password = \\\"{{server.environment.SERVER_PASSWORD}}\\\";\",\n            \"password =\": \"password = \\\"{{server.environment.SERVER_PASSWORD}}\\\";\",\n            \"//password =\": \"password = \\\"{{server.environment.SERVER_PASSWORD}}\\\";\",\n            \"maxPlayers\": \"maxPlayers = {{server.environment.MAX_PLAYERS}};\",\n            \"headlessClients\": \"headlessClients[] = { \\\"127.0.0.1\\\" };\",\n            \"localClient\": \"localClient[] = { \\\"127.0.0.1\\\" };\"\n        }\n    },\n    \"battleye/launch/beserver.cfg\": {\n        \"parser\": \"file\",\n        \"find\": {\n            \"RConPassword\": \"RConPassword {{server.environment.RCON_PASSWORD}}\",\n            \"RConPort\": \"RConPort {{server.environment.RCON_PORT}}\"\n        }\n    },\n    \"battleye/launch/beserver_x64.cfg\": {\n        \"parser\": \"file\",\n        \"find\": {\n            \"RConPassword\": \"RConPassword {{server.environment.RCON_PASSWORD}}\",\n            \"RConPort\": \"RConPort {{server.environment.RCON_PORT}}\"\n        }\n    }\n}",
         "startup": "{\r\n    \"done\": \"Host identity created.\"\r\n}",
         "logs": "{}",
         "stop": "^C"
@@ -34,6 +34,20 @@
         }
     },
     "variables": [
+        {
+            "name": "Server Name",
+            "description": "The name players see in their server list. Written at every start, so change it here.",
+            "env_variable": "SERVER_NAME",
+            "default_value": "Arma 3 Server",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": [
+                "required",
+                "string",
+                "max:60"
+            ],
+            "sort": 0
+        },
         {
             "name": "Steam Username",
             "description": "Your own Steam login, used to download Arma 3 and its Workshop mods. Use a separate Steam account made for this server, with Steam Guard turned off. Workshop mods only download if that account owns Arma 3. After entering it, reinstall the server from Settings.",

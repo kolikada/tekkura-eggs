@@ -34,7 +34,7 @@
         "Default": "java -Xms128M -Xmx{{SERVER_MEMORY}}M -XX:+UseG1GC -XX:G1HeapRegionSize=4M -XX:+UnlockExperimentalVMOptions -XX:+ParallelRefProcEnabled -XX:+AlwaysPreTouch -XX:MaxInlineLevel=15 -jar {{SERVER_JARFILE}}"
     },
     "config": {
-        "files": "{\n    \"velocity.toml\": {\n        \"parser\": \"file\",\n        \"find\": {\n            \"bind = \": \"bind = \\\"0.0.0.0:{{server.allocations.default.port}}\\\"\"\n        }\n    }\n}",
+        "files": "{\n    \"velocity.toml\": {\n        \"parser\": \"file\",\n        \"find\": {\n            \"motd = \": \"motd = \\\"{{server.environment.SERVER_NAME}}\\\"\",\n            \"bind = \": \"bind = \\\"0.0.0.0:{{server.allocations.default.port}}\\\"\"\n        }\n    }\n}",
         "startup": "{\n    \"done\": \"Done (\"\n}",
         "logs": "{}",
         "stop": "end"
@@ -47,6 +47,20 @@
         }
     },
     "variables": [
+        {
+            "name": "Server Name",
+            "description": "The name players see in their server list. Written at every start, so change it here.",
+            "env_variable": "SERVER_NAME",
+            "default_value": "A Velocity Server",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": [
+                "required",
+                "string",
+                "max:60"
+            ],
+            "sort": 0
+        },
         {
             "sort": 4,
             "name": "Build Number",

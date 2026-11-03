@@ -29,6 +29,7 @@ Status: **configured**
 
 | Env | Default | Editable | Rules |
 | --- | --- | --- | --- |
+| `SERVER_NAME` | A Minecraft Server | yes | required\|string\|max:60 |
 | `LOADER_VERSION` | latest | yes | required\|string\|between:3,15 |
 | `FABRIC_VERSION` | latest | yes | required\|string\|between:3,15 |
 | `MC_VERSION` | latest | yes | required\|string\|between:3,15 |

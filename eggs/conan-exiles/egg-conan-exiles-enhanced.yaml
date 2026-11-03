@@ -76,7 +76,18 @@ scripts:
       export HOME=/mnt/server
 
       ## install game using steamcmd
-      ./steamcmd.sh +force_install_dir /mnt/server +login ${STEAM_USER} ${STEAM_PASS} ${STEAM_AUTH} $( [[ "${WINDOWS_INSTALL}" == "1" ]] && printf %s '+@sSteamCmdForcePlatformType windows' ) +app_update ${SRCDS_APPID} $( [[ -z ${SRCDS_BETAID} ]] || printf %s "-beta ${SRCDS_BETAID}" ) $( [[ -z ${SRCDS_BETAPASS} ]] || printf %s "-betapassword ${SRCDS_BETAPASS}" ) ${INSTALL_FLAGS} validate +quit ## other flags may be needed depending on install. looking at you cs 1.6
+      ## Steam can fail a download and still exit cleanly, so check the game arrived,
+      ## and fail the install if it never does rather than hand over an empty server.
+      for STEAM_TRY in 1 2 3; do
+          ./steamcmd.sh +force_install_dir /mnt/server +login ${STEAM_USER} ${STEAM_PASS} ${STEAM_AUTH} $( [[ "${WINDOWS_INSTALL}" == "1" ]] && printf %s '+@sSteamCmdForcePlatformType windows' ) +app_update ${SRCDS_APPID} $( [[ -z ${SRCDS_BETAID} ]] || printf %s "-beta ${SRCDS_BETAID}" ) $( [[ -z ${SRCDS_BETAPASS} ]] || printf %s "-betapassword ${SRCDS_BETAPASS}" ) ${INSTALL_FLAGS} validate +quit ## other flags may be needed depending on install. looking at you cs 1.6
+          grep -Eqs '"StateFlags"[[:space:]]+"4"' "/mnt/server/steamapps/appmanifest_${SRCDS_APPID}.acf" && break
+          if [ "${STEAM_TRY}" = "3" ]; then
+              echo "Steam did not finish downloading the game after 3 tries."
+              exit 1
+          fi
+          echo "Steam did not finish downloading the game, trying again."
+          sleep 15
+      done
 
       ## set up 32 bit libraries
       mkdir -p /mnt/server/.steam/sdk32

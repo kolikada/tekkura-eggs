@@ -19,7 +19,7 @@ Game +1 is required. Steam token made optional and passed only when set.
 ## Startup
 
 ```sh
-./Unturned_Headless.x86_64 -batchmode -nographics -bind 0.0.0.0 -port {{SERVER_PORT}} ${GSLT:+-GSLT ${GSLT}} -Name "{{SRV_NAME}}" -Password {{SRV_PW}} +InternetServer/{{SRV_ID}}
+./Unturned_Headless.x86_64 -batchmode -nographics -bind 0.0.0.0 -port {{SERVER_PORT}} $( [ -z "$GSLT" ] || printf %s "-GSLT $GSLT" ) -Name "{{SRV_NAME}}" -Password {{SRV_PW}} +InternetServer/{{SRV_ID}}
 ```
 
 ## Variables

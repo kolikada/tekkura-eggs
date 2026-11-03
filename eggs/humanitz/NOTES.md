@@ -21,7 +21,7 @@ Port variables that keep a fixed default on every server (collide on a shared no
 ## Startup
 
 ```sh
-./TSSGame/Binaries/Linux/TSSGameServer-Linux-Shipping TSSGame -log -port={{SERVER_PORT}} -queryport={{QUERY_PORT}} -steamservername="{{SERVER_NAME}}"
+./HumanitZServer/Binaries/Linux/HumanitZServer-Linux-Shipping HumanitZServer -log -port={{SERVER_PORT}} -queryport={{QUERY_PORT}} -steamservername="{{SERVER_NAME}}"
 ```
 
 ## Variables

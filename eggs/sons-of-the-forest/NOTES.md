@@ -5,6 +5,8 @@ Upstream: [games-steamcmd/sonsoftheforest/egg-sons-of-the-forest.json](https://g
 Format: `PTDL_v2`
 Status: **configured**
 
+The join password defaulted to "changeme" on every server; now generated. steam_appid.txt is written by the installer and SKIP_TESTS is on, or a new server never leaves Starting (run 15).
+
 ## To configure
 
 Port variables that keep a fixed default on every server (collide on a shared node):
@@ -12,6 +14,7 @@ Port variables that keep a fixed default on every server (collide on a shared no
 - [x] `QUERY_PORT` default `27016` (gets port 2): UDP port used by Steam to list the server and enable the discovery services.
 - [x] `BLOBSYNC_PORT` default `9700` (gets port 3): BlobSyncPort UDP port used by the BlobSync system to initialize game systems and
 
+- [x] `SRV_PW` (generated per server): the password players type to join.
 - [x] Ports tab on the panel: how many ports, and which one players connect on (needs 3, connect on port 1)
 - [ ] Test deploy from a store order with no admin input, and a player can join
 
@@ -42,5 +45,5 @@ wine ./SonsOfTheForestDS.exe -userdatapath "/home/container/serverconfig" -dedic
 | `WINEPATH` | /home/container | no | required\|string\|max:20 |
 | `WINETRICKS_RUN` | mono vcrun2019 | no | required\|string |
 | `WINDOWS_INSTALL` | 1 | no | required\|string\|in:1 |
-| `SKIP_TESTS` | false | yes | required\|string\|in:true,false |
+| `SKIP_TESTS` | true | no | required\|string\|in:true,false |
 | `SAVE_SLOT` | 0000000001 | yes | required\|numeric\|max:30 |

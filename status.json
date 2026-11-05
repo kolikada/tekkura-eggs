@@ -210,6 +210,10 @@
         "BLOBSYNC_PORT": 3
       }
     },
+    "secrets": [
+      "SRV_PW"
+    ],
+    "note": "The join password defaulted to \"changeme\" on every server; now generated. steam_appid.txt is written by the installer and SKIP_TESTS is on, or a new server never leaves Starting (run 15).",
     "panel_egg_id": 13
   },
   "valheim": {

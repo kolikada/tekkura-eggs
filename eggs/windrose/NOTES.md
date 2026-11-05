@@ -7,12 +7,15 @@ Status: **configured**
 
 Invite codes work without it; DirectIP must match the game port, so it follows port 1.
 
+`dxcore` is off in the startup line: under Proton the game picks a fake NPU device through it and crashes 12 seconds in, on every start (run 16). With it off the game logs `NNERuntimeORTDml is not available` and carries on.
+
 ## To configure
 
 Port variables that keep a fixed default on every server (collide on a shared node):
 
 - [x] `DIRECT_CONNECTION_PORT` default `7777` (gets port 1): TCP/UDP port used when Use Direct Connection is true. Must be open on both proto
 
+- [x] `INVITE_CODE` (generated per server): how players find this server. It was `server1` on all of them.
 - [x] Ports tab on the panel: how many ports, and which one players connect on (needs 1, connect on port 1)
 - [ ] Test deploy from a store order with no admin input, and a player can join
 
@@ -23,7 +26,7 @@ Port variables that keep a fixed default on every server (collide on a shared no
 ## Startup
 
 ```sh
-[Default] PROTON_DISABLE_XALIA=1 proton run ./R5/Binaries/Win64/WindroseServer-Win64-Shipping.exe & WS_PID=$! ; while [ ! -f ./R5/Saved/Logs/R5.log ]; do sleep 1; done; tail -c0 -F ./R5/Saved/Logs/R5.log --pid=$WS_PID
+[Default] WINEDLLOVERRIDES="dxcore=d" PROTON_DISABLE_XALIA=1 proton run ./R5/Binaries/Win64/WindroseServer-Win64-Shipping.exe & WS_PID=$! ; while [ ! -f ./R5/Saved/Logs/R5.log ]; do sleep 1; done; tail -c0 -F ./R5/Saved/Logs/R5.log --pid=$WS_PID
 ```
 
 ## Variables
@@ -36,7 +39,7 @@ Port variables that keep a fixed default on every server (collide on a shared no
 | `DIRECT_CONNECTION_PORT` | 7777 | no | required\|integer\|min:1024\|max:65535 |
 | `IS_PASSWORD_PROTECTED` | false | yes | required\|string\|in:true,false |
 | `SERVER_PASSWORD` |   | yes | nullable\|string\|max:64 |
-| `MAX_PLAYERS` | 4 | yes | required\|integer\|min:1\|max:10 |
+| `MAX_PLAYERS` | 2 | yes | required\|integer\|min:1\|max:10 |
 | `SERVER_REGION` |   | yes | nullable\|string\|in:,SEA,CIS,EU |
 | `WORLD_NAME` | Windrose World | hidden | required\|string\|max:64 |
 | `WORLD_PRESET_TYPE` | Medium | hidden | required\|string\|in:Easy,Medium,Hard |

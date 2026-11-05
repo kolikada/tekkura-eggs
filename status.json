@@ -300,7 +300,10 @@
         "DIRECT_CONNECTION_PORT": 1
       }
     },
-    "note": "Invite codes work without it; DirectIP must match the game port, so it follows port 1.",
+    "secrets": [
+      "INVITE_CODE"
+    ],
+    "note": "Invite codes work without it; DirectIP must match the game port, so it follows port 1. Invite code generated per server, it was server1 on all of them. dxcore off in the startup line or the game crashes under Proton (run 16). 2 players by default: the game asks 8 GB for 2, 12 GB for 4.",
     "panel_egg_id": 21
   },
   "arma-3": {

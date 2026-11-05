@@ -226,7 +226,7 @@ variables:
   -
     name: 'Steam Gameserver Login Token'
     description: |-
-      Your own Steam Game Server Login Token. Without one the server only accepts players on its local network. Create one for free at https://steamcommunity.com/dev/managegameservers
+      Your own Steam Game Server Login Token, made for app ID 730. Without one the server only accepts players on its local network. Create one for free at https://steamcommunity.com/dev/managegameservers
     env_variable: STEAM_GSLT
     default_value: ''
     user_viewable: true

@@ -170,7 +170,7 @@ variables:
     sort: 5
   -
     name: 'Lua Refresh'
-    description: "0 = disable Lua refresh,\r\n1 = enable Lua refresh"
+    description: 'Reload Lua files as they change, for developing addons. Leave off on a live server.'
     env_variable: LUA_REFRESH
     default_value: 0
     user_viewable: true

@@ -293,6 +293,7 @@ def seven_days(path: pathlib.Path, text: str) -> str:
     text = add_var(text, "SERVER_NAME", "Server Name", "Tekkura 7 Days to Die Server", SERVER_LIST, NAME_RULES)
     text = set_field(text, "MAX_PLAYERS", "user_editable", True)
     text = set_field(text, "MAX_PLAYERS", "rules", "required|integer|between:1,64")
+    text = set_field(text, "AUTO_UPDATE", "description", "Update the server from Steam every time it starts.")
     return text
 
 
@@ -452,6 +453,7 @@ def dont_starve(path: pathlib.Path, text: str) -> str:
     text = set_field(text, "SERVER_TOKEN", "rules", ["nullable", "string", "max:255"])
     text = set_field(text, "SERVER_TOKEN", "description", DST_TOKEN_HELP)
     text = set_field(text, "AUTO_UPDATE", "default_value", "1")
+    text = set_field(text, "AUTO_UPDATE", "description", "Update the server from Steam every time it starts.")
     text = set_field(text, "MAX_PLAYERS", "default_value", "8")
     text = set_field(text, "CLUSTER_DESC", "default_value", "A Tekkura hosted server")
     for env, world in [("MASTER_WORLDGEN", "the surface"), ("CAVES_WORLDGEN", "the caves")]:
@@ -478,6 +480,7 @@ def garrys_mod(path: pathlib.Path, text: str) -> str:
     if yaml.safe_load(old_line.strip())["Default"] != startup:
         raise SystemExit("gmod startup line not where expected")
     text = swap(text, old_line, new_line)
+    text = set_field(text, "LUA_REFRESH", "description", "Reload Lua files as they change, for developing addons. Leave off on a live server.")
     text = add_var(text, "SERVER_HOSTNAME", "Server Name", "Tekkura Garry's Mod Server", SERVER_LIST, NAME_RULES)
     return text
 
@@ -489,6 +492,7 @@ def garrys_mod(path: pathlib.Path, text: str) -> str:
 def factorio(path: pathlib.Path, text: str) -> str:
     text = swap(text, "        token: '{{server.environment.SERVER_TOKEN}}'", "        token: '{{server.environment.SERVER_TOKEN}}'\n        visibility.public: '{{server.environment.PUBLIC_LISTING}}'")
     text = set_field(text, "MAX_SLOTS", "user_editable", True)
+    text = set_field(text, "RCON_ENABLED", "description", "Open RCON on the RCON port below, with the RCON password.")
     text = set_field(text, "RCON_PORT", "user_editable", False)
     text = set_field(text, "RCON_PORT", "description", "RCON tools connect here once RCON is on. Set by the panel.")
     text = set_field(text, "RCON_PASSWORD", "description", "Made for this server when it was built.")
@@ -511,6 +515,7 @@ def factorio(path: pathlib.Path, text: str) -> str:
 
 def satisfactory(path: pathlib.Path, text: str) -> str:
     text = edit_script(path, text, steam_retry("SRCDS_APPID"))
+    text = set_field(text, "AUTO_UPDATE", "description", "Update the server from Steam every time it starts.")
     text = set_field(text, "RELIABLE_PORT", "description", "Required by Satisfactory 1.1 and later. Set by the panel.")
     return text
 

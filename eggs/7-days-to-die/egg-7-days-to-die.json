@@ -83,7 +83,7 @@
         },
         {
             "name": "Auto Update",
-            "description": "This is to auto update the server on start.\r\n\r\nOptions are 0 or 1\r\nDefault is 1",
+            "description": "Update the server from Steam every time it starts.",
             "env_variable": "AUTO_UPDATE",
             "default_value": "1",
             "user_viewable": true,

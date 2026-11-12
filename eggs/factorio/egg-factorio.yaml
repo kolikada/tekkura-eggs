@@ -156,7 +156,7 @@ variables:
     sort: 2
   -
     name: 'RCON Enabled?'
-    description: ''
+    description: 'Open RCON on the RCON port below, with the RCON password.'
     env_variable: RCON_ENABLED
     default_value: 0
     user_viewable: true

@@ -51,7 +51,7 @@
         },
         {
             "name": "Automatic Updates",
-            "description": "Quickly checks for any server updates on startup, and updates if necessary. (1 Enable | 0 Disable)",
+            "description": "Update the server from Steam every time it starts.",
             "env_variable": "AUTO_UPDATE",
             "default_value": "1",
             "user_viewable": true,

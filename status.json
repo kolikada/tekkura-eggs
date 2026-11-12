@@ -542,5 +542,93 @@
     ],
     "note": "Discord Tickets 4.0.52 (GPL-3.0, hosted unmodified), from the project's own Pelican egg, rewritten as PLCN_v3. Runs the project's image pinned to 4.0.52 (upstream offered the moving 4.0, latest and main tags); its start script copies the program into app/ at every start, so app/ is on the file deny list and the image decides what runs. Its one port is the web portal (HTTP_PORT); Wings writes the port and HTTP_EXTERNAL (the server's address) into .env at every start, where upstream wrote the address once at install. Upstream's SUPER (bot owners with power over every server) defaulted to the upstream developer's own Discord ID; now empty. Its install appended a fresh ENCRYPTION_KEY at every reinstall, which makes all encrypted data unreadable; it now writes one only when none is there. Database: sqlite by default, in user/, so it needs nothing; mysql works with a database from the Databases tab (Postgres dropped, Tekkura has no Postgres host). Known gap: the image runs its own start script, so the startup cannot wait for a token the way Muse does; without one it exits, Wings gives up after the second quick exit, and the server reads Offline until the token and secret are in and it is started. Not yet tested end to end: covered by the E2E runs. On production as egg #46 (2026-10-31), set from this entry.",
     "panel_egg_id": 46
+  },
+  "enshrouded": {
+    "state": "ready",
+    "ports": {
+      "required_ports": 2,
+      "connect_port_index": 2,
+      "port_variables": {
+        "QUERY_PORT": 2
+      }
+    },
+    "secrets": [
+      "ADMIN_PASSWORD",
+      "FRIEND_PASSWORD",
+      "GUEST_PASSWORD"
+    ],
+    "note": "Players find and join on the query port, game port +1, so they connect on the 2nd; gamePort is written as the 1st for builds that still read it. Upstream's default file carried the same three group passwords on every server; now each is made per server and written by the installer. Upstream also asked Steam for ${STEAM_APPID}, a variable the egg never had. 16 players at most, the game's own limit."
+  },
+  "7-days-to-die": {
+    "state": "ready",
+    "ports": {
+      "required_ports": 3,
+      "connect_port_index": 1,
+      "port_variables": {}
+    },
+    "internal": [
+      "TELNET_PORT"
+    ],
+    "note": "The game takes its port and the next two by itself, so a run of 3 and no port variables. Telnet is how the console talks to the game, inside the container only. The name goes in as -ServerName, which the game reads like any serverconfig.xml property. Max players unlocked, 1 to 64."
+  },
+  "the-isle": {
+    "state": "ready",
+    "ports": {
+      "required_ports": 3,
+      "connect_port_index": 1,
+      "port_variables": {
+        "RCON_PORT": 2,
+        "QUEUE_PORT": 3
+      }
+    },
+    "secrets": [
+      "RCON_PASSWORD"
+    ],
+    "note": "RCON and the join queue both defaulted to 44000 on every server; now the 2nd and 3rd ports. Upstream wrote the words \"No password\" as the server password, linked its author's Discord on every server, and read SERVER_PASSWORD_ENABLED without defining it. 40 players by default."
+  },
+  "dont-starve-together": {
+    "state": "ready",
+    "ports": {
+      "required_ports": 2,
+      "connect_port_index": 1,
+      "port_variables": {
+        "CAVES_PORT": 2
+      }
+    },
+    "note": "Two shards in one container: the surface on the 1st port, the caves on the 2nd, which players connect to when they go down, so it must be reachable. The caves get their own Steam ports. Needs the customer's own Klei server token: optional in the egg, written to cluster_token.txt at every start, and the server says so and stops while it is empty. Upstream's installer saved GitHub's HTML pages as its config and worldgen files, and auto update was off, which leaves a server unjoinable after every game update."
+  },
+  "garrys-mod": {
+    "state": "ready",
+    "ports": {
+      "required_ports": 1,
+      "connect_port_index": 1,
+      "port_variables": {}
+    },
+    "note": "One port. The Steam token stays optional, as on CS2: Garry's Mod lists without one. Token and workshop collection go on the command line only when set (the CS2 pattern, 5837d3f). The name goes in as +hostname."
+  },
+  "factorio": {
+    "state": "ready",
+    "ports": {
+      "required_ports": 2,
+      "connect_port_index": 1,
+      "port_variables": {
+        "RCON_PORT": 2
+      }
+    },
+    "secrets": [
+      "RCON_PASSWORD"
+    ],
+    "note": "RCON is off until the customer turns it on; its port and password are ready when they do. Public listing is off by default: it needs the customer's factorio.com login, and upstream's placeholders (unnamed, undefined) would have been sent as one. Max players unlocked."
+  },
+  "satisfactory": {
+    "state": "ready",
+    "ports": {
+      "required_ports": 2,
+      "connect_port_index": 1,
+      "port_variables": {
+        "RELIABLE_PORT": 2
+      }
+    },
+    "note": "Reliable messaging defaulted to 8888 on every server; now the 2nd port. The name, admin password and session are set in the game's own Server Manager, so the first player to join claims the server: the customer should join first."
   }
 }

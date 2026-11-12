@@ -1,11 +1,11 @@
 _comment: 'DO NOT EDIT: FILE GENERATED AUTOMATICALLY BY PANEL'
 meta:
   version: PLCN_v3
-  update_url: 'https://raw.githubusercontent.com/pelican-eggs/games-steamcmd/refs/heads/main/gmod/egg-garrys-mod.yaml'
+  update_url: 'https://raw.githubusercontent.com/kolikada/tekkura-eggs/main/eggs/garrys-mod/egg-garrys-mod.yaml'
 exported_at: '2026-04-21T18:00:52+00:00'
 name: 'Garrys Mod'
-author: panel@example.com
-uuid: 60ef81d4-30a2-4d98-ab64-f59c69e2f915
+author: admin@tekkura.cloud
+uuid: c5add40d-e636-4b54-8e6c-e4ef0551406d
 description: |-
   Garrys Mod, is a sandbox physics game created by Garry Newman, and developed by his company,
   Facepunch Studios.
@@ -20,7 +20,7 @@ docker_images:
   Source: 'ghcr.io/pelican-eggs/games:source'
 file_denylist: {  }
 startup_commands:
-  Default: './srcds_run -game garrysmod -console -port {{SERVER_PORT}} +ip 0.0.0.0 +host_workshop_collection {{WORKSHOP_ID}} +map {{SRCDS_MAP}} +gamemode {{GAMEMODE}} -strictportbind -norestart +sv_setsteamaccount {{STEAM_ACC}} +maxplayers {{MAX_PLAYERS}}  -tickrate {{TICKRATE}}  $( [ "$LUA_REFRESH" == "1" ] || printf %s ''-disableluarefresh'' )'
+  Default: './srcds_run -game garrysmod -console -port {{SERVER_PORT}} +ip 0.0.0.0 +hostname "{{SERVER_HOSTNAME}}" $( [ -z "$WORKSHOP_ID" ] || printf %s "+host_workshop_collection $WORKSHOP_ID" ) +map {{SRCDS_MAP}} +gamemode {{GAMEMODE}} -strictportbind -norestart $( [ -z "$STEAM_ACC" ] || printf %s "+sv_setsteamaccount $STEAM_ACC" ) +maxplayers {{MAX_PLAYERS}}  -tickrate {{TICKRATE}}  $( [ "$LUA_REFRESH" == "1" ] || printf %s ''-disableluarefresh'' )'
 config:
   files: {  }
   startup:
@@ -62,7 +62,18 @@ scripts:
       export HOME=/mnt/server
 
       ## install game using steamcmd
-      ./steamcmd.sh +force_install_dir /mnt/server +login ${STEAM_USER} ${STEAM_PASS} ${STEAM_AUTH} $( [[ "${WINDOWS_INSTALL}" == "1" ]] && printf %s '+@sSteamCmdForcePlatformType windows' ) +app_update ${SRCDS_APPID} ${EXTRA_FLAGS} validate +quit ## other flags may be needed depending on install. looking at you cs 1.6
+      ## Steam can fail a download and still exit cleanly, so check the game arrived,
+      ## and fail the install if it never does rather than hand over an empty server.
+      for STEAM_TRY in 1 2 3; do
+          ./steamcmd.sh +force_install_dir /mnt/server +login ${STEAM_USER} ${STEAM_PASS} ${STEAM_AUTH} $( [[ "${WINDOWS_INSTALL}" == "1" ]] && printf %s '+@sSteamCmdForcePlatformType windows' ) +app_update ${SRCDS_APPID} ${EXTRA_FLAGS} validate +quit
+          grep -Eqs '"StateFlags"[[:space:]]+"4"' "/mnt/server/steamapps/appmanifest_${SRCDS_APPID}.acf" && break
+          if [ "${STEAM_TRY}" = "3" ]; then
+              echo "Steam did not finish downloading the game after 3 tries."
+              exit 1
+          fi
+          echo "Steam did not finish downloading the game, trying again."
+          sleep 15
+      done
 
       ## set up 32 bit libraries
       mkdir -p /mnt/server/.steam/sdk32
@@ -134,6 +145,18 @@ scripts:
     container: 'ghcr.io/pelican-eggs/installers:debian'
     entrypoint: bash
 variables:
+  -
+    name: 'Server Name'
+    description: 'The name players see in their server list. Written at every start, so change it here.'
+    env_variable: SERVER_HOSTNAME
+    default_value: 'Tekkura Garry''s Mod Server'
+    user_viewable: true
+    user_editable: true
+    rules:
+      - 'required'
+      - 'string'
+      - 'max:60'
+    sort: 0
   -
     name: Gamemode
     description: 'The gamemode of your server.'

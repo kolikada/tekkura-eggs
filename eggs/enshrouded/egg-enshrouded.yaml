@@ -1,11 +1,11 @@
 _comment: 'DO NOT EDIT: FILE GENERATED AUTOMATICALLY BY PANEL'
 meta:
   version: PLCN_v3
-  update_url: 'https://raw.githubusercontent.com/pelican-eggs/games-steamcmd/refs/heads/main/enshrouded/egg-enshrouded.yaml'
+  update_url: 'https://raw.githubusercontent.com/kolikada/tekkura-eggs/main/eggs/enshrouded/egg-enshrouded.yaml'
 exported_at: '2026-11-01T09:17:52+00:00'
 name: Enshrouded
-author: eggs@goover.dev
-uuid: c3693923-5f13-44b7-8a46-b563f0f93d93
+author: admin@tekkura.cloud
+uuid: a1c023d4-c9f4-4ecb-a8f2-482242e8221c
 description: |-
   Enshrouded is a game of survival, crafting, and Action RPG combat, set within a sprawling
   voxel-based continent. As you journey across the mountains and deserts of an open world, you are
@@ -26,6 +26,7 @@ config:
       find:
         name: '{{server.environment.SRV_NAME}}'
         slotCount: '{{server.environment.MAX_PLAYERS}}'
+        gamePort: '{{server.build.default.port}}'
         queryPort: '{{server.environment.QUERY_PORT}}'
         gameSettingsPreset: '{{server.environment.DIFFICULT_PRESET}}'
   startup:
@@ -87,7 +88,18 @@ scripts:
       echo -e "${YELLOW}install game using steamcmd. please wait...${NC}"
       echo -e "${BLUE}-------------------------------------------------${NC}"
 
-      ./steamcmd.sh +force_install_dir /mnt/server +login ${STEAM_USER} ${STEAM_PASS} ${STEAM_AUTH} $( [[ "${WINDOWS_INSTALL}" == "1" ]] && printf %s '+@sSteamCmdForcePlatformType windows' ) $( [[ "${STEAM_SDK}" == "1" ]] && printf %s '+app_update 1007' ) +app_update ${STEAM_APPID} $( [[ -z ${STEAM_BETAID} ]] || printf %s "-beta ${STEAM_BETAID}" ) $( [[ -z ${STEAM_BETAPASS} ]] || printf %s "-betapassword ${STEAM_BETAPASS}" ) ${INSTALL_FLAGS} validate +quit
+      ## Steam can fail a download and still exit cleanly, so check the game arrived,
+      ## and fail the install if it never does rather than hand over an empty server.
+      for STEAM_TRY in 1 2 3; do
+          ./steamcmd.sh +force_install_dir /mnt/server +login ${STEAM_USER} ${STEAM_PASS} ${STEAM_AUTH} $( [[ "${WINDOWS_INSTALL}" == "1" ]] && printf %s '+@sSteamCmdForcePlatformType windows' ) $( [[ "${STEAM_SDK}" == "1" ]] && printf %s '+app_update 1007' ) +app_update ${SRCDS_APPID} $( [[ -z ${STEAM_BETAID} ]] || printf %s "-beta ${STEAM_BETAID}" ) $( [[ -z ${STEAM_BETAPASS} ]] || printf %s "-betapassword ${STEAM_BETAPASS}" ) ${INSTALL_FLAGS} validate +quit
+          grep -Eqs '"StateFlags"[[:space:]]+"4"' "/mnt/server/steamapps/appmanifest_${SRCDS_APPID}.acf" && break
+          if [ "${STEAM_TRY}" = "3" ]; then
+              echo "Steam did not finish downloading the game after 3 tries."
+              exit 1
+          fi
+          echo "Steam did not finish downloading the game, trying again."
+          sleep 15
+      done
       echo -e "${GREEN}..done..${NC}"
 
       ## set up 32 bit libraries
@@ -108,8 +120,47 @@ scripts:
         echo -e "${BLUE}-------------------------------------------------${NC}"
         echo -e "${RED}No enshrouded_server.json found. Downloading default...${NC}"
         echo -e "${BLUE}-------------------------------------------------${NC}"
-        cd $HOME
-        curl -sSL -o enshrouded_server.json https://raw.githubusercontent.com/pelican-eggs/games-steamcmd/refs/heads/main/enshrouded/enshrouded_server.json
+        cat > $HOME/enshrouded_server.json << ENDOFFILE
+      {
+      	"name": "Enshrouded Server",
+      	"saveDirectory": "./savegame",
+      	"logDirectory": "./logs",
+      	"ip": "0.0.0.0",
+      	"gamePort": 15636,
+      	"queryPort": 15637,
+      	"slotCount": 16,
+      	"gameSettingsPreset": "Default",
+      	"userGroups": [
+      		{
+      			"name": "Admin",
+      			"password": "${ADMIN_PASSWORD}",
+      			"canKickBan": true,
+      			"canAccessInventories": true,
+      			"canEditBase": true,
+      			"canExtendBase": true,
+      			"reservedSlots": 0
+      		},
+      		{
+      			"name": "Friend",
+      			"password": "${FRIEND_PASSWORD}",
+      			"canKickBan": false,
+      			"canAccessInventories": true,
+      			"canEditBase": true,
+      			"canExtendBase": false,
+      			"reservedSlots": 0
+      		},
+      		{
+      			"name": "Guest",
+      			"password": "${GUEST_PASSWORD}",
+      			"canKickBan": false,
+      			"canAccessInventories": false,
+      			"canEditBase": false,
+      			"canExtendBase": false,
+      			"reservedSlots": 0
+      		}
+      	]
+      }
+      ENDOFFILE
         echo -e "${GREEN}..done..${NC}"
       fi
 
@@ -121,8 +172,44 @@ scripts:
     entrypoint: bash
 variables:
   -
+    name: '[SERVER] Admin password'
+    description: 'Players join by typing one of the three passwords, and the one they type decides what they may do. Made for this server when it was built and written into enshrouded_server.json then; change it in that file afterwards.'
+    env_variable: ADMIN_PASSWORD
+    default_value: ''
+    user_viewable: true
+    user_editable: false
+    rules:
+      - 'nullable'
+      - 'string'
+      - 'max:32'
+    sort: 0
+  -
+    name: '[SERVER] Friend password'
+    description: 'Players join by typing one of the three passwords, and the one they type decides what they may do. Made for this server when it was built and written into enshrouded_server.json then; change it in that file afterwards.'
+    env_variable: FRIEND_PASSWORD
+    default_value: ''
+    user_viewable: true
+    user_editable: false
+    rules:
+      - 'nullable'
+      - 'string'
+      - 'max:32'
+    sort: 0
+  -
+    name: '[SERVER] Guest password'
+    description: 'Players join by typing one of the three passwords, and the one they type decides what they may do. Made for this server when it was built and written into enshrouded_server.json then; change it in that file afterwards.'
+    env_variable: GUEST_PASSWORD
+    default_value: ''
+    user_viewable: true
+    user_editable: false
+    rules:
+      - 'nullable'
+      - 'string'
+      - 'max:32'
+    sort: 0
+  -
     name: '[SERVER] Steam Query Port'
-    description: 'Steam Query Port'
+    description: 'Players find and join the server on this port. Set by the panel.'
     env_variable: QUERY_PORT
     default_value: ''
     user_viewable: true
@@ -156,12 +243,13 @@ variables:
     name: '[SERVER] Max Players'
     description: 'Maximum number of players allowed'
     env_variable: MAX_PLAYERS
-    default_value: 24
+    default_value: '16'
     user_viewable: true
     user_editable: true
     rules:
-      - required
-      - numeric
+      - 'required'
+      - 'integer'
+      - 'between:1,16'
     sort: 4
   -
     name: '[SERVER] Save Name'

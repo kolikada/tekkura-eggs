@@ -2,12 +2,12 @@
     "_comment": "DO NOT EDIT: FILE GENERATED AUTOMATICALLY BY PANEL",
     "meta": {
         "version": "PLCN_v1",
-        "update_url": "https:\/\/raw.githubusercontent.com\/pelican-eggs\/games-steamcmd\/refs\/heads\/main\/satisfactory\/egg-satisfactory.json"
+        "update_url": "https:\/\/raw.githubusercontent.com\/kolikada\/tekkura-eggs\/main\/eggs\/satisfactory\/egg-satisfactory.json"
     },
     "exported_at": "2026-04-06T02:01:23+00:00",
     "name": "Satisfactory",
-    "author": "red_thirten@yahoo.com",
-    "uuid": "dafdb96a-e8c1-449f-a6ae-b7ba209c05ff",
+    "author": "admin@tekkura.cloud",
+    "uuid": "b6a05699-b21d-4af0-93fe-3272d30bffae",
     "description": "Satisfactory is a first-person open-world factory building game with a dash of exploration and combat. Play alone or with friends, explore an alien planet, create multi-story factories, and enter conveyor belt heaven!",
     "tags": [
         "steamcmd"
@@ -28,7 +28,7 @@
     },
     "scripts": {
         "installation": {
-            "script": "#!\/bin\/bash\r\n\r\n# File: Pelican Satisfactory Egg - egg-satisfactory.json\r\n# Authors: Red-Thirten, Kubi, matthewp, Software-Noob, and Zarklord\r\n# Date: 2024\/09\/10\r\n# License: MIT License\r\n\r\n## Download and install SteamCMD\r\ncd \/tmp\r\ncurl -sSL -o steamcmd.tar.gz https:\/\/steamcdn-a.akamaihd.net\/client\/installer\/steamcmd_linux.tar.gz\r\nmkdir -p \/mnt\/server\/steamcmd\r\ntar -xzvf steamcmd.tar.gz -C \/mnt\/server\/steamcmd\r\ncd \/mnt\/server\/steamcmd\r\n\r\n# SteamCMD fails otherwise for some reason, even running as root.\r\nchown -R root:root \/mnt\r\nexport HOME=\/mnt\/server\r\n\r\n# Install game server using SteamCMD\r\n.\/steamcmd.sh +force_install_dir \/mnt\/server +login anonymous +app_update ${SRCDS_APPID} $( [[ -z ${SRCDS_BETAID} ]] || printf %s \"-beta ${SRCDS_BETAID}\" ) $( [[ -z ${SRCDS_BETAPASS} ]] || printf %s \"-betapassword ${SRCDS_BETAPASS}\" ) validate +exit\r\n\r\n# Set up 32 and 64 bit libraries\r\nmkdir -p \/mnt\/server\/.steam\/sdk{32,64}\r\ncp -v linux32\/steamclient.so \/mnt\/server\/.steam\/sdk32\/steamclient.so\r\ncp -v linux64\/steamclient.so \/mnt\/server\/.steam\/sdk64\/steamclient.so\r\n\r\n## Satisfactory setup\r\n# Check for successful installation and make the server binary executable.\r\n# Use `find` to see if a valid server binary exists using a wildcard, because\r\n# the binary name may change in the future.\r\n# (eg. it changed when the engine was updated from UE4 to UE5)\r\ncd \/mnt\/server\/Engine\/Binaries\/Linux\r\ncount=$(find . -maxdepth 1 -name '*-Linux-Shipping' -type f -executable | wc -l)\r\nif [[ $count -eq 0 ]]; then\r\n    echo -e \"\\n\\nSteamCMD failed to install the Satisfactory Dedicated Server!\"\r\n    echo -e \"\\tTry reinstalling the server again.\\n\"\r\n    exit 1\r\nelse\r\n    chmod +x *-Linux-Shipping\r\nfi\r\n\r\necho -e \"\\nSatisfactory Dedicated Server successfully installed!\\n\"",
+            "script": "#!\/bin\/bash\r\n\r\n# File: Pelican Satisfactory Egg - egg-satisfactory.json\r\n# Authors: Red-Thirten, Kubi, matthewp, Software-Noob, and Zarklord\r\n# Date: 2024\/09\/10\r\n# License: MIT License\r\n\r\n## Download and install SteamCMD\r\ncd \/tmp\r\ncurl -sSL -o steamcmd.tar.gz https:\/\/steamcdn-a.akamaihd.net\/client\/installer\/steamcmd_linux.tar.gz\r\nmkdir -p \/mnt\/server\/steamcmd\r\ntar -xzvf steamcmd.tar.gz -C \/mnt\/server\/steamcmd\r\ncd \/mnt\/server\/steamcmd\r\n\r\n# SteamCMD fails otherwise for some reason, even running as root.\r\nchown -R root:root \/mnt\r\nexport HOME=\/mnt\/server\r\n\r\n# Install game server using SteamCMD\r\n## Steam can fail a download and still exit cleanly, so check the game arrived,\r\n## and fail the install if it never does rather than hand over an empty server.\r\nfor STEAM_TRY in 1 2 3; do\r\n    .\/steamcmd.sh +force_install_dir \/mnt\/server +login anonymous +app_update ${SRCDS_APPID} $( [[ -z ${SRCDS_BETAID} ]] || printf %s \"-beta ${SRCDS_BETAID}\" ) $( [[ -z ${SRCDS_BETAPASS} ]] || printf %s \"-betapassword ${SRCDS_BETAPASS}\" ) validate +exit\r\n    grep -Eqs '\"StateFlags\"[[:space:]]+\"4\"' \"\/mnt\/server\/steamapps\/appmanifest_${SRCDS_APPID}.acf\" && break\r\n    if [ \"${STEAM_TRY}\" = \"3\" ]; then\r\n        echo \"Steam did not finish downloading the game after 3 tries.\"\r\n        exit 1\r\n    fi\r\n    echo \"Steam did not finish downloading the game, trying again.\"\r\n    sleep 15\r\ndone\r\n\r\n# Set up 32 and 64 bit libraries\r\nmkdir -p \/mnt\/server\/.steam\/sdk{32,64}\r\ncp -v linux32\/steamclient.so \/mnt\/server\/.steam\/sdk32\/steamclient.so\r\ncp -v linux64\/steamclient.so \/mnt\/server\/.steam\/sdk64\/steamclient.so\r\n\r\n## Satisfactory setup\r\n# Check for successful installation and make the server binary executable.\r\n# Use `find` to see if a valid server binary exists using a wildcard, because\r\n# the binary name may change in the future.\r\n# (eg. it changed when the engine was updated from UE4 to UE5)\r\ncd \/mnt\/server\/Engine\/Binaries\/Linux\r\ncount=$(find . -maxdepth 1 -name '*-Linux-Shipping' -type f -executable | wc -l)\r\nif [[ $count -eq 0 ]]; then\r\n    echo -e \"\\n\\nSteamCMD failed to install the Satisfactory Dedicated Server!\"\r\n    echo -e \"\\tTry reinstalling the server again.\\n\"\r\n    exit 1\r\nelse\r\n    chmod +x *-Linux-Shipping\r\nfi\r\n\r\necho -e \"\\nSatisfactory Dedicated Server successfully installed!\\n\"",
             "container": "ghcr.io\/parkervcp\/installers:debian",
             "entrypoint": "\/bin\/bash"
         }
@@ -36,7 +36,7 @@
     "variables": [
         {
             "name": "[Host] Reliable Messaging Port",
-            "description": "This port is required for the initial handshake between clients and the server. When connecting, clients should connect to the server's primary port; NOT this port.",
+            "description": "Required by Satisfactory 1.1 and later. Set by the panel.",
             "env_variable": "RELIABLE_PORT",
             "default_value": "8888",
             "user_viewable": true,

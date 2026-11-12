@@ -448,5 +448,75 @@
     "path": "eggs/pelican.json",
     "commit": "fe7e6579ae554d95d94f49ec55103a85cf3f2a2d",
     "file": "eggs/bot-discord-tickets/egg-discord-tickets.yaml"
+  },
+  {
+    "slug": "enshrouded",
+    "store_category": "Enshrouded",
+    "role": "primary",
+    "upstream": "https://github.com/pelican-eggs/games-steamcmd/blob/0547150ac32eceac7a1aefb2353aae36b5d2f321/enshrouded/egg-enshrouded.yaml",
+    "repo": "games-steamcmd",
+    "path": "enshrouded/egg-enshrouded.yaml",
+    "commit": "0547150ac32eceac7a1aefb2353aae36b5d2f321",
+    "file": "eggs/enshrouded/egg-enshrouded.yaml"
+  },
+  {
+    "slug": "7-days-to-die",
+    "store_category": "7 Days to Die",
+    "role": "primary",
+    "upstream": "https://github.com/pelican-eggs/games-steamcmd/blob/0547150ac32eceac7a1aefb2353aae36b5d2f321/7_days_to_die/egg-7-days-to-die.json",
+    "repo": "games-steamcmd",
+    "path": "7_days_to_die/egg-7-days-to-die.json",
+    "commit": "0547150ac32eceac7a1aefb2353aae36b5d2f321",
+    "file": "eggs/7-days-to-die/egg-7-days-to-die.json"
+  },
+  {
+    "slug": "the-isle",
+    "store_category": "The Isle",
+    "role": "primary",
+    "upstream": "https://github.com/pelican-eggs/games-steamcmd/blob/0547150ac32eceac7a1aefb2353aae36b5d2f321/the_isle/evrima/egg-the-isle.json",
+    "repo": "games-steamcmd",
+    "path": "the_isle/evrima/egg-the-isle.json",
+    "commit": "0547150ac32eceac7a1aefb2353aae36b5d2f321",
+    "file": "eggs/the-isle/egg-the-isle.json"
+  },
+  {
+    "slug": "dont-starve-together",
+    "store_category": "Don't Starve Together",
+    "role": "primary",
+    "upstream": "https://github.com/pelican-eggs/games-steamcmd/blob/0547150ac32eceac7a1aefb2353aae36b5d2f321/dont_starve/egg-don-t-starve-together.json",
+    "repo": "games-steamcmd",
+    "path": "dont_starve/egg-don-t-starve-together.json",
+    "commit": "0547150ac32eceac7a1aefb2353aae36b5d2f321",
+    "file": "eggs/dont-starve-together/egg-don-t-starve-together.json"
+  },
+  {
+    "slug": "garrys-mod",
+    "store_category": "Garry's Mod",
+    "role": "primary",
+    "upstream": "https://github.com/pelican-eggs/games-steamcmd/blob/0547150ac32eceac7a1aefb2353aae36b5d2f321/gmod/egg-garrys-mod.yaml",
+    "repo": "games-steamcmd",
+    "path": "gmod/egg-garrys-mod.yaml",
+    "commit": "0547150ac32eceac7a1aefb2353aae36b5d2f321",
+    "file": "eggs/garrys-mod/egg-garrys-mod.yaml"
+  },
+  {
+    "slug": "factorio",
+    "store_category": "Factorio",
+    "role": "primary",
+    "upstream": "https://github.com/pelican-eggs/games-standalone/blob/e1b52607397c0de9d6918d0659f1ff95721d3b49/factorio/factorio/egg-factorio.yaml",
+    "repo": "games-standalone",
+    "path": "factorio/factorio/egg-factorio.yaml",
+    "commit": "e1b52607397c0de9d6918d0659f1ff95721d3b49",
+    "file": "eggs/factorio/egg-factorio.yaml"
+  },
+  {
+    "slug": "satisfactory",
+    "store_category": "Satisfactory",
+    "role": "primary",
+    "upstream": "https://github.com/pelican-eggs/games-steamcmd/blob/0547150ac32eceac7a1aefb2353aae36b5d2f321/satisfactory/egg-satisfactory.json",
+    "repo": "games-steamcmd",
+    "path": "satisfactory/egg-satisfactory.json",
+    "commit": "0547150ac32eceac7a1aefb2353aae36b5d2f321",
+    "file": "eggs/satisfactory/egg-satisfactory.json"
   }
 ]

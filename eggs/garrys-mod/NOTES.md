@@ -1,4 +1,4 @@
-# Garrys Mod
+# Garry's Mod
 
 Store category: **Garry's Mod** (primary)
 Upstream: [games-steamcmd/gmod/egg-garrys-mod.yaml](https://github.com/pelican-eggs/games-steamcmd/blob/0547150ac32eceac7a1aefb2353aae36b5d2f321/gmod/egg-garrys-mod.yaml)

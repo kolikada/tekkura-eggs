@@ -164,10 +164,10 @@ joined. No egg is `done` yet.
 | Bots | [Red](eggs/bot-red/NOTES.md) | ready-made | none | none | configured |
 | Bots | [Discord Tickets](eggs/bot-discord-tickets/NOTES.md) | ready-made | none | none | configured |
 | Enshrouded | [Enshrouded](eggs/enshrouded/NOTES.md) | primary | `QUERY_PORT` ✓ | `QUERY_PORT` | ready |
-| 7 Days to Die | [7 Days To Die](eggs/7-days-to-die/NOTES.md) | primary | `TELNET_PORT` (internal) | none | ready |
+| 7 Days to Die | [7 Days to Die](eggs/7-days-to-die/NOTES.md) | primary | `TELNET_PORT` (internal) | none | ready |
 | The Isle | [The Isle](eggs/the-isle/NOTES.md) | primary | `QUEUE_PORT` ✓, `RCON_PORT` ✓ | none | ready |
 | Don't Starve Together | [Don't Starve Together](eggs/dont-starve-together/NOTES.md) | primary | `CAVES_PORT` ✓ | none | ready |
-| Garry's Mod | [Garrys Mod](eggs/garrys-mod/NOTES.md) | primary | none | none | ready |
+| Garry's Mod | [Garry's Mod](eggs/garrys-mod/NOTES.md) | primary | none | none | ready |
 | Factorio | [Factorio](eggs/factorio/NOTES.md) | primary | `RCON_PORT` ✓ | none | ready |
 | Satisfactory | [Satisfactory](eggs/satisfactory/NOTES.md) | primary | `RELIABLE_PORT` ✓ | none | ready |
 <!-- status:end -->

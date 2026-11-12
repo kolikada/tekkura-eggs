@@ -1,4 +1,4 @@
-# 7 Days To Die
+# 7 Days to Die
 
 Store category: **7 Days to Die** (primary)
 Upstream: [games-steamcmd/7_days_to_die/egg-7-days-to-die.json](https://github.com/pelican-eggs/games-steamcmd/blob/0547150ac32eceac7a1aefb2353aae36b5d2f321/7_days_to_die/egg-7-days-to-die.json)
